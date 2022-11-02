@@ -4,6 +4,7 @@
 # include <time.h>
 
 int main(){
+    //menyusul masih proses
     
     return 0;
 }
