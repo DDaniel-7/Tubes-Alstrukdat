@@ -1,6 +1,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <time.h>
+# include "rng.h"
 
 void RNG(){
     srand(time(NULL));
