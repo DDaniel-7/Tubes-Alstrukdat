@@ -1,34 +1,34 @@
-/* File: wordmachine.c */
-
-#include "mesinkata.h"
+#include "wordmachine.h"
 #include <stdio.h>
 #include<stdlib.h>
+
 boolean endWord;
 Word currentWord;
 
-void ignoreBlank(){
-	while (currentChar == BLANK || currentChar == NEWLINE){
-		adv();
+void IgnoreBlanks(){
+	while (currentChar == BLANK || currentChar == NEWLINE)
+   {
+		ADV();
 	}
 }
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : currentChar sembarang 
    F.S. : currentChar ? BLANK atau currentChar = MARK */
 
-/* TAPE STDIN */
+/* PITA STDIN */
 
-void startWord(){
-	start();
-	ignoreBlank();
-	copyWord();
+void STARTWORD(){
+	START();
+	IgnoreBlanks();
+	CopyWord();
 }
 /* I.S. : currentChar sembarang 
    F.S. : endWord = true, dan currentChar = MARK; 
           atau endWord = false, currentWord adalah kata yang sudah diakuisisi,
           currentChar karakter pertama sesudah karakter terakhir kata */
 
-void advWord(){
-	copyWord();
+void ADVWORD(){
+   CopyWord();
 }
 /* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi 
    F.S. : currentWord adalah kata terakhir yang sudah diakuisisi, 
@@ -36,13 +36,18 @@ void advWord(){
           Jika currentChar = MARK, endWord = true.		  
    Proses : Akuisisi kata menggunakan procedure copyWord */
 
-void copyWord(){
-	ignoreBlank();
+void CopyWord(){
+	IgnoreBlanks();
 	currentWord.length = 0;
-	while((currentChar != BLANK) && (currentWord.length < CAPACITY) && (currentChar != NEWLINE)){
-		currentWord.contents[currentWord.length] = currentChar;
-		adv();
-		currentWord.length++;
+	while((currentChar != BLANK) && (currentChar != NEWLINE)){
+      if (currentWord.length < CAPACITY){
+		currentWord.contents[currentWord.length++] = currentChar;
+		ADV();
+      }
+      else{
+         break;
+      }
+		
 	}
 }
 /* Mengakuisisi kata, menyimpan dalam currentWord
@@ -54,104 +59,122 @@ void copyWord(){
 
 /* TAPE FILE */
 
-void ignoreBlankF(){
+void IgnoreBlanksF(){
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : currentChar sembarang 
    F.S. : currentChar ? BLANK atau currentChar = MARK */
 	while (currentChar == BLANK || currentChar == NEWLINE){
-		advfile();
+		ADVFILE();
 	}
 }
 
-void startWordFile(char fileloc[]){
+void STARTWORDFILE(char fileloc[]){
 /* I.S. : currentChar sembarang 
    F.S. : endWord = true, dan currentChar = MARK; 
           atau endWord = false, currentWord adalah kata yang sudah diakuisisi,
           currentChar karakter pertama sesudah karakter terakhir kata */
-	startfile(fileloc);
-	ignoreBlankF();
-	copyWordFile();
+	STARTFILE(fileloc);
+	IgnoreBlanksF();
+	CopyWordFile();
 }
 
-void advWordFile(){
+void ADVWORDFILE(){
 /* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi 
    F.S. : currentWord adalah kata terakhir yang sudah diakuisisi, 
           currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
           Jika currentChar = MARK, endWord = true.		  
    Proses : Akuisisi kata menggunakan procedure copyWord */
-	copyWordFile();
+   CopyWordFile();
 }
 
-void copyWordFile(){
+void CopyWordFile(){
 /* Mengakuisisi kata, menyimpan dalam currentWord
    I.S. : currentChar adalah karakter pertama dari kata
    F.S. : currentWord berisi kata yang sudah diakuisisi; 
           currentChar = BLANK atau currentChar = MARK; 
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi CAPACITY, maka sisa kata terpotong */
-	ignoreBlankF();
+	IgnoreBlanksF();
 	currentWord.length = 0;
-	while((currentChar != BLANK) && (currentWord.length < CAPACITY) && (currentChar != NEWLINE)){
-		currentWord.contents[currentWord.length] = currentChar;
-		advfile();
-		currentWord.length++;
+	while((currentChar != BLANK) && (currentChar != NEWLINE)){
+      if (currentWord.length < CAPACITY){
+		currentWord.contents[currentWord.length++] = currentChar;
+		ADVFILE();
+      }
+      else{
+         break;
+      }
+		
 	}
 }
 
-Word takeWord(Word word){
-	int i;
-   Word output;
-   for ( i = 0; i < word.length; i++){
-      output.contents[i] = word.contents[i];
+Word PickWord(Word word){
+   // Mengeluarkan kata dengan isi yang terakhir
+	int i = 0;
+   Word result;
+   while (i < word.length){
+      result.contents[i] = word.contents[i];
+      i++;
    }
-   output.contents[i] = '\0';
-   output.length = i;
-   return output;
+   result.contents[i] = '\0';
+   result.length = i;
+   return result;
 }
 
-boolean isWordString(Word word, char string[]){
-   int i;
-   if(word.length == stringLen(string)){
-      
-      for ( i = 0; i < word.length; i++){
+int PickNum(Word word){
+   // Menghasilkan integer dari sebuah kata
+   int result = 0;
+   int i = 0;
+   while( i < word.length){
+      result *= 10;
+      result += (int) (word.contents[i] - '0');
+      i++;
+   }
+   return result;
+}
+
+void PickStr(Word word, char string[]){
+   // Menghasilkan string dengan isi dari kata
+   int i = 0;
+   while (i < word.length){
+      string[i] = word.contents[i];
+      i++;
+   }
+   string[i] = '\0';
+}
+
+boolean IsWordStr(Word word, char string[]){
+   // Menghasilkan true jika string pada kata sama dengan string yang dibandingkan
+   int i = 0;
+   if(word.length == LengthStr(string)){
+      while(i < word.length){
          if(word.contents[i] != string[i]){
             return false;
          }
+      i++;
       }
       return true;
    }
    return false;
 }
 
-int takeNum(Word word){
-   int result = 0;int i;
-   for ( i = 0; i < word.length; i++){
-      result *= 10;
-      result += (int) (word.contents[i] - '0');
-   }
-   return result;
-}
-void takeString(Word word, char string[]){
-   int i;
-   for ( i = 0; i < word.length; i++){
-      string[i] = word.contents[i];
-   }
-   string[i] = '\0';
-}
-void stringCat(char string1[], char string2[]){
-   int i;
-   int len1 = stringLen(string1);
-   int len2 = stringLen(string2);
-   for ( i = 0; i < len2; i++){
-      string1[i+len1] = string2[i];
-   }
-   string1[i+len1] = '\0';
-}
-
-int stringLen(char string[]){
-   int i=0;
+int LengthStr(char string[]){
+   // Menghitung panjang dari suatu string
+   int i = 0;
    while (string[i] != '\0'){
       i++;
    }
    return i;
+}
+
+void ConcatStr(char string1[], char string2[]){
+   // Menggabungkan string 1 dengan string 2
+   int i = 0;
+   int len1 = LengthStr(string1);
+   int len2 = LengthStr(string2);
+   while (i < len2){
+      string1[i+len1] = string2[i];
+      i++;
+   }
+   string1[i+len1] = '\0';
 }
