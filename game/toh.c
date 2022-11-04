@@ -1,7 +1,11 @@
 # include <stdio.h>
 # include <stdlib.h>
+# include <time.h>
+# include <math.h>
 # include "stack.h"
 # include "boolean.h"
+# include "charmachine.h"
+# include "wordmachine.h"
 
 void tampil(Stack s){
     Stack temp;
@@ -79,70 +83,82 @@ void towerofhanoi()
     CreateEmpty(&M);
     CreateEmpty(&L);
     int disk;
-    printf("Masukkan banyak disk yang ingin dimainkan: ");
-    scanf("%d",&disk);
-    int i;
-    for(i=disk; i>0; i--){
-        Push(&L,i);
+    printf("Main Menu:\n");
+    printf("1. Play Game\n");
+    printf("2. Exit\n");
+    printf("ENTER CHOICE : ");
+    STARTWORD();
+    while (IsWordStr(currentWord, "2")){
+        break;
     }
-    char from, to;
-    while(!isWin(R,disk)){
-        printf("Menara Kiri: ");
-        tampil(L);
-        printf("Menara Tengah: ");
-        tampil(M);
-        printf("Menara Kanan: ");
-        tampil(R);
-        printf("Masukkan menara yang disknya ingin dipindahkan: ");
-        scanf(" %c", &from);
-        printf("Dipindahkan ke Menara: ");
-        scanf(" %c", &to);
-        if(from == 'R'){
-            if(to == 'R'){
-                printf("Invalid Command!\n");
-            }
-            else if(to == 'M'){
-                proses(&R,&M);
-            }
-            else if(to == 'L'){
-                proses(&R,&L);
-            }
-            else{
-                printf("Invalid Command!\n");
-            }
+    while (IsWordStr(currentWord, "1")){ 
+        printf("Masukkan banyak disk yang ingin dimainkan: ");
+        ADVWORD();
+        disk = PickNum(currentWord);
+        int i;
+        for(i=disk; i>0; i--){
+            Push(&L,i);
         }
-        else if(from == 'M'){
-            if(to == 'M'){
-                printf("Invalid Command!\n");
+        while(!isWin(R,disk)){
+            printf("Menara Kiri: ");
+            tampil(L);
+            printf("Menara Tengah: ");
+            tampil(M);
+            printf("Menara Kanan: ");
+            tampil(R);
+            printf("Masukkan menara yang disknya ingin dipindahkan: ");
+            ADVWORD();
+            if (IsWordStr(currentWord,"R")){
+                printf("Dipindahkan ke Menara: ");
+                ADVWORD();
+                if (IsWordStr(currentWord,"R")){
+                    printf("Invalid Command!\n");
+                }
+                else if (IsWordStr(currentWord,"M")){
+                    proses(&R,&M);
+                }
+                else if (IsWordStr(currentWord,"L")){
+                    proses(&R,&L);
+                }
+                else{
+                    printf("Invalid Command!\n");
+                }
             }
-            else if(to == 'R'){
-                proses(&M,&R);
+            else if (IsWordStr(currentWord,"M")){
+                printf("Dipindahkan ke Menara: ");
+                ADVWORD();
+                if (IsWordStr(currentWord,"M")){
+                    printf("Invalid Command!\n");
+                }
+                else if (IsWordStr(currentWord,"R")){
+                    proses(&M,&R);
+                }
+                else if (IsWordStr(currentWord,"L")){
+                    proses(&M,&L);
+                }
+                else{
+                    printf("Invalid Command!\n");
+                }
             }
-            else if(to == 'L'){
-                proses(&M,&L);
+            else if (IsWordStr(currentWord,"L")){
+                printf("Dipindahkan ke Menara: ");
+                ADVWORD();
+                if (IsWordStr(currentWord,"L")){
+                    printf("Invalid Command!\n");
+                }
+                else if (IsWordStr(currentWord,"R")){
+                    proses(&L,&R);
+                }
+                else if (IsWordStr(currentWord,"M")){
+                    proses(&L,&M);
+                }
+                else{
+                    printf("Invalid Command!\n");
+                }
             }
-            else{
-                printf("Invalid Command!\n");
-            }
+            steps++;
         }
-        else if(from == 'L'){
-            if(to == 'L'){
-                printf("Invalid Command!\n");
-            }
-            else if(to == 'M'){
-                proses(&L,&M);
-            }
-            else if(to == 'R'){
-                proses(&L,&R);
-            }
-            else{
-                printf("Invalid Command!\n");
-            }
-        }
-        else{
-            printf("Invalid Command!\n");
-        }
-        steps++;
+        printf("Selamat Anda Menyelesaikan Tower of Hanoi dengan %d Steps\n",steps);
+        break;
     }
-    printf("Selamat Anda Menyelesaikan Tower of Hanoi dengan %d Steps\n",steps);
 }
