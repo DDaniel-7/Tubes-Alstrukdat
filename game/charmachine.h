@@ -1,6 +1,3 @@
-/* File: charmachine.h */
-/* Definisi Character Engine */
-
 #ifndef CHAR_ENGINE_H
 #define CHAR_ENGINE_H
 
@@ -9,9 +6,9 @@
 #define MARK '.'
 /* Char Engine State */
 extern char currentChar;
-extern boolean eot;
+extern boolean EOP;
 
-void start();
+void START();
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
    I.S. : sembarang
@@ -19,14 +16,14 @@ void start();
           Jika currentChar != MARK maka EOP akan padam (false)
           Jika currentChar = MARK maka EOP akan menyala (true) */
 
-void adv();
+void ADV();
 /* Pita dimajukan satu karakter. 
    I.S. : Karakter pada jendela = currentChar, currentChar != MARK
    F.S. : currentChar adalah karakter berikutnya dari currentChar yang lama, 
           currentChar mungkin = MARK
           Jika  currentChar = MARK maka EOP akan menyala (true) */
 
-void startfile(char fileloc[]);
+void STARTFILE(char fileloc[]);
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
    I.S. : sembarang
@@ -34,15 +31,15 @@ void startfile(char fileloc[]);
           Jika currentChar != MARK maka EOP akan padam (false)
           Jika currentChar = MARK maka EOP akan menyala (true) */
 
-void advfile();
+void ADVFILE();
 /* Pita dimajukan satu karakter. 
    I.S. : Karakter pada jendela = currentChar, currentChar != MARK
    F.S. : currentChar adalah karakter berikutnya dari currentChar yang lama, 
           currentChar mungkin = MARK
           Jika  currentChar = MARK maka EOP akan menyala (true) */
 
-void close();
+void CLOSE();
 
-void closeFile();
+void CLOSEFILE();
 
 #endif
