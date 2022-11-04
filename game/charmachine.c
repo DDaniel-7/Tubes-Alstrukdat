@@ -1,17 +1,14 @@
-/* File: charmachine.c */
-/* Implementasi Character Engine */
-
-#include "mesinkarakter.h"
+#include "charmachine.h"
 #include <stdio.h>
 
 char currentChar;
-boolean eot;
+boolean EOP;
 
-static FILE * tape;
-static FILE * filetape;
+static FILE * pita;
+static FILE * filepita;
 static int retval;
 
-void start() {
+void START() {
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
    I.S. : sembarang
@@ -20,11 +17,11 @@ void start() {
           Jika currentChar = MARK maka EOP akan menyala (true) */
 
 	/* Algoritma */
-	tape = stdin;
-	adv();
+	pita = stdin;
+	ADV();
 }
 
-void adv() {
+void ADV() {
 /* Pita dimajukan satu karakter. 
    I.S. : Karakter pada jendela = currentChar, currentChar != MARK
    F.S. : currentChar adalah karakter berikutnya dari currentChar yang lama, 
@@ -32,10 +29,10 @@ void adv() {
 		      Jika  currentChar = MARK maka EOP akan menyala (true) */
 
 	/* Algoritma */
-	retval = fscanf(tape,"%c",&currentChar);
+	retval = fscanf(pita,"%c",&currentChar);
 }
 
-void startfile(char fileloc[]) {
+void STARTFILE(char fileloc[]) {
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
    I.S. : sembarang
@@ -44,11 +41,11 @@ void startfile(char fileloc[]) {
           Jika currentChar = MARK maka EOP akan menyala (true) */
 
 	/* Algoritma */
-	filetape = fopen(fileloc, "r");
-	advfile();
+	filepita = fopen(fileloc, "r");
+	ADVFILE();
 }
 
-void advfile() {
+void ADVFILE(){
 /* Pita dimajukan satu karakter. 
    I.S. : Karakter pada jendela = currentChar, currentChar != MARK
    F.S. : currentChar adalah karakter berikutnya dari currentChar yang lama, 
@@ -56,13 +53,13 @@ void advfile() {
 		      Jika  currentChar = MARK maka EOP akan menyala (true) */
 
 	/* Algoritma */
-	retval = fscanf(filetape,"%c",&currentChar);
+	retval = fscanf(filepita,"%c",&currentChar);
 }
 
-void close(){
-   fclose(tape);
+void CLOSE(){
+   fclose(pita);
 }
 
-void closeFile(){
-   fclose(filetape);
+void CLOSEFILE(){
+   fclose(filepita);
 }
