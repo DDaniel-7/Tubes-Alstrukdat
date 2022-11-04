@@ -1,9 +1,9 @@
 #include "boolean.h"
 
 
-#ifndef PLAYGAME_H
-#define PLAYGAME_H
+#ifndef HELP_H
+#define HELP_H
 
-void PLAYGAME();
+void HELP();
 
 #endif
