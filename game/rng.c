@@ -25,7 +25,7 @@ void RNG(){
         while (1){
             printf("Tebakan : ");
             ADVWORD();
-            guess = PickNum(currentWord);
+            guess = ScanNum(currentWord);
             ctr +=1;
             if (guess > 100 || guess < 0){
                 printf("tebakan invalid \n");
