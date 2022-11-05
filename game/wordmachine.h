@@ -68,16 +68,16 @@ void CopyWordFile();
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi CAPACITY, maka sisa kata terpotong */
 
-Word PickWord(Word word);
+Word ScanWord(Word word);
 // Mengeluarkan kata dengan isi yang terakhir
 
-int PickNum(Word word);
+int ScanNum(Word word);
 // Menghasilkan integer dari sebuah kata
 
 boolean IsWordStr(Word word, char string[]);
 // Menghasilkan true jika string pada kata sama dengan string yang dibandingkan
 
-void PickStr(Word word, char string[]);
+void ScanStr(Word word, char string[]);
 // Menghasilkan string dengan isi dari kata
 
 int LengthStr(char string[]);
