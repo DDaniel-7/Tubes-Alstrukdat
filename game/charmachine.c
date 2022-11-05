@@ -30,8 +30,8 @@ void ADV() {
 
 	/* Algoritma */
 	retval = fscanf(pita,"%c",&currentChar);
-   if (currentChar = MARK){
-      fclose(pita);
+  	if (currentChar = MARK){
+		fclose(pita);
    }
 }
 
@@ -57,7 +57,7 @@ void ADVFILE(){
 
 	/* Algoritma */
 	retval = fscanf(filepita,"%c",&currentChar);
-   if (retval != 1){
-      fclose(filepita);
+	if (retval != 1){
+      		fclose(filepita);
    }
 }
