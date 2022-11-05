@@ -30,6 +30,9 @@ void ADV() {
 
 	/* Algoritma */
 	retval = fscanf(pita,"%c",&currentChar);
+   if (currentChar = MARK){
+      fclose(pita);
+   }
 }
 
 void STARTFILE(char fileloc[]) {
@@ -54,12 +57,7 @@ void ADVFILE(){
 
 	/* Algoritma */
 	retval = fscanf(filepita,"%c",&currentChar);
-}
-
-void CLOSE(){
-   fclose(pita);
-}
-
-void CLOSEFILE(){
-   fclose(filepita);
+   if (retval != 1){
+      fclose(filepita);
+   }
 }
