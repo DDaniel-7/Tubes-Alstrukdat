@@ -94,7 +94,7 @@ void towerofhanoi()
     while (IsWordStr(currentWord, "1")){ 
         printf("Masukkan banyak disk yang ingin dimainkan: ");
         ADVWORD();
-        disk = PickNum(currentWord);
+        disk = ScanNum(currentWord);
         int i;
         for(i=disk; i>0; i--){
             Push(&L,i);
