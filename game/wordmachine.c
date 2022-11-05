@@ -108,7 +108,7 @@ void CopyWordFile(){
 	}
 }
 
-Word PickWord(Word word){
+Word ScanWord(Word word){
    // Mengeluarkan kata dengan isi yang terakhir
 	int i = 0;
    Word result;
@@ -121,7 +121,7 @@ Word PickWord(Word word){
    return result;
 }
 
-int PickNum(Word word){
+int ScanNum(Word word){
    // Menghasilkan integer dari sebuah kata
    int result = 0;
    int i = 0;
@@ -133,7 +133,7 @@ int PickNum(Word word){
    return result;
 }
 
-void PickStr(Word word, char string[]){
+void ScanStr(Word word, char string[]){
    // Menghasilkan string dengan isi dari kata
    int i = 0;
    while (i < word.length){
