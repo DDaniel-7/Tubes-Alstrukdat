@@ -4,9 +4,7 @@
 
 boolean endWord;
 Word currentWord;
-
-static FILE *pita;
-static int retval;
+static FILE * pita;
 
 void IgnoreBlanks(){
 	while (currentChar == BLANK || currentChar == NEWLINE)
@@ -22,13 +20,8 @@ void IgnoreBlanks(){
 
 void STARTWORD(){
 	START();
-   currentWord.length=0;
 	IgnoreBlanks();
-	
-   if(currentChar != MARK){
-      CopyWord();
-   }
-   
+	CopyWord();
 }
 /* I.S. : currentChar sembarang 
    F.S. : endWord = true, dan currentChar = MARK; 
@@ -45,17 +38,19 @@ void ADVWORD(){
    Proses : Akuisisi kata menggunakan procedure copyWord */
 
 void CopyWord(){
-	int i = 0;
-   while (currentChar != NEWLINE){
-      currentWord.contents[i] = currentChar;
-      ADV();
-      i++;
-   }
-   currentWord.length=i;
-   currentWord.contents[i] = '\0';
+	IgnoreBlanks();
+	currentWord.length = 0;
+	while((currentChar != BLANK) && (currentChar != NEWLINE)){
+      if (currentWord.length < CAPACITY){
+		currentWord.contents[currentWord.length++] = currentChar;
+		ADV();
+      }
+      else{
+         break;
+      }
+		
+	}
 }
-
-
 /* Mengakuisisi kata, menyimpan dalam currentWord
    I.S. : currentChar adalah karakter pertama dari kata
    F.S. : currentWord berisi kata yang sudah diakuisisi; 
