@@ -10,7 +10,7 @@
 #define CAPACITY 100
 
 /* Definisi elemen dan address */
-typedef int ElType;
+typedef char* ElType;
 typedef struct {
 	ElType buffer[CAPACITY]; 
 	int idxHead;
