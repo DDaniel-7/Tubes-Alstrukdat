@@ -36,5 +36,5 @@ void save(char *namaFile, ArrayDin arr){
     fileOutput = fopen(("%s", namaFile), "w");
     saveGame(arr, fileOutput);
     fclose(fileOutput);
-    printf("save file berhasil disimpan\n");
+    printf("Save file berhasil disimpan\n");
 }
