@@ -22,15 +22,12 @@ void saveGame(ArrayDin l, FILE *file){
     }
 }
 
-
 void save(char *namaFile, ArrayDin arr){
     //fungsi melakukan save terhadap state dari permainan yang terkandung dalam array
     // dan menyimpannya dalam sebuah file konfigurasi txt
     // jika file sudah ada, maka akan ditanya konfirmasi untuk menimpa file yang sudah ada
-
-
     // KAMUS LOKAL
-     FILE *fileOutput;
+    FILE *fileOutput;
 
     // ALGORITMA
     fileOutput = fopen(("%s", namaFile), "w");
