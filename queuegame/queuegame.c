@@ -1,8 +1,8 @@
 // 1. Output daftar antrian game pertama kosong(?) jd bikin dulu queue kosong
 // 2. tampilin daftar game dari listgame (caranya gimana??)
-#include "./adt/queue.h"
-#include "./adt/arraydin.h"
-#include "./adt/wordmachine.h"
+#include "queue.h"
+#include "arraydin.h"
+#include "wordmachine.h"
 #include <stdio.h>
 void QueueGame(ArrayDin *array, Queue q){
 	// Createqueue(&q);
