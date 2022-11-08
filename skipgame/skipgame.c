@@ -41,6 +41,6 @@ void skipgame(int n, Queue *q){
     }
     else{
         // kasus queue game kosong
-        printf("queue masih kosong, silahkan QUEUE GAME untuk menambahkan game ke dalam antrian");
+        printf("Queue masih kosong, silahkan QUEUE GAME untuk menambahkan game ke dalam antrian");
     }
 }
