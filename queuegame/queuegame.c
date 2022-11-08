@@ -23,6 +23,4 @@ void QueueGame(ArrayDin *array, Queue *q){
 	else {
 		printf("Nomor permainan tidak valid, silahkan masukkan nomor game pada list\n");
     }
-	displayQueue(*q);
-
 }
