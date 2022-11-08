@@ -12,18 +12,17 @@ void PlayGame(Queue *q)
     if(!isEmptyQueue(*q))    //kalau queue game ada isinya maka,
     {
         printf("Berikut adalah daftar Game-mu\n");  //print q dulu
-        int i;
-        for (i = 0; i < length(*q); i++)
+
+        int i,index = 1;
+        for (i = IDX_HEAD(*q); i <= IDX_TAIL(*q); i++)
         {
-            printf("%d. %s\n", i+1, (*q).buffer[i]);
+            printf("%d. %s\n", index , (*q).buffer[i]);
+            index++;
         }
 
         char *R = "RNG";
-        char *DinDash = "DINNER DASH";
+        char *DinDash = "DINER DASH";
         char *TOH = "TOH";
-        char *DIE = "DINOSAUR IN EARTH";
-        char *RISE = "RISEWOMAN";
-        char *ET = "EIFFEL TOWER";
         if (IsStrEq(HEAD(*q), R)){
             printf("Loading %s ...\n", HEAD(*q));
             dequeue(q,&val);
@@ -43,23 +42,8 @@ void PlayGame(Queue *q)
             printf("TOH BERHASIL\n"); // APUS INI 
             //TOH();  // sesuaikan sama game dinnerdash nanti
         }
-        else if (IsStrEq(HEAD(*q), RISE)){
-            printf("Loading %s ...\n", HEAD(*q));
-            dequeue(q,&val);
-            printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.", HEAD(*q));
-        }
-        else if (IsStrEq(HEAD(*q), DIE)){
-            printf("Loading %s ...\n", HEAD(*q));
-            dequeue(q,&val);
-            printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.", HEAD(*q));
-        }else if (IsStrEq(HEAD(*q), ET)){
-            printf("Loading %s ...\n", HEAD(*q));
-            dequeue(q,&val);
-            printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.", HEAD(*q));
-        }
         else{
-            int number = rand() % 10000 + 1;
-            printf("%d\n", number);
+            printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.", HEAD(*q));
         }
     }
     else    //kalau q nya masi kosong, maka panggil fungsi queuegame
