@@ -43,7 +43,7 @@ void PlayGame(Queue *q)
             printf("TOH BERHASIL\n"); // APUS INI 
             //TOH();  // sesuaikan sama game dinnerdash nanti
         }
-        else if (IsStrEq(HEAD(*q), DIE)){
+        else if (IsStrEq(HEAD(*q), RISE)){
             printf("Loading %s ...\n", HEAD(*q));
             dequeue(q,&val);
             int number = rand() % 1000 + 1;
