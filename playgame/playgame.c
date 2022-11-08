@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include "queue.h"
+#include "wordmachine.h"
+#include "boolean.h"
 //#include "queuegame.h"
 //#include "dinnerdash.h"
-#include "rng.h"
 
 
 void PLAYGAME(Queue *gamequeue)
 {
     ElType val;
-    if(!isEmpty(*gamequeue))    //kalau queue game ada isinya maka,
+    if(!isEmptyQueue(*gamequeue))    //kalau queue game ada isinya maka,
     {
         printf("Berikut adalah daftar Game-mu\n");  //print gamequeue dulu
         int i;
@@ -18,13 +19,13 @@ void PLAYGAME(Queue *gamequeue)
         }
         char *R = "RNG";
         char *DinDash = "Dinner Dash";
-        if (HEAD(*gamequeue) == R){
+        if (IsStrEq(HEAD(*gamequeue), R)){
             printf("Loading %s ...\n", HEAD(*gamequeue));
             dequeue(gamequeue,&val);
             RNG();  // sesuaikan sama game RNG nanti
 
         }
-        else if (HEAD(*gamequeue) == DinDash ){
+        else if (IsStrEq(HEAD(*gamequeue), DinDash)){
             printf("Loading %s ...\n", HEAD(*gamequeue));
             dequeue(gamequeue,&val);
             dinnerdash();  // sesuaikan sama game dinnerdash nanti
