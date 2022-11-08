@@ -23,6 +23,10 @@ void PlayGame(Queue *q)
         char *R = "RNG";
         char *DinDash = "DINER DASH";
         char *TOH = "TOH";
+        char *RISE = "RISEWOMAN";
+        char *DIE = "DINOSAUR IN EARTH";
+        char *ET = "EIFFEL TOWER";
+
         if (IsStrEq(HEAD(*q), R)){
             printf("Loading %s ...\n", HEAD(*q));
             dequeue(q,&val);
@@ -42,8 +46,26 @@ void PlayGame(Queue *q)
             printf("TOH BERHASIL\n"); // APUS INI 
             //TOH();  // sesuaikan sama game dinnerdash nanti
         }
-        else{
+        else if (IsStrEq(HEAD(*q), RISE)){
+            printf("Loading %s ...\n", HEAD(*q));
+            dequeue(q,&val);
             printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.", HEAD(*q));
+        }
+
+        else if (IsStrEq(HEAD(*q), DIE)){
+            printf("Loading %s ...\n", HEAD(*q));
+            dequeue(q,&val);
+            printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.", HEAD(*q));
+        }
+        else if (IsStrEq(HEAD(*q), ET)){
+            printf("Loading %s ...\n", HEAD(*q));
+            dequeue(q,&val);
+            printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.", HEAD(*q));
+        }
+
+        else{
+            int number = rand() % 10000 + 1;
+            printf("%d\n", number);
         }
     }
     else    //kalau q nya masi kosong, maka panggil fungsi queuegame
