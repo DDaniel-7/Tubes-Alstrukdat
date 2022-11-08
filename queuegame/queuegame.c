@@ -8,7 +8,7 @@
 #include "stdlib.h"
 
 
-void QueueGame(ArrayDin *array, Queue q){
+void QueueGame(ArrayDin *array, Queue *q){
 	int i, nomorint; 
 	char* nomorgame;
     Word num;
@@ -17,12 +17,12 @@ void QueueGame(ArrayDin *array, Queue q){
 	nomorgame = scaninput();
 	nomorint = atoi(nomorgame);
 	if (nomorint >= 1 && nomorint <= (Length(*array))){
-		enqueue(&q, (*array).A[nomorint-1]);
+		enqueue(q, (*array).A[nomorint-1]);
 		printf("Game berhasil ditambahkan kedalam daftar antrian.\n");
 	}
 	else {
 		printf("Nomor permainan tidak valid, silahkan masukkan nomor game pada list\n");
     }
-
+	displayQueue(*q);
 
 }
