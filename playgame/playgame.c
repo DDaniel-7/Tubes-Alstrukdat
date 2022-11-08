@@ -46,22 +46,20 @@ void PlayGame(Queue *q)
         else if (IsStrEq(HEAD(*q), RISE)){
             printf("Loading %s ...\n", HEAD(*q));
             dequeue(q,&val);
-            int number = rand() % 1000 + 1;
-            printf("%d\n", number);
+            printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.", HEAD(*q));
         }
         else if (IsStrEq(HEAD(*q), DIE)){
             printf("Loading %s ...\n", HEAD(*q));
             dequeue(q,&val);
-            int number = rand() % 1000 + 1;
-            printf("%d\n", number);
+            printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.", HEAD(*q));
         }else if (IsStrEq(HEAD(*q), ET)){
             printf("Loading %s ...\n", HEAD(*q));
             dequeue(q,&val);
-            int number = rand() % 1000 + 1;
-            printf("%d\n", number);
+            printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.", HEAD(*q));
         }
         else{
-            printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.", HEAD(*q));
+            int number = rand() % 10000 + 1;
+            printf("%d\n", number);
         }
     }
     else    //kalau q nya masi kosong, maka panggil fungsi queuegame
