@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 
-void HELP()
+void help()
 {
     printf("---------- HELP ----------\n");
     printf("Berikut Pilihan Command yang Tersedia \n");

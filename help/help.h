@@ -4,6 +4,6 @@
 #ifndef HELP_H
 #define HELP_H
 
-void HELP();
+void help();
 
 #endif
