@@ -4,7 +4,7 @@
 #include "queue.h"
 #include "playgame.h"
 
-void skipgame(int n, Queue *q){
+void SkipGame(Queue *q, int n){
     // I.S. queue game terdefinisi dan mungkin kosong
     // F.S. melakukan dequeue n element q pertama dan menjalankan game ke n+1
     //      jika n lebih besar dari jumlah game dalam queue game, maka akan memberikan pesan kesalahan
@@ -15,28 +15,28 @@ void skipgame(int n, Queue *q){
 
     // ALGORITMA
     panjang = length(*q);
-    if(!IsEmpty(*q)){
+    if(!isEmptyQueue(*q)){
         // kasus queue game tidak kosong
         if(n < panjang){
             // kasus menjalankan game ke n+1
-            for(i = 1 ; i <= n; 1++){
-                dequeue(q, &game)
+            for(i = 1 ; i <= n; i++){
+                dequeue(q, &game);
             }
             // nama game disini adalah nama game yang akan dimainkan
-            PLAYGAME(q);
+            PlayGame(q);
         }
         else if(n == panjang){
             // kasus game tidak dimainkan karena semua game dalam queue game tepat sudah didequeue
             for(i = 1 ; i <= n ; i++){
                 dequeue(q, &game);
             }
-            printf("Tidak ada permainan lagi dalam daftar game-mu.\n")
+            printf("Tidak ada permainan lagi dalam daftar game-mu.\n");
         }
         else{
             for(i = 1 ; i <= panjang ; i++){
                 dequeue(q, &game);
             }
-            printf("Tidak ada permainan lagi dalam daftar game-mu.\n")
+            printf("Tidak ada permainan lagi dalam daftar game-mu.\n");
         }
     }
     else{
