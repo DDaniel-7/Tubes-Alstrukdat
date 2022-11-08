@@ -21,6 +21,9 @@ void PlayGame(Queue *q)
         char *R = "RNG";
         char *DinDash = "DINNER DASH";
         char *TOH = "TOH";
+        char *DIE = "DINOSAUR IN EARTH";
+        char *RISE = "RISEWOMAN";
+        char *ET = "EIFFEL TOWER";
         if (IsStrEq(HEAD(*q), R)){
             printf("Loading %s ...\n", HEAD(*q));
             dequeue(q,&val);
@@ -39,6 +42,23 @@ void PlayGame(Queue *q)
             dequeue(q,&val);
             printf("TOH BERHASIL\n"); // APUS INI 
             //TOH();  // sesuaikan sama game dinnerdash nanti
+        }
+        else if (IsStrEq(HEAD(*q), DIE)){
+            printf("Loading %s ...\n", HEAD(*q));
+            dequeue(q,&val);
+            int number = rand() % 1000 + 1;
+            printf("%d\n", number);
+        }
+        else if (IsStrEq(HEAD(*q), DIE)){
+            printf("Loading %s ...\n", HEAD(*q));
+            dequeue(q,&val);
+            int number = rand() % 1000 + 1;
+            printf("%d\n", number);
+        }else if (IsStrEq(HEAD(*q), ET)){
+            printf("Loading %s ...\n", HEAD(*q));
+            dequeue(q,&val);
+            int number = rand() % 1000 + 1;
+            printf("%d\n", number);
         }
         else{
             printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.", HEAD(*q));
