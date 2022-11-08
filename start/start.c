@@ -25,4 +25,6 @@ void start(ArrayDin *arr){
     InsertLast(arr, game3);
     InsertLast(arr, game4);
     InsertLast(arr, game5);
+
+    printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n");
 }
