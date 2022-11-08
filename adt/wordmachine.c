@@ -199,3 +199,19 @@ char* scaninput(){
    *(string + i) = '\0';
    return string;
 }
+
+
+boolean IsStrEq(char string1[], char string2[]){
+   // Menghasilkan true jika string1 sama dengan string2 yang dibandingkan
+   int i = 0;
+   if(LengthStr(string1) == LengthStr(string2)){
+      while(i < LengthStr(string1)){
+         if(string1[i] != string2[i]){
+            return false;
+         }
+      i++;
+      }
+      return true;
+   }
+   return false;
+}

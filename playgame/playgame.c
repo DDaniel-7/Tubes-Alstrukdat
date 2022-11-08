@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "queue.h"
 //#include "queuegame.h"
+//#include "dinnerdash.h"
+#include "rng.h"
 
 
 void PLAYGAME(Queue *gamequeue)
@@ -14,15 +16,15 @@ void PLAYGAME(Queue *gamequeue)
         {
             printf("%d. %s\n", i+1, (*gamequeue).buffer[i]);
         }
-
-    
-        if (HEAD(*gamequeue) == "RNG"){
+        char *R = "RNG";
+        char *DinDash = "Dinner Dash";
+        if (HEAD(*gamequeue) == R){
             printf("Loading %s ...\n", HEAD(*gamequeue));
             dequeue(gamequeue,&val);
             RNG();  // sesuaikan sama game RNG nanti
 
         }
-        else if (HEAD(*gamequeue) == "Dinner Dash"){
+        else if (HEAD(*gamequeue) == DinDash ){
             printf("Loading %s ...\n", HEAD(*gamequeue));
             dequeue(gamequeue,&val);
             dinnerdash();  // sesuaikan sama game dinnerdash nanti
@@ -33,7 +35,7 @@ void PLAYGAME(Queue *gamequeue)
     }
     else    //kalau gamequeue nya masi kosong, maka panggil fungsi queuegame
     {
-        QUEUEGAME()
+        QUEUEGAME();
     }
    
 }

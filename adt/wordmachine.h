@@ -87,4 +87,6 @@ void ConcatStr(char string1[], char string2[]);
 // Menggabungkan string 1 dengan string 2
 
 char* scaninput();
+
+boolean IsStrEq(char string1[], char string2[]);
 #endif

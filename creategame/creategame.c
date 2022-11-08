@@ -6,10 +6,23 @@
 
 void CreateGame(ArrayDin *array){
     char* gamestring;
-    int i;
-    printf("Masukkan game yang ingin ditambahkan : ");
+    int i = 0;
+    boolean found = false;
+    printf("Masukkan game yang ingin ditambahkan : ");  
     gamestring = scaninput();
-    InsertLast(array,gamestring);
-    printf("Game berhasil ditambahkan.\n");
+    while(found == false && i < (*array).Neff){
+        if(IsStrEq(gamestring, array->A[i])){
+            found = true;
+        }
+        i++;
+    }
+    if (found == true){
+        printf("Game sudah ada di sistem\n");
+    }
+    else{
+        InsertLast(array,gamestring);
+        printf("Game berhasil ditambahkan.\n");
+    }
 }
+
 

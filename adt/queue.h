@@ -7,12 +7,12 @@
 #include "boolean.h"
 
 #define IDX_UNDEF -1
-#define CAPACITY 100
+#define CAPACITYQUEUE 50
 
 /* Definisi elemen dan address */
-typedef int ElType;
+typedef char* ElType;
 typedef struct {
-	ElType buffer[CAPACITY]; 
+	ElType buffer[CAPACITYQUEUE]; 
 	int idxHead;
 	int idxTail;
 } Queue;
@@ -34,7 +34,7 @@ void CreateQueue(Queue *q);
 /* Proses : Melakukan alokasi, membuat sebuah q kosong */
 
 /* ********* Prototype ********* */
-boolean isEmpty(Queue q);
+boolean isEmptyQueue(Queue q);
 /* Mengirim true jika q kosong: lihat definisi di atas */
 boolean isFull(Queue q);
 /* Mengirim true jika tabel penampung elemen q sudah penuh */
