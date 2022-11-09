@@ -3,6 +3,7 @@
 #include "wordmachine.h"
 #include "boolean.h"
 #include "queuegame.h"
+#include "toh.h"
 //#include "dinnerdash.h"
 
 
@@ -30,8 +31,7 @@ void PlayGame(Queue *q)
         if (IsStrEq(HEAD(*q), R)){
             printf("Loading %s ...\n", HEAD(*q));
             dequeue(q,&val);
-            printf("RNG BERHASIL\n"); // APUS INI 
-            //RNG();  // sesuaikan sama game RNG nanti
+            RNG();  // sesuaikan sama game RNG nanti
 
         }
         else if (IsStrEq(HEAD(*q), DinDash)){
@@ -43,8 +43,7 @@ void PlayGame(Queue *q)
         else if (IsStrEq(HEAD(*q), TOH)){
             printf("Loading %s ...\n", HEAD(*q));
             dequeue(q,&val);
-            printf("TOH BERHASIL\n"); // APUS INI 
-            //TOH();  // sesuaikan sama game dinnerdash nanti
+            towerofhanoi();  // sesuaikan sama game dinnerdash nanti
         }
         else if (IsStrEq(HEAD(*q), RISE)){
             printf("Loading %s ...\n", HEAD(*q));
