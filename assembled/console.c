@@ -168,6 +168,10 @@ void PlayGame(Queue *q)
         char *R = "RNG";
         char *DinDash = "DINER DASH";
         char *TOH = "TOH";
+        char *DIE = "DINOSAUR IN EARTH";
+        char *RISE = "RISEWOMAN";
+        char *ET = "EIFFEL TOWER";
+
         if (IsStrEq(HEAD(*q), R)){
             printf("Loading %s ...\n", HEAD(*q));
             dequeue(q,&val);
@@ -185,8 +189,15 @@ void PlayGame(Queue *q)
             dequeue(q,&val);
             towerofhanoi();  // sesuaikan sama game dinnerdash nanti
         }
-        else{
+
+        else if (IsStrEq(HEAD(*q), DIE) || IsStrEq(HEAD(*q), RISE) || IsStrEq(HEAD(*q), ET)){
             printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n", HEAD(*q));
+            dequeue(q,&val);
+        }
+        else{
+            srand(time(NULL));
+            int score = rand() % 100 + 1;
+            printf("Score : %d\n",score);
             dequeue(q,&val);
         }
     }
