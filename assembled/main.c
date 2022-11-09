@@ -12,6 +12,40 @@ int main(){
     
 
     //OUTPUT
+    printf("                                 .:^^^^^^^^^^~~~~~~~~^^^:...                  \n");
+    printf("                                ~Y7!~~~~~~~!7777777777???JJJJJ?7!.            \n");
+    printf("                                ?5JY5JY???P5Y5555555555555YYYYY55P            \n");
+    printf("                                75Y5Y5Y5J5GJ5?~~^^^^::::::.....J5P            \n");
+    printf("                                75JYYJYYJ5GJG:...::........~?..7PP            \n");
+    printf("                                ?5P#GGG5Y5GJG:...J5........~7..7PP            \n");
+    printf("                                ?YG&#@B&GYGJG:......^!~~~!:....7P5            \n");
+    printf("                                ?5Y##G##5YGJG:.................7P5            \n");
+    printf("                                ?5YBB##BYYGJG:................:J55            \n");
+    printf("                                ?5Y#&&#GYYGJP!~~!!77??JJYYYYPP5YY5            \n");
+    printf("                                ?55#####YYGJJG###########5JYGBPJY5            \n");
+    printf("                                ?5JY5#&#YYGJJ5PPPPP5YYYYJJYJJJJJY5            \n");
+    printf("                                ?YYBB&&#JYGJJJ55J^?YYJJJYPYYYJYYY5            \n");
+    printf("                                JYJPB##GJYBJJYP5?^7YYJJJGP7J5PGYPY            \n");
+    printf("                                JYG@B5&&5JBJJJJY5YYJJJJJY5GGPPG5PP:           \n");
+    printf("                                J55&G~7B5JBJJJJJJJJJJJJJ5#GPPGYJYG77^.        \n");
+    printf("                                .YYYP5?!JYBYJJPGGG5GBBBYYBBGGPYJYY.7J?!.      \n");
+    printf("                                  .^!?Y5J?JYYYPP55YYYYYY55PPP555P^ YPPJP:     \n");      
+    printf("                                        ::~7?YPPPGGGGPJ?G5P!?J5PP55PP7 .      \n");
+    printf("                                            .~J^.^~7JYY555~345PP32DSF..:^:         \n");
+    printf("\n");
+    printf("\n");
+    printf("          ~????????7~:       !?!           !?^     ??7              7??.       .^7?JJJJ?~.        \n");
+    printf("          ?GJ......:7PY:     YPP5^         JG!    .PPGJ            ?GPP:     .?PY!:....^?55~      \n");
+    printf("          7P7        ~GY     YP77P?.       JP~    .55?P?          7PJ5P.    :55^          ?PJ     \n");
+    printf("          7P7        ?P!     YP^ :55^      JP~    .55.7G7        !G?.YP.   .5P:            ?G7    \n");
+    printf("          7PY!!!!!7J5?.      YP^   7PJ.    JP~    .55  ?G!      ~PJ  YP.   ^PY             ^PY    \n");
+    printf("          7PJ::::::^!YJ^     YP^    :YP~   JP~    .55.  ?P~    ^PY   YP.   ^PY             ^PY    \n"); 
+    printf("          7P7         JG!    YP^      !PJ. JP~    .55.   JP^  :PY.   YP.    5P^            JP!    \n");
+    printf("          7P7         7G?    YP^       .YP!YP~    .55.   .YP:.55.    YP.    :5P~         .?P?     \n");
+    printf("           ?GJ::::::^~JP?.    YG^         ~PPP!    .P5.    .5PP5.     YP:     .!557^:..:~J5Y^      \n");
+    printf("           ^777777777~^.      !7.          .!7:     7!      .77:      !7.        :~7?J??7^.        \n");
+    printf("\n");
+    printf("\n");            
     printf("Selamat datang di BNMO UwU\n");
 
 
