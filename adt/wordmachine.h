@@ -88,5 +88,13 @@ void ConcatStr(char string1[], char string2[]);
 
 char* scaninput();
 
+char* firstword(char* input);
+
+char* secondword(char* input);
+
 boolean IsStrEq(char string1[], char string2[]);
+
+int CountBlanks();
+
+
 #endif

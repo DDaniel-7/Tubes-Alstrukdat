@@ -180,6 +180,7 @@ void ConcatStr(char string1[], char string2[]){
    string1[i+len1] = '\0';
 }
 
+
 char* scaninput(){
    pita = stdin;
    char* string;
@@ -200,6 +201,40 @@ char* scaninput(){
    return string;
 }
 
+char* firstword(char* input){
+   char* output;
+   output = (char*) malloc(101 * sizeof(char));
+
+   while(input[i] != BLANK && input[i] != '\0'){
+      output[i] = input[i];
+      i++;
+   }
+   output[i] = '\0';
+
+   return(output);
+}
+
+char* secondword(char* input){
+   char* output2;
+   output2 = (char*) malloc(101 * sizeof(char));
+
+   int k = 0;
+   while(input[k] != BLANK){
+      k++;
+   }
+
+   int idx = k+1;
+
+   int idxout = 0;
+   while(input[idx] != BLANK && input[idx] != '\0'){
+      output2[idxout] = input[idx];
+      idx++;
+      idxout++;
+   }
+   output2[idxout] = '\0';
+
+   return(output2);
+}
 
 boolean IsStrEq(char string1[], char string2[]){
    // Menghasilkan true jika string1 sama dengan string2 yang dibandingkan
@@ -214,4 +249,14 @@ boolean IsStrEq(char string1[], char string2[]){
       return true;
    }
    return false;
+}
+
+int CountBlanks(){
+   int count = 0;
+	while (currentChar == BLANK)
+   {
+      count++;
+		ADV();
+	}
+   return count;
 }
