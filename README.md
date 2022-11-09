@@ -11,3 +11,5 @@ BNMO merupakan suatu robot game console yang dapat menjalankan permainan. BNMO m
 3. Menghapus game
 4. Mengurutkan game yang akan dimainkan
 
+# Cara kompilasi program
+
