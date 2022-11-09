@@ -202,6 +202,7 @@ char* scaninput(){
 }
 
 char* firstword(char* input){
+   int i =0;
    char* output;
    output = (char*) malloc(101 * sizeof(char));
 
