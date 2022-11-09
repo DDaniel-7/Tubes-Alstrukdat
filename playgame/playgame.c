@@ -68,7 +68,7 @@ void PlayGame(Queue *q)
             printf("%d\n", number);
         }
     }
-    else    //kalau q nya masi kosong, maka panggil fungsi queuegame
+    else    //kalau q nya masi kosong, maka diminta untuk panggil fungsi queuegame
     {
         printf("Belum ada game di QueueGame. Silahkan mengisi queue game terlebih dahulu\n");
     }
