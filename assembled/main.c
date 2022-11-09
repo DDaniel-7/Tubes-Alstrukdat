@@ -18,6 +18,9 @@ int main(){
     //VARIABEL
     char* input;
     boolean repeat = true;
+    char* savekah;
+    char* ye = "Y";
+    char* no = "N" ;
 
     //FILE
     //char* namaFile = "listgame.txt";
@@ -81,6 +84,13 @@ int main(){
                     SkipGame(&queue,manyskip);
                 }
                 else if(IsStrEq(quitinput,input)){
+                    printf("Apakah Anda akan melakukan save? (Y/N) \n");
+                    savekah = scaninput();
+                    if(IsStrEq(savekah,ye)){
+                        char* namefile = "savedfile.txt";
+                        save(namefile,arraygame);
+                    }
+
                     printf("====SEE YOU AGAIN====\n");
                 }
                 else{
@@ -125,6 +135,14 @@ int main(){
                     SkipGame(&queue,manyskip);
                 }
                 else if(IsStrEq(quitinput,input)){
+                    printf("Apakah Anda akan melakukan save? (Y/N) \n");
+                    savekah = scaninput();
+
+                    if(IsStrEq(savekah,ye)){
+                        char* namefile = "savedfile.txt";
+                        save(namefile,arraygame);
+                    }
+
                     printf("====SEE YOU AGAIN====\n");
                 }
                 else{
