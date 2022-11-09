@@ -43,4 +43,6 @@ void quit(Queue *q);
 
 void help();
 
+void CommandLain();
+
 #endif

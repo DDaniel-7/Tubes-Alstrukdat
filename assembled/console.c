@@ -264,3 +264,7 @@ void help()
     printf("11. HELP : Bantuan command-command pada BNMO\n");
 }
 
+
+void CommandLain(){
+    printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
+}

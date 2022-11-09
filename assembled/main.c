@@ -84,7 +84,7 @@ int main(){
                     printf("====SEE YOU AGAIN====\n");
                 }
                 else{
-                    printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
+                    CommandLain();
                 }
 
             }
@@ -128,7 +128,7 @@ int main(){
                     printf("====SEE YOU AGAIN====\n");
                 }
                 else{
-                    printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
+                    CommandLain();
                 }
             }
         }
@@ -137,7 +137,7 @@ int main(){
             printf("====SEE YOU AGAIN====\n");
         }
         else{
-            printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
+            CommandLain();
             printf("\n");
             printf("====MAIN MENU====\n");
             printf("1. START\n");
