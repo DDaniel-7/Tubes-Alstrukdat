@@ -18,7 +18,7 @@
 #include "game/rng.h"
 #include "game/toh.h"
 #include "game/dinerdash.h"
-//#include "dinerdash.h"
+
 
 /////////////COMMAND/////////////
 void start(ArrayDin *arr);
