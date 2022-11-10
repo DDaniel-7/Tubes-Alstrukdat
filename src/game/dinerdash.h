@@ -25,6 +25,8 @@ void Printqserving(Queue q);
 /*IS : queue bisa kosong
   FS : menampilkan daftar masakan yang selesai dimasak*/
 
+void printall(Queue qorder, Queue qcook, int balance);
+
 void cook(Queue qorder, Queue *qcook, int food);
 /*IS : */
 
@@ -35,8 +37,6 @@ void turn(Queue *q);
 boolean IsEndGame(Queue q, int serving);
 
 boolean IsAvail(Queue q);
-
-void printall(Queue qorder, Queue qcook, int balance);
 
 void dinerdash();
 
