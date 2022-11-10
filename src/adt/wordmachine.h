@@ -96,5 +96,8 @@ boolean IsStrEq(char string1[], char string2[]);
 
 int CountBlanks();
 
+void STARTLOAD(char *filename);
+
+void ADVLOAD();
 
 #endif

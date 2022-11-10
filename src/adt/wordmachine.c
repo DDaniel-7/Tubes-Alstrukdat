@@ -5,6 +5,7 @@
 boolean endWord;
 Word currentWord;
 static FILE * pita;
+static int retval;
 
 void IgnoreBlanks(){
 	while (currentChar == BLANK || currentChar == NEWLINE)
@@ -260,4 +261,17 @@ int CountBlanks(){
 		ADV();
 	}
    return count;
+}
+
+void STARTLOAD(char *filename){
+   pita = fopen(filename,"r");
+   ADVLOAD();
+}
+
+void ADVLOAD(){
+   retval = fscanf(pita,"%c",&currentChar);
+   EOP = (retval<0);
+   if (EOP){
+      fclose(pita);
+   }
 }

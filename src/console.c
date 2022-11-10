@@ -291,3 +291,24 @@ void help()
 void CommandLain(){
     printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
 }
+
+void Load(ArrayDin *arraygame, char *namafile){
+    STARTLOAD(namafile);
+    int jumlahgame = currentChar - '0';
+    ADVLOAD();
+    int i,j;
+    for (i=0;i<jumlahgame;i++){
+        printf("masuk\n");
+        ADVWORDFILE();
+        char *namagame;
+        namagame = (char *)malloc(currentWord.length * sizeof (char));
+        for (j = 0; j < currentWord.length; j++){
+            namagame[j] = currentWord.contents[j];
+        }
+        namagame[currentWord.length] = '\0';
+        arraygame->A = &namagame;
+    }
+    (*arraygame).Neff = jumlahgame;
+
+
+}
