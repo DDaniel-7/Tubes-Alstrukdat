@@ -92,7 +92,6 @@ int main(){
                     char* namaFile;
                     namaFile = secondword(input);
                     save(namaFile,arraygame);
-                    //save(namaFile,&arraygame);
                 }
                 else if(IsStrEq(creategameinput,input)){
                     CreateGame(&arraygame);
@@ -134,9 +133,10 @@ int main(){
             }
 
         }
-        else if(IsStrEq(loadinput,input)){
+        else if(IsStrEq(loadinput,firstword(input))){
             repeat = false;
-            //load();
+            char* nemfail = secondword(input);
+            Load(&arraygame, nemfail);
             while(!IsStrEq(quitinput,input)){
                 printf("ENTER COMMAND : ");
                 input = scaninput();
