@@ -275,3 +275,29 @@ void ADVLOAD(){
       fclose(pita);
    }
 }
+
+void ADVWORDLOAD(){
+   IgnoreNewLine();
+   if (retval < 0){
+      endWord = true;
+   }
+   else{
+      CopyWordLoad();
+   }
+}
+
+void CopyWordLoad(){
+   int i = 0;
+   while ((currentChar != NEWLINE) && i < CAPACITY && !EOP){
+      currentWord.contents[i] = currentChar;
+      ADVLOAD();
+      i++;
+   }
+   currentWord.length = i;
+}
+
+void IgnoreNewLine(){
+   while (currentChar == NEWLINE){
+      ADVLOAD();
+   }
+}

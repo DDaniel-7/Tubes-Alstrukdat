@@ -295,20 +295,19 @@ void CommandLain(){
 void Load(ArrayDin *arraygame, char *namafile){
     STARTLOAD(namafile);
     int jumlahgame = currentChar - '0';
-    ADVLOAD();
+    printf("%d\n",jumlahgame);
     int i,j;
+    ADVWORDLOAD();
     for (i=0;i<jumlahgame;i++){
-        printf("masuk\n");
-        ADVWORDFILE();
+        ADVWORDLOAD();
         char *namagame;
         namagame = (char *)malloc(currentWord.length * sizeof (char));
-        for (j = 0; j < currentWord.length; j++){
-            namagame[j] = currentWord.contents[j];
+        for (j = 0; j < currentWord.length ; j++){
+            *(namagame + j) = currentWord.contents[j];
         }
-        namagame[currentWord.length] = '\0';
-        arraygame->A = &namagame;
+        *(namagame + currentWord.length) = '\0';
+        printf("%s\n" , namagame);
+        arraygame->A[i] = namagame;
     }
     (*arraygame).Neff = jumlahgame;
-
-
 }

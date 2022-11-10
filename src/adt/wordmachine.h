@@ -100,4 +100,10 @@ void STARTLOAD(char *filename);
 
 void ADVLOAD();
 
+void ADVWORDLOAD();
+
+void CopyWordLoad();
+
+void IgnoreNewLine();
+
 #endif
