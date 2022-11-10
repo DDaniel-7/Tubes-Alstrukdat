@@ -56,8 +56,6 @@ int main(){
     char* ye = "Y";
     char* no = "N" ;
 
-    //FILE
-    //char* namaFile = "listgame.txt";
 
     //UNTUK DICOCOKAN
     char* startinput = "START";
@@ -71,7 +69,6 @@ int main(){
     char* skipgameinput = "SKIPGAME";
     char* quitinput = "QUIT";
     char* helpinput = "HELP";
-    char* donat = "DONAT";
 
 
     printf("====MAIN MENU====\n");
@@ -127,9 +124,6 @@ int main(){
 
                     printf("====SEE YOU AGAIN====\n");
                 }
-                else if(IsStrEq(donat,input)){
-                    Donat();
-                }
                 else{
                     CommandLain();
                 }
@@ -180,12 +174,8 @@ int main(){
                         char* namefile = "savedfile.txt";
                         save(namefile,arraygame);
                     }
-
                     printf("====SEE YOU AGAIN====\n");
-                }
-                else if(IsStrEq(donat,input)){
-                    Donat();
-                }                
+                }          
                 else{
                     CommandLain();
                 }
