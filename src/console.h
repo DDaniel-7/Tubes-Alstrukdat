@@ -23,8 +23,6 @@
 /////////////COMMAND/////////////
 void start(ArrayDin *arr);
 
-//void load();
-
 void saveGame(ArrayDin l, FILE *file);
 
 void save(char *namaFile, ArrayDin arr);
