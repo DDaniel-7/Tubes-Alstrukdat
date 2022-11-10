@@ -291,3 +291,4 @@ void Load(ArrayDin *arraygame, char *namafile){
     }
     (*arraygame).Neff = jumlahgame;
 }
+

@@ -71,6 +71,7 @@ int main(){
     char* skipgameinput = "SKIPGAME";
     char* quitinput = "QUIT";
     char* helpinput = "HELP";
+    char* donat = "DONAT";
 
 
     printf("====MAIN MENU====\n");
@@ -178,7 +179,7 @@ int main(){
                     }
 
                     printf("====SEE YOU AGAIN====\n");
-                }
+                }            
                 else{
                     CommandLain();
                 }

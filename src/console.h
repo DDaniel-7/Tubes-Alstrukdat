@@ -49,4 +49,5 @@ void CommandLain();
 
 void Load(ArrayDin *arraygame, char *namafile);
 
+
 #endif
