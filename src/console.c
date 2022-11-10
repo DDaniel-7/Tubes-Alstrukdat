@@ -39,12 +39,14 @@ void saveGame(ArrayDin l, FILE *file){
     ctr = 1;
     i = 0;
     fprintf(file, "%d\n", l.Neff); // jumalah gamenya
-    while(ctr <= l.Neff){
+    while(ctr <= l.Neff-1){
         judulGame = l.A[i];
         fprintf(file, "%s\n", judulGame);
         ctr++;
         i++;
     }
+    judulGame = l.A[i];
+    fprintf(file, "%s", judulGame);
 }
 
 void save(char *namaFile, ArrayDin arr){
@@ -54,8 +56,18 @@ void save(char *namaFile, ArrayDin arr){
     // KAMUS LOKAL
     FILE *fileOutput;
 
+    char path[100]= "../data/";
+
+    int i = 8;
+    while (*namaFile != '\0')
+    {
+        path[i] = *namaFile;
+        i++;
+        *namaFile++;
+    }
+
     // ALGORITMA
-    fileOutput = fopen(("%s", namaFile), "w");
+    fileOutput = fopen((path), "w");
     saveGame(arr, fileOutput);
     fclose(fileOutput);
     printf("Save file berhasil disimpan\n");

@@ -2,10 +2,10 @@
 # include <stdlib.h>
 # include <time.h>
 # include <math.h>
-# include "stack.h"
+# include "../adt/stack.h"
 # include "boolean.h"
-# include "charmachine.h"
-# include "wordmachine.h"
+# include "../adt/charmachine.h"
+# include "../adt/wordmachine.h"
 
 void tampil(Stack s){
     Stack temp;

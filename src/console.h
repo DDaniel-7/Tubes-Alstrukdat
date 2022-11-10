@@ -6,16 +6,16 @@
 #include <math.h>
 #include <time.h>
 //ADT
-#include "queue.h"
-#include "stack.h"
-#include "charmachine.h"
-#include "wordmachine.h"
-#include "arraydin.h" 
+#include "adt/queue.h"
+#include "adt/stack.h"
+#include "adt/charmachine.h"
+#include "adt/wordmachine.h"
+#include "adt/arraydin.h" 
 #include "boolean.h"
 
 //GAME
-#include "rng.h"
-#include "toh.h"
+#include "game/rng.h"
+#include "game/toh.h"
 //#include "dinerdash.h"
 
 /////////////COMMAND/////////////

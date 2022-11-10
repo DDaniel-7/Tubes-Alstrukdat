@@ -2,8 +2,8 @@
 # include <stdlib.h>
 # include <time.h>
 # include "rng.h"
-# include "charmachine.h"
-# include "wordmachine.h"
+# include "../adt/charmachine.h"
+# include "../adt/wordmachine.h"
 
 void RNG(){
     srand(time(NULL));
