@@ -1,9 +1,3 @@
-// NIM : 18221092
-// Nama : Dwicakra Danielle
-// Tanggal : 22 Oktober 2022
-// Topik Praktikum : pra praktikum
-// Deskripsi : implementasi stack.h
-
 #include <stdio.h>
 #include "boolean.h"
 #include "stack.h"
