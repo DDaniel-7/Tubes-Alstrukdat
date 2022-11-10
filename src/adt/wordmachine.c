@@ -1,6 +1,6 @@
 #include "wordmachine.h"
 #include <stdio.h>
-#include<stdlib.h>
+#include <stdlib.h>
 
 boolean endWord;
 Word currentWord;
@@ -59,128 +59,114 @@ void CopyWord(){
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi CAPACITY, maka sisa kata terpotong */
 
-/* TAPE FILE */
-
-void IgnoreBlanksF(){
-/* Mengabaikan satu atau beberapa BLANK
-   I.S. : currentChar sembarang 
-   F.S. : currentChar ? BLANK atau currentChar = MARK */
-	while (currentChar == BLANK || currentChar == NEWLINE){
-		ADVFILE();
-	}
+void IgnoreBlanksDin()
+{
+    /* Mengabaikan satu atau beberapa BLANK
+       I.S. : currentChar sembarang
+       F.S. : currentChar ≠ BLANK atau currentChar = MARK */
+    while (currentChar == BLANK)
+    {
+        ADV();
+    }
 }
 
-void STARTWORDFILE(char fileloc[]){
-/* I.S. : currentChar sembarang 
-   F.S. : endWord = true, dan currentChar = MARK; 
-          atau endWord = false, currentWord adalah kata yang sudah diakuisisi,
-          currentChar karakter pertama sesudah karakter terakhir kata */
-	STARTFILE(fileloc);
-	IgnoreBlanksF();
-	CopyWordFile();
+void STARTWORDDin()
+{
+    /* I.S. : currentChar sembarang
+       F.S. : endWord = true, dan currentChar = MARK;
+              atau endWord = false, currentWord adalah kata yang sudah diakuisisi,
+              currentChar karakter pertama sesudah karakter terakhir kata */
+    START();
+    IgnoreBlanksDin();
+    if (currentChar == NEWLINE)
+    {
+        endWord = true;
+    }
+    else
+    {
+        endWord = false;
+        CopyWordDin();
+    }
 }
 
-void ADVWORDFILE(){
-/* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi 
-   F.S. : currentWord adalah kata terakhir yang sudah diakuisisi, 
-          currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
-          Jika currentChar = MARK, endWord = true.		  
-   Proses : Akuisisi kata menggunakan procedure copyWord */
-   CopyWordFile();
+void ADVWORDDin()
+{
+    /* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi
+       F.S. : currentWord adalah kata terakhir yang sudah diakuisisi,
+              currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
+              Jika currentChar = MARK, endWord = true.
+       Proses : Akuisisi kata menggunakan procedure CopyWord */
+    IgnoreBlanksDin();
+    if (currentChar == NEWLINE)
+    {
+        endWord = true;
+    }
+    else
+    {
+        endWord = false;
+        CopyWordDin();
+        IgnoreBlanksDin();
+    }
 }
 
-void CopyWordFile(){
-/* Mengakuisisi kata, menyimpan dalam currentWord
-   I.S. : currentChar adalah karakter pertama dari kata
-   F.S. : currentWord berisi kata yang sudah diakuisisi; 
-          currentChar = BLANK atau currentChar = MARK; 
-          currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
-          Jika panjang kata melebihi CAPACITY, maka sisa kata terpotong */
-	IgnoreBlanksF();
-	currentWord.length = 0;
-	while((currentChar != BLANK) && (currentChar != NEWLINE)){
-      if (currentWord.length < CAPACITY){
-		currentWord.contents[currentWord.length++] = currentChar;
-		ADVFILE();
-      }
-      else{
-         break;
-      }
-		
-	}
+void CopyWordDin()
+{
+    /* Mengakuisisi kata, menyimpan dalam currentWord
+       I.S. : currentChar adalah karakter pertama dari kata
+       F.S. : currentWord berisi kata yang sudah diakuisisi;
+              currentChar = BLANK atau currentChar = MARK;
+              currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
+              Jika panjang kata melebihi CAPACITY, maka sisa kata terpotong */
+    currentWord.length = 0;
+    while (currentChar != BLANK && currentChar != NEWLINE)
+    {
+        if (currentWord.length < CAPACITY)
+        {
+            currentWord.contents[currentWord.length++] = currentChar;
+            ADV();
+        }
+        else
+            break;
+    }
+}
+void STARTLOAD(char *filename){
+   pita = fopen(filename,"r");
+   ADVLOAD();
 }
 
-Word ScanWord(Word word){
-   // Mengeluarkan kata dengan isi yang terakhir
-	int i = 0;
-   Word result;
-   while (i < word.length){
-      result.contents[i] = word.contents[i];
-      i++;
+void ADVLOAD(){
+   retval = fscanf(pita,"%c",&currentChar);
+   EOP = (retval<0);
+   if (EOP){
+      fclose(pita);
    }
-   result.contents[i] = '\0';
-   result.length = i;
-   return result;
 }
 
-int ScanNum(Word word){
-   // Menghasilkan integer dari sebuah kata
-   int result = 0;
+void ADVWORDLOAD(){
+   IgnoreNewLine();
+   if (retval < 0){
+      endWord = true;
+   }
+   else{
+      CopyWordLoad();
+   }
+}
+
+void CopyWordLoad(){
    int i = 0;
-   while( i < word.length){
-      result *= 10;
-      result += (int) (word.contents[i] - '0');
+   while ((currentChar != NEWLINE) && i < CAPACITY && !EOP){
+      currentWord.contents[i] = currentChar;
+      ADVLOAD();
       i++;
    }
-   return result;
+   currentWord.length = i;
 }
 
-void ScanStr(Word word, char string[]){
-   // Menghasilkan string dengan isi dari kata
-   int i = 0;
-   while (i < word.length){
-      string[i] = word.contents[i];
-      i++;
+void IgnoreNewLine(){
+   while (currentChar == NEWLINE){
+      ADVLOAD();
    }
-   string[i] = '\0';
 }
-
-boolean IsWordStr(Word word, char string[]){
-   // Menghasilkan true jika string pada kata sama dengan string yang dibandingkan
-   int i = 0;
-   if(word.length == LengthStr(string)){
-      while(i < word.length){
-         if(word.contents[i] != string[i]){
-            return false;
-         }
-      i++;
-      }
-      return true;
-   }
-   return false;
-}
-
-int LengthStr(char string[]){
-   // Menghitung panjang dari suatu string
-   int i = 0;
-   while (string[i] != '\0'){
-      i++;
-   }
-   return i;
-}
-
-void ConcatStr(char string1[], char string2[]){
-   // Menggabungkan string 1 dengan string 2
-   int i = 0;
-   int len1 = LengthStr(string1);
-   int len2 = LengthStr(string2);
-   while (i < len2){
-      string1[i+len1] = string2[i];
-      i++;
-   }
-   string1[i+len1] = '\0';
-}
-
 
 char* scaninput(){
    pita = stdin;
@@ -253,53 +239,54 @@ boolean IsStrEq(char string1[], char string2[]){
    return false;
 }
 
-int CountBlanks(){
-   int count = 0;
-	while (currentChar == BLANK)
-   {
-      count++;
-		ADV();
-	}
-   return count;
+char *scanword(Word Word)
+{
+    char *str;
+    str = malloc(Word.length * sizeof(char));
+    int i = 0;
+    while (i < Word.length)
+    {
+        *(str + i) = Word.contents[i];
+        i++;
+    }
+    str[i] = '\0';
+    return str;
 }
 
-void STARTLOAD(char *filename){
-   pita = fopen(filename,"r");
-   ADVLOAD();
-}
-
-void ADVLOAD(){
-   retval = fscanf(pita,"%c",&currentChar);
-   EOP = (retval<0);
-   if (EOP){
-      fclose(pita);
-   }
-}
-
-void ADVWORDLOAD(){
-   IgnoreNewLine();
-   if (retval < 0){
-      endWord = true;
-   }
-   else{
-      CopyWordLoad();
-   }
-}
-
-void CopyWordLoad(){
+int ScanNum(Word word){
+   // Menghasilkan integer dari sebuah kata
+   int result = 0;
    int i = 0;
-   while ((currentChar != NEWLINE) && i < CAPACITY && !EOP){
-      currentWord.contents[i] = currentChar;
-      ADVLOAD();
+   while( i < word.length){
+      result *= 10;
+      result += (int) (word.contents[i] - '0');
       i++;
    }
-   currentWord.length = i;
+   return result;
 }
 
-void IgnoreNewLine(){
-   while (currentChar == NEWLINE){
-      ADVLOAD();
+boolean IsWordStr(Word word, char string[]){
+   // Menghasilkan true jika string pada kata sama dengan string yang dibandingkan
+   int i = 0;
+   if(word.length == LengthStr(string)){
+      while(i < word.length){
+         if(word.contents[i] != string[i]){
+            return false;
+         }
+      i++;
+      }
+      return true;
    }
+   return false;
+}
+
+int LengthStr(char string[]){
+   // Menghitung panjang dari suatu string
+   int i = 0;
+   while (string[i] != '\0'){
+      i++;
+   }
+   return i;
 }
 
 char* concatstringbaru(char* namafilenya){
