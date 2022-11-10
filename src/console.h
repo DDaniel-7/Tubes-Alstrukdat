@@ -49,5 +49,8 @@ void CommandLain();
 
 void Load(ArrayDin *arraygame, char *namafile);
 
+void *my_memset(void *b, int c, int len);
+
+void Donat();
 
 #endif

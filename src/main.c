@@ -127,6 +127,9 @@ int main(){
 
                     printf("====SEE YOU AGAIN====\n");
                 }
+                else if(IsStrEq(donat,input)){
+                    Donat();
+                }
                 else{
                     CommandLain();
                 }
@@ -179,7 +182,10 @@ int main(){
                     }
 
                     printf("====SEE YOU AGAIN====\n");
-                }            
+                }
+                else if(IsStrEq(donat,input)){
+                    Donat();
+                }                
                 else{
                     CommandLain();
                 }
