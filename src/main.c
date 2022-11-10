@@ -42,8 +42,8 @@ int main(){
     printf("          7PJ::::::^!YJ^     YP^    :YP~   JP~    .55.  ?P~    ^PY   YP.   ^PY             ^PY    \n"); 
     printf("          7P7         JG!    YP^      !PJ. JP~    .55.   JP^  :PY.   YP.    5P^            JP!    \n");
     printf("          7P7         7G?    YP^       .YP!YP~    .55.   .YP:.55.    YP.    :5P~         .?P?     \n");
-    printf("           ?GJ::::::^~JP?.    YG^         ~PPP!    .P5.    .5PP5.     YP:     .!557^:..:~J5Y^      \n");
-    printf("           ^777777777~^.      !7.          .!7:     7!      .77:      !7.        :~7?J??7^.        \n");
+    printf("          ?GJ::::::^~JP?.    YG^         ~PPP!    .P5.    .5PP5.     YP:     .!557^:..:~J5Y^      \n");
+    printf("          ^777777777~^.      !7.          .!7:     7!      .77:      !7.        :~7?J??7^.        \n");
     printf("\n");
     printf("\n");            
     printf("Selamat datang di BNMO UwU\n");
