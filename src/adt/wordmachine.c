@@ -301,3 +301,25 @@ void IgnoreNewLine(){
       ADVLOAD();
    }
 }
+
+char* concatstringbaru(char* namafilenya){
+   char* str1 = (char*) malloc(101 * sizeof(char));
+   char* str2= (char*) malloc(101 * sizeof(char));
+   str1= "../data/";
+   str2= namafilenya;
+   char* str3 = (char*) malloc(101 * sizeof(char));
+   int i = 0, j = 0;
+   while (str1[i] != '\0') {
+      str3[j] = str1[i];
+      i++;
+      j++;
+   }
+   i = 0;
+   while (str2[i] != '\0') {
+      str3[j] = str2[i];
+      i++;
+      j++;
+   }
+   str3[j] = '\0';
+   return str3;       
+}

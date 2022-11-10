@@ -135,8 +135,8 @@ int main(){
         }
         else if(IsStrEq(loadinput,firstword(input))){
             repeat = false;
-            char* nemfail = secondword(input);
-            Load(&arraygame, nemfail);
+            char* namafilebaru = concatstringbaru(secondword(input));
+            Load(&arraygame, namafilebaru);
             while(!IsStrEq(quitinput,input)){
                 printf("ENTER COMMAND : ");
                 input = scaninput();

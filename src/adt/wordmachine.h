@@ -106,4 +106,6 @@ void CopyWordLoad();
 
 void IgnoreNewLine();
 
+char* concatstringbaru(char* namafilenya);
+
 #endif
