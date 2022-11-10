@@ -3,7 +3,7 @@
 # include "queuediner.h"
 
 /* *** Kreator *** */
-void CreateQueue(Queue *q){
+void CreateQueueDiner(QueueDiner *q){
   IDX_HEAD(*q) = IDX_UNDEF;
   IDX_TAIL(*q) = IDX_UNDEF;
 }
@@ -14,20 +14,20 @@ void CreateQueue(Queue *q){
 /* Proses : Melakukan alokasi, membuat sebuah q kosong */
 
 /* ********* Prototype ********* */
-boolean isEmpty(Queue q){
+boolean isEmptyDiner(QueueDiner q){
   return((IDX_HEAD(q) == IDX_UNDEF) && (IDX_TAIL(q) == IDX_UNDEF));
 
 }
 /* Mengirim true jika q kosong: lihat definisi di atas */
-boolean isFull(Queue q){
+boolean isFullDiner(QueueDiner q){
     return (IDX_HEAD(q) == 0) && ((MAX+IDX_TAIL(q)-IDX_HEAD(q))%MAX == (MAX-1));
 
 }
 /* Mengirim true jika tabel penampung elemen q sudah penuh */
 /* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD dalam buffer melingkar*/
 
-int length(Queue q){
-    if (isEmpty(q))
+int lengthDiner(QueueDiner q){
+    if (isEmptyDiner(q))
         return 0;
     else
         return (((MAX+IDX_TAIL(q)-IDX_HEAD(q))%MAX)+1);
@@ -35,8 +35,8 @@ int length(Queue q){
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
 
 /* *** Primitif Add/Delete *** */
-void enqueue(Queue *q, int food, int durations, int endurance, int price){
-    if (isEmpty(*q)) {
+void enqueueDiner(QueueDiner *q, int food, int durations, int endurance, int price){
+    if (isEmptyDiner(*q)) {
         IDX_HEAD(*q) = 0;
         IDX_TAIL(*q) = 0;
     }
@@ -52,12 +52,12 @@ void enqueue(Queue *q, int food, int durations, int endurance, int price){
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
 
-void dequeue(Queue *q, int *food, int *durations, int *endurance, int *price){
+void dequeueDiner(QueueDiner *q, int *food, int *durations, int *endurance, int *price){
     *food = HEAD_food(*q);
     *durations = HEAD_durations(*q);
     *endurance = HEAD_endurance(*q);
     *price = HEAD_price(*q);
-    if (length(*q) == 1) {
+    if (lengthDiner(*q) == 1) {
         IDX_HEAD(*q) = IDX_UNDEF;
         IDX_TAIL(*q) = IDX_UNDEF;
     } else {

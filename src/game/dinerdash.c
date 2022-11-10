@@ -2,12 +2,12 @@
 # include <stdlib.h>
 # include <time.h>
 # include "dinerdash.h"
-# include "queuediner.h"
-# include "wordmachine.h"
+# include "../adt/queuediner.h"
+# include "../adt/wordmachine.h"
 
-boolean isIn(Queue q, int food){
+boolean isIn(QueueDiner q, int food){
 /* Mengembalikan true jika food dalam queue */
-    if(!isEmpty(q)){
+    if(!isEmptyDiner(q)){
         int i;
         boolean found = false;
         if ((q).idxHead > (q).idxTail){
@@ -48,7 +48,7 @@ boolean isIn(Queue q, int food){
     }
 }
 
-void removeisIn(Queue *q, int *food, int *durations, int *endurance, int *price)
+void removeisIn(QueueDiner *q, int *food, int *durations, int *endurance, int *price)
 /*IS : queue sembarang;
        food bisa tidak ad di dlm queue;
   FS : queue dengan makanan yg ad diremove;
@@ -127,17 +127,17 @@ void removeisIn(Queue *q, int *food, int *durations, int *endurance, int *price)
                 (q)->idxTail -= 1;
             }
             else{
-                CreateQueue(q);
+                CreateQueueDiner(q);
             }
         }
     }
 }
 
-void Printqorder(Queue q){
+void Printqorder(QueueDiner q){
     printf("Daftar Pesanan\n");
     printf("Memasak | Durasi memasak | Ketahanan | Harga\n");
     printf("--------------------------------------------\n");
-    if(!isEmpty(q)){
+    if(!isEmptyDiner(q)){
         if ((q).idxHead > (q).idxTail){
             while ((q).idxHead <= MAX+(q).idxTail){
                 printf("M%d      | %d              | %d         | %d\n",q.buffer[(q).idxHead%MAX].food, q.buffer[(q).idxHead%MAX].durations, q.buffer[(q).idxHead%MAX].endurance, q.buffer[(q).idxHead%MAX].price);
@@ -154,11 +154,11 @@ void Printqorder(Queue q){
 }
 
 
-void Printqcooking(Queue q){
+void Printqcooking(QueueDiner q){
     printf("Daftar Makanan yang sedang dimasak\n");
     printf("Memasak | Sisa durasi memasak \n");
     printf("------------------------------\n");
-    if(!isEmpty(q)){
+    if(!isEmptyDiner(q)){
         if ((q).idxHead > (q).idxTail){
             while((q).idxHead <= MAX+(q).idxTail){
                 if(q.buffer[(q).idxHead%MAX].durations != 0){
@@ -181,11 +181,11 @@ void Printqcooking(Queue q){
     }
 }
 
-void Printqserving(Queue q){
+void Printqserving(QueueDiner q){
     printf("Daftar Makanan yang sedang dimasak\n");
     printf("Memasak | Sisa ketahanan memasak \n");
     printf("------------------------------\n");
-    if(!isEmpty(q)){
+    if(!isEmptyDiner(q)){
         if ((q).idxHead > (q).idxTail){
             while((q).idxHead <= MAX+(q.idxTail)){
                 if(q.buffer[(q).idxHead%MAX].durations == 0){
@@ -208,7 +208,7 @@ void Printqserving(Queue q){
     } 
 }
 
-void printall(Queue qorder, Queue qcook, int balance){
+void printall(QueueDiner qorder, QueueDiner qcook, int balance){
     printf("SALDO: %d\n\n",balance);
     Printqorder(qorder);
     printf("\n");
@@ -218,7 +218,7 @@ void printall(Queue qorder, Queue qcook, int balance){
     printf("\n");
 }
 
-void cook(Queue qorder, Queue *qcook, int food){
+void cook(QueueDiner qorder, QueueDiner *qcook, int food){
     if(!isIn(qorder,food)){
         printf("Makanan tidak tersedia!\n");
     }
@@ -232,7 +232,7 @@ void cook(Queue qorder, Queue *qcook, int food){
                 turn(qcook);
                 int durations, endurance, price;
                 removeisIn(&qorder, &food, &durations, &endurance, &price);
-                enqueue(qcook,food,durations,endurance,price);
+                enqueueDiner(qcook,food,durations,endurance,price);
             }
         }
         else{
@@ -241,7 +241,7 @@ void cook(Queue qorder, Queue *qcook, int food){
     }
 }
 
-void serve(Queue *qorder, Queue *qcook, int food, int *serving, int *balance, int *n){
+void serve(QueueDiner *qorder, QueueDiner *qcook, int food, int *serving, int *balance, int *n){
     if(isIn(*qcook,food)){
         boolean found = false;
         if ((qcook)->idxHead > (qcook)->idxTail){
@@ -283,7 +283,7 @@ void serve(Queue *qorder, Queue *qcook, int food, int *serving, int *balance, in
             else{
                 printf("M%d berhasil diantar\n",food);
                 int durations, endurance, price;
-                dequeue(qorder,&food,&durations,&endurance,&price);
+                dequeueDiner(qorder,&food,&durations,&endurance,&price);
                 *balance += price;
                 removeisIn(qcook,&food,&durations,&endurance,&price);
                 *serving++;
@@ -291,14 +291,14 @@ void serve(Queue *qorder, Queue *qcook, int food, int *serving, int *balance, in
                 durations = rand()%5 + 1;
                 endurance = rand()%5 + 1;
                 price = (rand()%41 + 10)*1000;
-                enqueue(qorder,*n,durations,endurance,price);
+                enqueueDiner(qorder,*n,durations,endurance,price);
                 *n += 1;
             }
         }
     }
 }
 
-void turn(Queue *q){
+void turn(QueueDiner *q){
     if ((q)->idxTail < (q)->idxHead){
         int idx = (q)->idxHead;
         while(idx <= MAX+(q)->idxTail){
@@ -343,11 +343,11 @@ void turn(Queue *q){
     }
 }
 
-boolean IsEndGame(Queue q, int serving){
-    return ((length(q) > 7) || serving == 15);
+boolean IsEndGame(QueueDiner q, int serving){
+    return ((lengthDiner(q) > 7) || serving == 15);
 }
 
-boolean IsAvail(Queue q){
+boolean IsAvail(QueueDiner q){
     int ctr, res;
     ctr = 0;
     res = !(ctr > 5);
@@ -371,9 +371,9 @@ boolean IsAvail(Queue q){
 }
 
 void dinerdash(){
-    Queue qorder, qcook;
-    CreateQueue(&qorder); 
-    CreateQueue(&qcook);
+    QueueDiner qorder, qcook;
+    CreateQueueDiner(&qorder); 
+    CreateQueueDiner(&qcook);
     int food, durations, endurance, price, serving, balance;
     char *command;
     srand(time(NULL));
@@ -382,7 +382,7 @@ void dinerdash(){
         durations = rand()%5 + 1;
         endurance = rand()%5 + 1;
         price = (rand()%41+10)*1000;
-        enqueue(&qorder, food, durations, endurance, price);
+        enqueueDiner(&qorder, food, durations, endurance, price);
         food++;
     }
     printf("Selamat Datang di Diner Dash!\n\n");
@@ -420,7 +420,7 @@ void dinerdash(){
                     durations = rand()%5 + 1;
                     endurance = rand()%5 + 1;
                     price = (rand()%41+10)*1000;
-                    enqueue(&qorder, food, durations, endurance, price);
+                    enqueueDiner(&qorder, food, durations, endurance, price);
                     food++;
                 }
             }
@@ -433,7 +433,7 @@ void dinerdash(){
                 durations = rand()%5 + 1;
                 endurance = rand()%5 + 1;
                 price = (rand()%41+10)*1000;
-                enqueue(&qorder, food, durations, endurance, price);
+                enqueueDiner(&qorder, food, durations, endurance, price);
                 food++;
             }
             else{

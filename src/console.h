@@ -10,12 +10,14 @@
 #include "adt/stack.h"
 #include "adt/charmachine.h"
 #include "adt/wordmachine.h"
-#include "adt/arraydin.h" 
+#include "adt/arraydin.h"
+#include "adt/queuediner.h"  
 #include "boolean.h"
 
 //GAME
 #include "game/rng.h"
 #include "game/toh.h"
+#include "game/dinerdash.h"
 //#include "dinerdash.h"
 
 /////////////COMMAND/////////////

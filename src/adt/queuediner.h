@@ -1,8 +1,8 @@
 /* File : queue.h */
 /* Definisi ADT Queue dengan representasi array secara eksplisit dan alokasi statik */
 
-#ifndef QUEUE_H
-#define QUEUE_H
+#ifndef QUEUEDINER_H
+#define QUEUEDINER_H
 
 #include "boolean.h"
 
@@ -16,13 +16,13 @@ typedef struct {
     int durations;
     int endurance;
     int price;
-}ElType;
+}ElTypeDiner;
 
 typedef struct {
-	ElType buffer[MAX]; 
+	ElTypeDiner buffer[MAX]; 
 	int idxHead;
 	int idxTail;
-} Queue;
+} QueueDiner;
 
 
 
@@ -40,7 +40,7 @@ typedef struct {
 #define     TAIL_price(q) (q).buffer[(q).idxTail].price
 
 /* *** Kreator *** */
-void CreateQueue(Queue *q);
+void CreateQueueDiner(QueueDiner *q);
 /* I.S. sembarang */
 /* F.S. Sebuah q kosong terbentuk dengan kondisi sbb: */
 /* - Index head bernilai IDX_UNDEF */
@@ -48,22 +48,22 @@ void CreateQueue(Queue *q);
 /* Proses : Melakukan alokasi, membuat sebuah q kosong */
 
 /* ********* Prototype ********* */
-boolean isEmpty(Queue q);
+boolean isEmptyDiner(QueueDiner q);
 /* Mengirim true jika q kosong: lihat definisi di atas */
-boolean isFull(Queue q);
+boolean isFullDiner(QueueDiner q);
 /* Mengirim true jika tabel penampung elemen q sudah penuh */
 /* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD dalam buffer melingkar*/
 
-int length(Queue q);
+int lengthDiner(QueueDiner q);
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
 
 /* *** Primitif Add/Delete *** */
-void enqueue(Queue *q, int food, int durations, int endurance, int price);
+void enqueueDiner(QueueDiner *q, int food, int durations, int endurance, int price);
 /* Proses: Menambahkan val pada q dengan aturan FIFO */
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
 
-void dequeue(Queue *q, int *food, int *durations, int *endurance, int *price);
+void dequeueDiner(QueueDiner *q, int *food, int *durations, int *endurance, int *price);
 /* Proses: Menghapus val pada q dengan aturan FIFO */
 /* I.S. q tidak mungkin kosong */
 /* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";

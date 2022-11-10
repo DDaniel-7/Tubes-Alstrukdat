@@ -168,19 +168,18 @@ void PlayGame(Queue *q)
         if (IsStrEq(HEAD(*q), R)){
             printf("Loading %s ...\n", HEAD(*q));
             dequeue(q,&val);
-            RNG();  // sesuaikan sama game RNG nanti
+            RNG();  
 
         }
         else if (IsStrEq(HEAD(*q), DinDash)){
             printf("Loading %s ...\n", HEAD(*q));
             dequeue(q,&val);
-            printf("DD BERHASIL\n"); // APUS INI 
-            //dinnerdash();  // sesuaikan sama game dinnerdash nanti
+            dinerdash();  
         }
         else if (IsStrEq(HEAD(*q), TOH)){
             printf("Loading %s ...\n", HEAD(*q));
             dequeue(q,&val);
-            towerofhanoi();  // sesuaikan sama game dinnerdash nanti
+            towerofhanoi();  
         }
 
         else if (IsStrEq(HEAD(*q), DIE) || IsStrEq(HEAD(*q), RISE) || IsStrEq(HEAD(*q), ET)){
@@ -194,7 +193,7 @@ void PlayGame(Queue *q)
             dequeue(q,&val);
         }
     }
-    else    //kalau q nya masi kosong, maka panggil fungsi queuegame
+    else    
     {
         printf("Belum ada game di QueueGame. Silahkan mengisi queue game terlebih dahulu\n");
     }

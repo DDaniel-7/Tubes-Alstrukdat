@@ -1,42 +1,42 @@
 # include "boolean.h"
-# include "queuediner.h"
+# include "../adt/queuediner.h"
 
 # ifndef dinerdash_H
 # define dinerdash_H
 
-boolean isIn(Queue q, int food);
+boolean isIn(QueueDiner q, int food);
 /* Mengembalikan true jika food dalam queue */
 
-void removeisIn(Queue *q, int *food, int *durations, int *endurance, int *price);
+void removeisIn(QueueDiner *q, int *food, int *durations, int *endurance, int *price);
 /*IS : queue sembarang;
        food bisa tidak ad di dlm queue;
   FS : queue dengan makanan yg ad diremove;
 */
 
-void Printqorder(Queue q);
+void Printqorder(QueueDiner q);
 /*IS : queue bisa kosong
   FS : menampilkan daftar pesanan */
 
-void Printqcooking(Queue q);
+void Printqcooking(QueueDiner q);
 /*IS : queue bisa kosong
   FS : menampilkan daftar masakan yang dimasak*/
 
-void Printqserving(Queue q);
+void Printqserving(QueueDiner q);
 /*IS : queue bisa kosong
   FS : menampilkan daftar masakan yang selesai dimasak*/
 
-void printall(Queue qorder, Queue qcook, int balance);
+void printall(QueueDiner qorder, QueueDiner qcook, int balance);
 
-void cook(Queue qorder, Queue *qcook, int food);
+void cook(QueueDiner qorder, QueueDiner *qcook, int food);
 /*IS : */
 
-void serve(Queue *qorder, Queue *qcook, int food, int *serve, int *balance, int *n);
+void serve(QueueDiner *qorder, QueueDiner *qcook, int food, int *serve, int *balance, int *n);
 
-void turn(Queue *q);
+void turn(QueueDiner *q);
 
-boolean IsEndGame(Queue q, int serving);
+boolean IsEndGame(QueueDiner q, int serving);
 
-boolean IsAvail(Queue q);
+boolean IsAvail(QueueDiner q);
 
 void dinerdash();
 
