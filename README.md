@@ -15,22 +15,22 @@ BNMO merupakan suatu robot game console yang dapat menjalankan permainan. BNMO m
 
 Step 1 : Ubah current directory ke bin
 ```
-**cd bin
+cd bin
 ```
 
 Step 2 : Compile file .c
 ```
-**make program
+make program
 ```
 
 Step 3 : Running program
 ```
-**./program
+./program
 ```
 
 ## Cara menghapus executable program
 
 Step 1 : Delete program.exe
 ```
-**make clean
+make clean
 ```
