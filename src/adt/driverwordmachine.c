@@ -40,11 +40,11 @@ int main(){
     kataTiga = "beda";
     kataEmpat = "bedadong";
 
-    if(isStrEq(kataSatu, kataDua)){
+    if(IsStrEq(kataSatu, kataDua)){
         // kata satu dan kata dua sama
         printf("kata satu dan kata dua sama\n");
     }
-    if(!isStrEq(kataDua, kataTiga)){
+    if(!IsStrEq(kataDua, kataTiga)){
         // kata dua dan kata tiga beda
         printf("kata dua dan kata tiga beda\n");
     }
