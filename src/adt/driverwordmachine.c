@@ -1,3 +1,4 @@
+#include<stdio.h>
 #include "boolean.h"
 #include "charmachine.h"
 #include "wordmachine.h"
