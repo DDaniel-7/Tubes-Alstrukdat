@@ -47,9 +47,23 @@ int main(){
     char* concat = "pleasebemine";
     concatstringbaru(concat);
 
-
-
-
+    int num = 1;
+    int angka = 0;
+    printf("masukan angka : \n");
+    STARTWORD();
+    if(IsWordStr(currentWord,"1")){
+        printf("yes bener 1\n");
+        ADVWORD();
+        angka = ScanNum(currentWord);
+        ADVWORD();
+        num = ScanNum(currentWord);
+        if (num > angka){
+            printf("betul\n");
+        }
+    }
+    else{
+        printf("bukan 1\n");
+    }
 
     return 0;
 }
