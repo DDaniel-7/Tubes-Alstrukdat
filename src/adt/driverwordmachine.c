@@ -37,7 +37,7 @@ int main(){
         // kata dua dan kata tiga beda
         printf("kata dua dan kata tiga beda\n");
     }
-    // scan input dari dari pita menjadi sebuah masukan
+    
     printf("Masukkan input kata : ");
     masukan = scaninput();
     printf("Kata adalah : %s\n",masukan);
