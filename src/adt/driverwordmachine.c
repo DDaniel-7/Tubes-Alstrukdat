@@ -31,7 +31,7 @@ int main(){
 
     cek = "kataPertama kataKedua";
     kataPertama = firstword(cek);
-    kataKedua = secondWord(cek);
+    kataKedua = secondword(cek);
     printf("%s", kataPertama);
     printf("%s", kataKedua);
 
