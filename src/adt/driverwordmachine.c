@@ -15,25 +15,14 @@ int main(){
     char *kataTiga;
     char *kataEmpat;
     char *masukan;
-    char *angka;
-    int nomor;
     int panjang;
     char *cekPanjang;
-
-    STARTWORD();
-    // menuliskan kata yang berada dalam currentWord
-    printf("%s", currentWord.contents);
-    if(!endWord){
-        // masih ada kata berikutnya
-        // kata yang ditampilkan adalah kata selanjutnya
-        printf("%s", currentWord.contents);
-    }
 
     cek = "kataPertama kataKedua";
     kataPertama = firstword(cek);
     kataKedua = secondword(cek);
-    printf("%s", kataPertama);
-    printf("%s", kataKedua);
+    printf("%s\n", kataPertama);
+    printf("%s\n", kataKedua);
 
     kataSatu = "sama";
     kataDua = "sama";
@@ -49,13 +38,18 @@ int main(){
         printf("kata dua dan kata tiga beda\n");
     }
     // scan input dari dari pita menjadi sebuah masukan
+    printf("Masukkan input kata : ");
     masukan = scaninput();
-    angka = "1";
-    // mengkonversi sebuah string menjadi integer;
-    nomor = ScanNum(currentWord);
-    cekPanjang = "panjangKata";
-    panjang = LengthStr(cekPanjang);
+    printf("Kata adalah : %s\n",masukan);
+    panjang = LengthStr(masukan);
     printf("Panjang kata adalah : %d\n", panjang);
+
+    char* concat = "pleasebemine";
+    concatstringbaru(concat);
+
+
+
+
 
     return 0;
 }
