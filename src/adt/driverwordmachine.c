@@ -1,7 +1,7 @@
-#include<stdio.h>
 #include "boolean.h"
 #include "charmachine.h"
 #include "wordmachine.h"
+#include <stdio.h>
 
 int main(){
     boolean endWord;
@@ -52,7 +52,7 @@ int main(){
     masukan = scaninput();
     angka = "1";
     // mengkonversi sebuah string menjadi integer;
-    nomor = ScanNum(angka);
+    nomor = ScanNum(currentWord);
     cekPanjang = "panjangKata";
     panjang = LengthStr(cekPanjang);
     printf("Panjang kata adalah : %d\n", panjang);
