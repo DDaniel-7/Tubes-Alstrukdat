@@ -70,4 +70,10 @@ void DeleteMap(Map *M, keytype k);
 boolean IsMemberMap(Map M, keytype k);
 /* Mengembalikan true jika k adalah member dari M */
 
+int IMAX (Map *map);
+// Mencari indeks dengan nilai value maksimum dari map
+
+Map CopyMap (Map *map);
+// Menduplikasi map
+
 #endif

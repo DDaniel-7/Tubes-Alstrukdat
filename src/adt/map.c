@@ -99,3 +99,23 @@ boolean IsMemberMap(Map M, keytype k){
 	return ada;
 }
 /* Mengembalikan true jika k adalah member dari M */
+
+int IMAX (Map *map){
+    int imax;
+    imax = 0;
+    for (int i = 1 ; i<map->Count ; i++){
+        if (map->Elements[i].Value > map->Elements[imax].Value){
+            imax = i;
+        }
+    }
+    return imax;
+}
+
+Map CopyMap (Map *map){
+    Map temp;
+    CreateEmptyMap(&temp);
+    for (int i = 0;i<map->Count;i++){
+        InsertMap(&temp,map->Elements[i].Key,map->Elements[i].Value);
+    }
+    return temp;
+}

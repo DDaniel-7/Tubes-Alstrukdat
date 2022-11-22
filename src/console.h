@@ -11,7 +11,8 @@
 #include "adt/charmachine.h"
 #include "adt/wordmachine.h"
 #include "adt/arraydin.h"
-#include "adt/queuediner.h"  
+#include "adt/queuediner.h"
+#include "adt/map.h"  
 #include "boolean.h"
 
 //GAME
@@ -50,5 +51,9 @@ void Load(ArrayDin *arraygame, char *namafile);
 void *my_memset(void *b, int c, int len);
 
 void Donat();
+
+void SAVESCOREBOARD (Map *mapGame, int skor); // ini tapi belum masuk ke file konfigurasi
+
+void SCOREBOARD (Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *mapHangman);
 
 #endif
