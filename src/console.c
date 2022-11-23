@@ -465,3 +465,103 @@ void SCOREBOARD (Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *m
     printf("\n");
 
 }
+void RESETSCORE(Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *mapHangman, ArrayDin *array)
+{   char* jawab;
+    char* ya = "YA";
+    char* tdk = "TIDAK";
+    int nomorint;
+    char* nomorgame;
+
+    printf("DAFTAR SCOREBOARD : \n");  //print daftar list game
+    printf("0. ALL\n");
+    int i,index = 1;
+    int i;
+    for(i = 0 ; i <= (Length(*array)-1) ; i++ ){
+        printf("%d. %s\n",(i+1),array->A[i]);
+    }
+    printf("SCOREBOARD YANG INGIN DIHAPUS : ");
+    nomorgame = scaninput();
+	nomorint = atoi(nomorgame);
+    printf("\n");
+    if (nomorint == 0){
+        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD ALL (YA/TIDAK)? ");
+        jawab = scaninput();
+        if(IsStrEq(ya,jawab)){
+            CreateEmptyMap(mapRNG);
+            CreateEmptyMap(mapDinner);
+            CreateEmptyMap(mapHangman);
+            CreateEmptyMap(mapTOH);
+            CreateEmptyMap(mapSnake);
+            printf("\n");
+            printf("Scoreboard berhasil di-reset.");
+        }
+        else{
+            printf("Scoreboard gagal di-reset.");
+        }    
+    }
+    /***else if(nomorint > 0 && nomorint <= Length(*array) ){
+        while(index != nomorint){
+            index++;
+        }
+        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD %s (YA/TIDAK)? ", Get(*array,index-1));
+        jawab = scaninput();
+        if(IsStrEq(ya,jawab)){
+
+        }***/
+    else if(nomorint == 1){
+        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD RNG (YA/TIDAK)? ");
+        jawab = scaninput();
+        if(IsStrEq(ya,jawab)){
+            CreateEmptyMap(mapRNG);
+        }
+        else{
+            printf("Scoreboard gagal di-reset.");
+        }
+    }
+    else if(nomorint == 2){
+        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD Dinner DASH (YA/TIDAK)? ");
+        jawab = scaninput();
+        if(IsStrEq(ya,jawab)){
+            CreateEmptyMap(mapDinner);
+        }
+        else{
+            printf("Scoreboard gagal di-reset.");
+        }
+    }
+    else if(nomorint == 3){
+        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD HANGMAN (YA/TIDAK)? ");
+        jawab = scaninput();
+        if(IsStrEq(ya,jawab)){
+            CreateEmptyMap(mapHangman);
+        }
+        else{
+            printf("Scoreboard gagal di-reset.");
+        }
+    }
+    else if(nomorint == 4){
+        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD TOWER OF HANOI (YA/TIDAK)? ");
+        jawab = scaninput();
+        if(IsStrEq(ya,jawab)){
+            CreateEmptyMap(mapTOH);
+        }
+        else{
+            printf("Scoreboard gagal di-reset.");
+        }
+    }
+    else if(nomorint == 5){
+        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD SNAKE ON METEOR (YA/TIDAK)? ");
+        jawab = scaninput();
+        if(IsStrEq(ya,jawab)){
+            CreateEmptyMap(mapSnake);
+        }
+        else{
+            printf("Scoreboard gagal di-reset.");
+        }
+    }
+    else if (nomorint >=6){
+        printf("TIDAK TERDAPAT SCOREBOARD PADA GAME TERSEBUT");
+    }
+    else{
+        printf("INPUT TIDAK VALID\n");
+    }
+}
