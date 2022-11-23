@@ -76,4 +76,7 @@ int IMAX (Map *map);
 Map CopyMap (Map *map);
 // Menduplikasi map
 
+char* numToString(int val);
+// Mengkonversi angka berupa integer menjadi berupa string
+
 #endif

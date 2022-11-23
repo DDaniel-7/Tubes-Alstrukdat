@@ -119,3 +119,16 @@ Map CopyMap (Map *map){
     }
     return temp;
 }
+
+char* numToString(int val){
+    if(val==0){
+        return "0";
+    }
+    else{
+         static char buf[32] = {0};
+        int i = 30;
+        for(; val && i ; --i, val /= 10)
+            buf[i] = "0123456789abcdef"[val % 10];
+        return &buf[i+1];
+    }
+}
