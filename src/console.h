@@ -58,4 +58,6 @@ void SCOREBOARD (Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *m
 
 void RESETSCORE (Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *mapHangman, ArrayDin *array);
 
+void SAVESCORE(Map mapGame,FILE * txt);
+
 #endif

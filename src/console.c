@@ -565,3 +565,13 @@ void RESETSCORE(Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *ma
         printf("INPUT TIDAK VALID\n");
     }
 }
+
+void SAVESCORE(Map mapGame,FILE * txt){
+    fprintf(txt,"%s\n",intToString(mapGame.Count));
+    Map tempGame = CopyMap(&mapGame);
+    int i=0;
+    for(i;i<mapGame.Count;i++){
+        fprintf(txt,"%s %s\n",tempGame.Elements[IMAX(&tempGame)].Key,intToString(Val(tempGame,tempGame.Elements[IMAX(&tempGame)].Key)));
+        DeleteMap(&tempGame,tempGame.Elements[IMAX(&tempGame)].Key);
+    }
+}
