@@ -30,7 +30,7 @@ void saveGame(ArrayDin l, FILE *file){
     fprintf(file, "%s", judulGame);
 }
 
-void save(char *namaFile, ArrayDin arr){
+void save(char *namaFile, ArrayDin arr, Map mapTOH, Map mapDinner, Map mapSnake, Map mapRNG, Map mapHangman, Map mapTambahan){
     //fungsi melakukan save terhadap state dari permainan yang terkandung dalam array
     // dan menyimpannya dalam sebuah file konfigurasi txt
     // jika file sudah ada, maka akan ditanya konfirmasi untuk menimpa file yang sudah ada
@@ -50,6 +50,12 @@ void save(char *namaFile, ArrayDin arr){
     // ALGORITMA
     fileOutput = fopen((path), "w");
     saveGame(arr, fileOutput);
+    SAVESCORE(mapTOH,fileOutput);
+    SAVESCORE(mapDinner,fileOutput);
+    SAVESCORE(mapSnake,fileOutput);
+    SAVESCORE(mapRNG,fileOutput);
+    SAVESCORE(mapHangman,fileOutput);
+    SAVESCORE(mapTambahan,fileOutput);
     fclose(fileOutput);
     printf("Save file berhasil disimpan\n");
 }
@@ -359,7 +365,7 @@ void SAVESCOREBOARD (Map *mapGame, int skor){ // ini tapi belum masuk ke file ko
     InsertMap(mapGame,nama,skor);
 }
 
-void SCOREBOARD (Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *mapHangman){
+void SCOREBOARD (Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *mapHangman, Map *mapTambahan){
     // SCOREBOARD GAME TOWER OF HANOI 
     printf("**** SCOREBOARD GAME TOWER OF HANOI ****\n");
     printf("| NAMA\t\t | SKOR \t\t |\n");
@@ -457,6 +463,26 @@ void SCOREBOARD (Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *m
             idxHangman = IMAX(&tempHangman);
             printf("| %s\t\t | %d \t\t\t |\n",tempHangman.Elements[idxHangman].Key,tempHangman.Elements[idxHangman].Value);
             DeleteMap(&tempHangman,tempHangman.Elements[idxHangman].Key);
+        }
+    }
+    else{
+        printf("---\t     SCOREBOARD KOSONG\t       ---\n");
+    }
+    printf("\n");
+
+    // SCOREBOARD GAME TAMBAHAN
+    printf("**** SCOREBOARD GAME TAMBAHAN ****\n");
+    printf("| NAMA\t\t | SKOR \t\t |\n");
+    printf("|----------------------------------------|\n");
+    Map tempTambahan;
+    tempTambahan = CopyMap(mapTambahan);
+    int sumTambahan = mapTambahan->Count;
+    if (sumTambahan>0){
+        for (int i = 0; i<sumTambahan;i++){
+            int idxTambahan;
+            idxTambahan = IMAX(&tempTambahan);
+            printf("| %s\t\t | %d \t\t\t |\n",tempTambahan.Elements[idxTambahan].Key,tempTambahan.Elements[idxTambahan].Value);
+            DeleteMap(&tempTambahan,tempTambahan.Elements[idxTambahan].Key);
         }
     }
     else{

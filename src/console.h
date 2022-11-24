@@ -26,7 +26,7 @@ void start(ArrayDin *arr);
 
 void saveGame(ArrayDin l, FILE *file);
 
-void save(char *namaFile, ArrayDin arr);
+void save(char *namaFile, ArrayDin arr, Map mapTOH, Map mapDinner, Map mapSnake, Map mapRNG, Map mapHangman, Map mapTambahan);
 
 void CreateGame(ArrayDin *array);
 
@@ -54,7 +54,7 @@ void Donat();
 
 void SAVESCOREBOARD (Map *mapGame, int skor); // ini tapi belum masuk ke file konfigurasi
 
-void SCOREBOARD (Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *mapHangman);
+void SCOREBOARD (Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *mapHangman, Map *mapTambahan);
 
 void RESETSCORE (Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *mapHangman, ArrayDin *array);
 
