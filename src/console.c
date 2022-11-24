@@ -601,3 +601,24 @@ void SAVESCORE(Map mapGame,FILE * txt){
         DeleteMap(&tempGame,tempGame.Elements[IMAX(&tempGame)].Key);
     }
 }
+
+void RESETHISTORY(Stack* Hist){
+	char* ya = "YA";
+	char* tidak = "TIDAK";
+    char* jawab;
+	printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET HISTORY? (YA/TIDAK) ");
+	jawab = scaninput();
+	if(IsStrEq(ya, jawab)){
+		CreateEmpty(Hist);
+		printf("\n");
+		printf("Histori berhasil di-reset.");
+	}
+	else if(IsStrEq(tidak, jawab)){
+		printf("\n");
+		printf("Histori tidak jadi di-reset. Berikut adalah daftar Game yang telah dimainkan\n");
+		HISTORY();
+	}
+	else {
+		printf("MASUKKAN INPUT YANG VALID!");
+	}
+}
