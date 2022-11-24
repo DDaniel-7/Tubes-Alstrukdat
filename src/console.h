@@ -60,4 +60,6 @@ void RESETSCORE (Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *m
 
 void SAVESCORE(Map mapGame,FILE * txt);
 
+void RESETHISTORY(Stack* Hist);
+
 #endif
