@@ -491,7 +491,7 @@ void SCOREBOARD (Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *m
     printf("\n");
 
 }
-void RESETSCORE(Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *mapHangman, ArrayDin *array)
+void RESETSCORE(Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *mapHangman, Map *mapTambahan, ArrayDin *array)
 {   char* jawab;
     char* ya = "YA";
     char* tdk = "TIDAK";
@@ -525,15 +525,6 @@ void RESETSCORE(Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *ma
             printf("Scoreboard gagal di-reset.");
         }    
     }
-    /***else if(nomorint > 0 && nomorint <= Length(*array) ){
-        while(index != nomorint){
-            index++;
-        }
-        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD %s (YA/TIDAK)? ", Get(*array,index-1));
-        jawab = scaninput();
-        if(IsStrEq(ya,jawab)){
-
-        }***/
     else if(nomorint == 1){
         printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD RNG (YA/TIDAK)? ");
         jawab = scaninput();
@@ -585,7 +576,14 @@ void RESETSCORE(Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *ma
         }
     }
     else if (nomorint >=6){
-        printf("TIDAK TERDAPAT SCOREBOARD PADA GAME TERSEBUT");
+        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD GAME TAMBAHAN (YA/TIDAK)? ");
+        jawab = scaninput();
+        if(IsStrEq(ya,jawab)){
+            CreateEmptyMap(mapTambahan);
+        }
+        else{
+            printf("Scoreboard gagal di-reset.");
+        };
     }
     else{
         printf("INPUT TIDAK VALID\n");

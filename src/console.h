@@ -56,7 +56,7 @@ void SAVESCOREBOARD (Map *mapGame, int skor); // ini tapi belum masuk ke file ko
 
 void SCOREBOARD (Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *mapHangman, Map *mapTambahan);
 
-void RESETSCORE (Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *mapHangman, ArrayDin *array);
+void RESETSCORE (Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *mapHangman, Map *mapTambahan, ArrayDin *array);
 
 void SAVESCORE(Map mapGame,FILE * txt);
 
