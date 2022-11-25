@@ -167,9 +167,11 @@ void PlayGame(Queue *q)
         char *R = "RNG";
         char *DinDash = "DINER DASH";
         char *TOH = "TOH";
-        char *DIE = "DINOSAUR IN EARTH";
+        char *Hangman = "HANGMAN";
+        char *SOM = "SNAKE ON METEOR";
+        /**char *DIE = "DINOSAUR IN EARTH";
         char *RISE = "RISEWOMAN";
-        char *ET = "EIFFEL TOWER";
+        char *ET = "EIFFEL TOWER";**/
 
         if (IsStrEq(HEAD(*q), R)){
             printf("Loading %s ...\n", HEAD(*q));
@@ -191,10 +193,22 @@ void PlayGame(Queue *q)
             towerofhanoi();  
         }
 
-        else if (IsStrEq(HEAD(*q), DIE) || IsStrEq(HEAD(*q), RISE) || IsStrEq(HEAD(*q), ET)){
+        /**else if (IsStrEq(HEAD(*q), DIE) || IsStrEq(HEAD(*q), RISE) || IsStrEq(HEAD(*q), ET)){
             printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n", HEAD(*q));
             dequeue(q,&val);
+        }**/
+        else if (IsStrEq(HEAD(*q), Hangman)){
+            printf("Loading %s ...\n", HEAD(*q));
+            dequeue(q,&val);
+            Donat();
+            ///hangman(); 
         }
+        else if (IsStrEq(HEAD(*q), SOM)){
+            printf("Loading %s ...\n", HEAD(*q));
+            dequeue(q,&val);
+            Donat();
+            ///snake();
+        } 
         else{
             srand(time(NULL));
             int score = rand() % 100 + 1;
