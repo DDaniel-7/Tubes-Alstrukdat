@@ -27,7 +27,7 @@ void start(ArrayDin *arr);
 
 void saveGame(ArrayDin l, FILE *file);
 
-void save(char *namaFile, ArrayDin arr, Map mapTOH, Map mapDinner, Map mapSnake, Map mapRNG, Map mapHangman, Map mapTambahan);
+void save(char *namaFile, ArrayDin arr, TabMap arrmapsb);
 
 void CreateGame(ArrayDin *array);
 

@@ -30,7 +30,7 @@ void saveGame(ArrayDin l, FILE *file){
     fprintf(file, "%s", judulGame);
 }
 
-void save(char *namaFile, ArrayDin arr, Map mapTOH, Map mapDinner, Map mapSnake, Map mapRNG, Map mapHangman, Map mapTambahan){
+void save(char *namaFile, ArrayDin arr, TabMap arrmapsb){
     //fungsi melakukan save terhadap state dari permainan yang terkandung dalam array
     // dan menyimpannya dalam sebuah file konfigurasi txt
     // jika file sudah ada, maka akan ditanya konfirmasi untuk menimpa file yang sudah ada
@@ -50,12 +50,9 @@ void save(char *namaFile, ArrayDin arr, Map mapTOH, Map mapDinner, Map mapSnake,
     // ALGORITMA
     fileOutput = fopen((path), "w");
     saveGame(arr, fileOutput);
-    SAVESCORE(mapTOH,fileOutput);
-    SAVESCORE(mapDinner,fileOutput);
-    SAVESCORE(mapSnake,fileOutput);
-    SAVESCORE(mapRNG,fileOutput);
-    SAVESCORE(mapHangman,fileOutput);
-    SAVESCORE(mapTambahan,fileOutput);
+    for (int i = 0 ; i < NbElmtArrMap(arrmapsb) ; i++){
+        SAVEFILESB(arrmapsb.TIMap[i],fileOutput);
+    }
     fclose(fileOutput);
     printf("Save file berhasil disimpan\n");
 }
