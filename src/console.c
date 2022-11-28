@@ -436,6 +436,29 @@ void SCOREBOARD (TabMap arrscore, ArrayDin listgame){
     }
 }
 
+
+void SAVESCORE(Map mapGame,FILE * txt){
+    fprintf(txt,"%s\n",intToString(mapGame.Count));
+    Map tempGame = CopyMap(&mapGame);
+    int i=0;
+    for(i;i<mapGame.Count;i++){
+        fprintf(txt,"%s %s\n",tempGame.Elements[IMAX(&tempGame)].Key,intToString(Val(tempGame,tempGame.Elements[IMAX(&tempGame)].Key)));
+        DeleteMap(&tempGame,tempGame.Elements[IMAX(&tempGame)].Key);
+    }
+}
+
+void SAVEFILESB (Map scoreboard, FILE *txt){
+    fprintf(txt,"%s",numToString(scoreboard.Count));
+    Map temp;
+    temp = CopyMap(&scoreboard);
+    int idxmax;
+    idxmax = IMAX(&scoreboard);
+    for (int i = 0; i<scoreboard.Count;i++){
+        fprintf(txt,"\n%s %s",temp.Elements[idxmax].Key,numToString(temp.Elements[idxmax].Value));
+        DeleteMap(&scoreboard,temp.Elements[idxmax].Key);
+    }
+}
+
 void RESETSCORE(TabMap *TabSB, ArrayDin *array)
 {   char* jawab;
     char* ya = "YA";
@@ -498,29 +521,6 @@ void RESETSCORE(TabMap *TabSB, ArrayDin *array)
         printf("INPUT TIDAK VALID\n");
     }
 }
-void SAVESCORE(Map mapGame,FILE * txt){
-    fprintf(txt,"%s\n",intToString(mapGame.Count));
-    Map tempGame = CopyMap(&mapGame);
-    int i=0;
-    for(i;i<mapGame.Count;i++){
-        fprintf(txt,"%s %s\n",tempGame.Elements[IMAX(&tempGame)].Key,intToString(Val(tempGame,tempGame.Elements[IMAX(&tempGame)].Key)));
-        DeleteMap(&tempGame,tempGame.Elements[IMAX(&tempGame)].Key);
-    }
-}
-
-void SAVEFILESB (Map scoreboard, FILE *txt){
-    fprintf(txt,"%s",numToString(scoreboard.Count));
-    Map temp;
-    temp = CopyMap(&scoreboard);
-    int idxmax;
-    idxmax = IMAX(&scoreboard);
-    for (int i = 0; i<scoreboard.Count;i++){
-        fprintf(txt,"\n%s %s",temp.Elements[idxmax].Key,numToString(temp.Elements[idxmax].Value));
-        DeleteMap(&scoreboard,temp.Elements[idxmax].Key);
-    }
-}
-
-
 void RESETHISTORY(Stack* Hist){
 	char* ya = "YA";
 	char* tidak = "TIDAK";
