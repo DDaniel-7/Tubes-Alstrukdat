@@ -7,8 +7,10 @@
 int main(){
     ArrayDin arraygame;
     Queue queue;
+    TabMap arrmapsb;
     arraygame = MakeArrayDin(&arraygame);
     CreateQueue(&queue);
+    CreateEmptyArrMap(&arrmapsb);
     
 
     //OUTPUT
@@ -89,7 +91,7 @@ int main(){
                 if(IsStrEq(saveinput,firstword(input))){
                     char* namaFile;
                     namaFile = secondword(input);
-                    save(namaFile,arraygame);
+                    save(namaFile,arraygame,arrmapsb);
                 }
                 else if(IsStrEq(creategameinput,input)){
                     CreateGame(&arraygame);
@@ -119,7 +121,7 @@ int main(){
                     savekah = scaninput();
                     if(IsStrEq(savekah,ye)){
                         char* namefile = "savedfile.txt";
-                        save(namefile,arraygame);
+                        save(namefile,arraygame,arrmapsb);
                     }
 
                     printf("====SEE YOU AGAIN====\n");
@@ -141,7 +143,7 @@ int main(){
                 if(IsStrEq(saveinput,firstword(input))){
                     char* namaFile;
                     namaFile = secondword(input);
-                    save(namaFile,arraygame);
+                    save(namaFile,arraygame,arrmapsb);
                 }
                 else if(IsStrEq(creategameinput,input)){
                     CreateGame(&arraygame);
@@ -172,7 +174,7 @@ int main(){
 
                     if(IsStrEq(savekah,ye)){
                         char* namefile = "savedfile.txt";
-                        save(namefile,arraygame);
+                        save(namefile,arraygame,arrmapsb);
                     }
                     printf("====SEE YOU AGAIN====\n");
                 }          
