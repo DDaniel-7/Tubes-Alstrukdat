@@ -59,7 +59,7 @@ void PrintScore (Map scoreboard, char *nama);
 
 void SCOREBOARD (TabMap arrscore, ArrayDin listgame);
 
-void RESETSCORE (TabMap *SB, ArrayDin *array);
+void RESETSCORE (TabMap *SB, ArrayDin *listgame);
 
 void SAVESCORE(Map mapGame,FILE * txt);
 
