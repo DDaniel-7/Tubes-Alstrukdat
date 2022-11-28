@@ -111,6 +111,17 @@ int IMAX (Map *map){
     return imax;
 }
 
+int lenmax (Map *map){
+    int lenmax;
+    lenmax = 0;
+    for (int i = 0 ; i<map->Count;i++){
+        if(LengthStr(map->Elements[i].Key)>lenmax){
+            lenmax = LengthStr(map->Elements[i].Key);
+        }
+    }
+    return lenmax;
+}
+
 Map CopyMap (Map *map){
     Map temp;
     CreateEmptyMap(&temp);

@@ -73,6 +73,8 @@ boolean IsMemberMap(Map M, keytype k);
 int IMAX (Map *map);
 // Mencari indeks dengan nilai value maksimum dari map
 
+int lenmax (Map *map);
+
 Map CopyMap (Map *map);
 // Menduplikasi map
 

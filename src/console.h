@@ -13,6 +13,7 @@
 #include "adt/arraydin.h"
 #include "adt/queuediner.h"
 #include "adt/map.h"  
+#include "adt/arrayMap.h"
 #include "boolean.h"
 
 //GAME
@@ -54,11 +55,15 @@ void Donat();
 
 void SAVESCOREBOARD (Map *mapGame, int skor); // ini tapi belum masuk ke file konfigurasi
 
-void SCOREBOARD (Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *mapHangman, Map *mapTambahan);
+void PrintScore (Map scoreboard, char *nama);
+
+void SCOREBOARD (TabMap arrscore, ArrayDin listgame);
 
 void RESETSCORE (Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *mapHangman, Map *mapTambahan, ArrayDin *array);
 
 void SAVESCORE(Map mapGame,FILE * txt);
+
+void SAVEFILESB (Map scoreboard, FILE *txt);
 
 void RESETHISTORY(Stack* Hist);
 
