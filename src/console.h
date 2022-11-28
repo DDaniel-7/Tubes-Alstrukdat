@@ -13,6 +13,7 @@
 #include "adt/arraydin.h"
 #include "adt/queuediner.h"
 #include "adt/map.h"  
+#include "adt/arrayMap.h"
 #include "boolean.h"
 
 //GAME
@@ -56,7 +57,7 @@ void SAVESCOREBOARD (Map *mapGame, int skor); // ini tapi belum masuk ke file ko
 
 void SCOREBOARD (Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *mapHangman, Map *mapTambahan);
 
-void RESETSCORE (Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *mapHangman, Map *mapTambahan, ArrayDin *array);
+void RESETSCORE (TabMap *SB, ArrayDin *array);
 
 void SAVESCORE(Map mapGame,FILE * txt);
 

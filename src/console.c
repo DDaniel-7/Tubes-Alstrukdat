@@ -509,20 +509,26 @@ void SCOREBOARD (Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *m
     printf("\n");
 
 }
-void RESETSCORE(Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *mapHangman, Map *mapTambahan, ArrayDin *array)
+void RESETSCORE(TabMap *TabSB, ArrayDin *array)
 {   char* jawab;
     char* ya = "YA";
     char* tdk = "TIDAK";
     int nomorint;
     char* nomorgame;
 
-    printf("DAFTAR SCOREBOARD : \n");  //print daftar list game
+    //Print daftar list game
+    printf("DAFTAR SCOREBOARD : \n");  
     printf("0. ALL\n");
     int i,index = 1;
     int i;
+    int j;
+    int k;
+    Map *sb;
+    boolean found = false;
     for(i = 0 ; i <= (Length(*array)-1) ; i++ ){
         printf("%d. %s\n",(i+1),array->A[i]);
     }
+    // Masukkan input scoreboard yang ingin dihapus
     printf("SCOREBOARD YANG INGIN DIHAPUS : ");
     nomorgame = scaninput();
 	nomorint = atoi(nomorgame);
@@ -531,11 +537,10 @@ void RESETSCORE(Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *ma
         printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD ALL (YA/TIDAK)? ");
         jawab = scaninput();
         if(IsStrEq(ya,jawab)){
-            CreateEmptyMap(mapRNG);
-            CreateEmptyMap(mapDinner);
-            CreateEmptyMap(mapHangman);
-            CreateEmptyMap(mapTOH);
-            CreateEmptyMap(mapSnake);
+            for (j = 0; j < (NbElmtArrMap(*TabSB)); j++){
+                *sb = GetElmtArrMap(*TabSB, j);
+                CreateEmptyMap(sb);
+            }
             printf("\n");
             printf("Scoreboard berhasil di-reset.");
         }
@@ -543,65 +548,24 @@ void RESETSCORE(Map *mapTOH, Map *mapDinner, Map *mapSnake, Map *mapRNG, Map *ma
             printf("Scoreboard gagal di-reset.");
         }    
     }
-    else if(nomorint == 1){
-        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD RNG (YA/TIDAK)? ");
+    else if (nomorint >=1){
+        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD GAME %s (YA/TIDAK)? ", array->A[nomorint-1]);
         jawab = scaninput();
         if(IsStrEq(ya,jawab)){
-            CreateEmptyMap(mapRNG);
+            for(k = 0; k < (NbElmtArrMap(*TabSB)); k++){
+                if (nomorint-1 == k){
+                    *sb = GetElmtArrMap(*TabSB, k);
+                    CreateEmptyMap(sb);
+                    found = true;
+                }
+                if (not(found)){
+                    printf("INPUT TIDAK TERDAPAT DI SCOREBOARD\n");
+                }
+            }
         }
         else{
-            printf("Scoreboard gagal di-reset.");
+            printf("Scoreboard gagal di-reset.\n");
         }
-    }
-    else if(nomorint == 2){
-        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD Dinner DASH (YA/TIDAK)? ");
-        jawab = scaninput();
-        if(IsStrEq(ya,jawab)){
-            CreateEmptyMap(mapDinner);
-        }
-        else{
-            printf("Scoreboard gagal di-reset.");
-        }
-    }
-    else if(nomorint == 3){
-        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD HANGMAN (YA/TIDAK)? ");
-        jawab = scaninput();
-        if(IsStrEq(ya,jawab)){
-            CreateEmptyMap(mapHangman);
-        }
-        else{
-            printf("Scoreboard gagal di-reset.");
-        }
-    }
-    else if(nomorint == 4){
-        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD TOWER OF HANOI (YA/TIDAK)? ");
-        jawab = scaninput();
-        if(IsStrEq(ya,jawab)){
-            CreateEmptyMap(mapTOH);
-        }
-        else{
-            printf("Scoreboard gagal di-reset.");
-        }
-    }
-    else if(nomorint == 5){
-        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD SNAKE ON METEOR (YA/TIDAK)? ");
-        jawab = scaninput();
-        if(IsStrEq(ya,jawab)){
-            CreateEmptyMap(mapSnake);
-        }
-        else{
-            printf("Scoreboard gagal di-reset.");
-        }
-    }
-    else if (nomorint >=6){
-        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD GAME TAMBAHAN (YA/TIDAK)? ");
-        jawab = scaninput();
-        if(IsStrEq(ya,jawab)){
-            CreateEmptyMap(mapTambahan);
-        }
-        else{
-            printf("Scoreboard gagal di-reset.");
-        };
     }
     else{
         printf("INPUT TIDAK VALID\n");
