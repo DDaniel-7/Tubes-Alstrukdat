@@ -114,4 +114,6 @@ void DeleteAtArrMap(TabMap *T, IdxTypeArrayMap i);
 void DeleteLastArrMap(TabMap *T);
 /* I.S. T terdefinisi, tidak kosong. */
 /* F.S. elemen terakhir T dihapus dari T. */
+
+void InsertLastGame (TabMap *arrmapgame);
 #endif
