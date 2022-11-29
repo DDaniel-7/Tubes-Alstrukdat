@@ -50,9 +50,12 @@ void save(char *namaFile, ArrayDin arr, TabMap arrmapsb){
     // ALGORITMA
     fileOutput = fopen((path), "w");
     saveGame(arr, fileOutput);
-    for (int i = 0 ; i < NbElmtArrMap(arrmapsb) ; i++){
-        SAVEFILESB(arrmapsb.TIMap[i],fileOutput);
+    int j;
+    for (j = 0 ; j < NbElmtArrMap(arrmapsb)-1 ; j++){
+        SAVEFILESB(arrmapsb.TIMap[j],fileOutput);
+        fprintf(fileOutput,"\n");
     }
+    SAVEFILESB(arrmapsb.TIMap[j],fileOutput);
     fclose(fileOutput);
     printf("Save file berhasil disimpan\n");
 }
@@ -406,11 +409,11 @@ void PrintScore (Map scoreboard, char *nama){
         for (int i = 0; i<totalskor;i++){
                 int idxmax;
                 idxmax = IMAX(&temp);
-                if (LengthStr(scoreboard.Elements[idxmax].Key) < 6){
+                if (LengthStr(temp.Elements[idxmax].Key) < 6){
                     printf("| %s\t\t\t\t | %d \t\t\t |\n",temp.Elements[idxmax].Key,temp.Elements[idxmax].Value);
                     DeleteMap(&temp,temp.Elements[idxmax].Key);
                 }
-                else if(LengthStr(scoreboard.Elements[idxmax].Key) > 13 ){
+                else if(LengthStr(temp.Elements[idxmax].Key) > 13 ){
                     printf("| %s\t\t | %d \t\t\t |\n",temp.Elements[idxmax].Key,temp.Elements[idxmax].Value);
                     DeleteMap(&temp,temp.Elements[idxmax].Key);
                 }
