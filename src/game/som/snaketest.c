@@ -114,7 +114,8 @@ void Move (List *L, char* input){
                 temp=(*Prev(P)).coor;
             }
         }
-    }else if(IsStrEq(input,bawah)){
+    }
+    else if(IsStrEq(input,bawah)){
         temp=(*Prev(P)).coor;
         while (Prev(P)!=Nil){
             (*P).coor=temp;
@@ -123,7 +124,8 @@ void Move (List *L, char* input){
                 temp=(*Prev(P)).coor;
             }
         }
-    }else if(IsStrEq(input,kanan)){
+    }
+    else if(IsStrEq(input,kanan)){
         temp=(*Prev(P)).coor;
         while (Prev(P)!=Nil){
             (*P).coor=temp;
@@ -132,7 +134,8 @@ void Move (List *L, char* input){
                 temp=(*Prev(P)).coor;
             }
         }
-    }else if(IsStrEq(input,kiri)){
+    }
+    else if(IsStrEq(input,kiri)){
         temp=(*Prev(P)).coor;
         while (Prev(P)!=Nil){
             (*P).coor=temp;
@@ -150,21 +153,24 @@ void Move (List *L, char* input){
         else{
             Absis(a) -= 1;
         }   
-    }else if(IsStrEq(input,kanan)){
+    }
+    else if(IsStrEq(input,kanan)){
         if (Absis(a) == 4){   
             Absis(a) = 0;
         }
         else{
             Absis(a) += 1;
         }
-    }else if(IsStrEq(input,atas)){
+    }
+    else if(IsStrEq(input,atas)){
         if (Ordinat(a) == 0){   
             Ordinat(a) = 4;
         }
         else{
             Ordinat(a) -= 1;
         } 
-    }else if(IsStrEq(input,bawah)){
+    }
+    else if(IsStrEq(input,bawah)){
         if (Ordinat(a)== 4){   
             Ordinat(a) = 0;
         }
@@ -272,16 +278,16 @@ void makeFood(POINT *food,List L, POINT obstacle){
         else
         {
         if (i % 3 == 1){
-            a= (a-1) % 5;
-            b= (b+1) % 5;
+            a= (a - 1) % 5;
+            b= (b + 1) % 5;
         }
         else if(i % 3==0){
-            a=(a+1)%5;
-            b=(b-1)%5;
+            a=(a + 1)%5;
+            b=(b - 1)%5;
         }
         else{
-            a=(a+1)%5;
-            b=(b+1)%5;
+            a=(a + 1)%5;
+            b=(b + 1)%5;
         }
         }
         if (a < 0 || b < 0){
@@ -446,7 +452,9 @@ int main(){
         printf("Silahkan masukkan command anda: ");
         input = scaninput();
         if (IsStrEq(input,we) || IsStrEq(input,ah) || IsStrEq(input,es) || IsStrEq(input,de)){
+
             Move(&L,input);
+
             if (foodEaten(&L,food)){
                 ekorbaru=*(Last(L));
                 address alamatekor= AlokasiLDP(((int)Info(Last(L))) + 1);
