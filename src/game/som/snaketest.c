@@ -98,7 +98,7 @@ void CreateSnake(List *L){
     InsertLastLDP(L,P3);
 }
 
-void Move (List *L, char* input){
+void move (List *L, char* input){
     char* atas="w";
     char* kiri="a";
     char* bawah="s";
@@ -421,10 +421,10 @@ int main(){
     int turn = 1;
     int score;
 
-    food.x = -69;
-    food.y = -69;
-    meteor.x = -69;
-    meteor.y = -69;
+    food.x = Undefined;
+    food.y = Undefined;
+    meteor.x = Undefined;
+    meteor.y = Undefined;
 
     char* we = "w";
     char* ah = "a";
@@ -453,7 +453,7 @@ int main(){
         input = scaninput();
         if (IsStrEq(input,we) || IsStrEq(input,ah) || IsStrEq(input,es) || IsStrEq(input,de)){
 
-            Move(&L,input);
+            move(&L,input);
 
             if (foodEaten(&L,food)){
                 ekorbaru=*(Last(L));
@@ -463,6 +463,7 @@ int main(){
                 InsertLastLDP(&L,alamatekor);
                 makeFood(&food,L,obstacle);     
             }
+
             makeMeteor(&meteor,food);
             printMap(L,food,meteor,obstacle);
             kenaMeteor(&L,food,meteor);
