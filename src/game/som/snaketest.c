@@ -507,7 +507,7 @@ int main(){
         } 
         else{
             printf("Silahkan memasukkan command yang valid!\n");
-        }        
+        }   
     }
     return 0;
 }
