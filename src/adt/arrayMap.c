@@ -4,14 +4,24 @@
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor : create tabel kosong */
+
+
+
+void InsertLastGame (TabMap *arrmapgame){
+    Map m;
+    CreateEmptyMap(&m);
+    SetElArrMap(arrmapgame , arrmapgame->NeffArrayMap , m);
+    }
+
 void CreateEmptyArrMap(TabMap *T)
 {
-    InsertLast(&T);
-    InsertLast(&T);
-    InsertLast(&T);
-    InsertLast(&T);
-    InsertLast(&T);
-    (*T).NeffArrayMap = 5;
+    T->NeffArrayMap = 5;
+    InsertLastGame(T);
+    InsertLastGame(T);
+    InsertLastGame(T);
+    InsertLastGame(T);
+    InsertLastGame(T);
+
 }
 /* I.S. sembarang */
 /* F.S. Terbentuk tabel T kosong dengan kapasitas IdxMaxArrayMap-IdxMinArrayMap+1 */
@@ -178,10 +188,3 @@ void DeleteLastArrMap(TabMap *T)
 }
 /* I.S. L terdefinisi, tidak kosong. */
 /* F.S. F diset dengan elemen terakhir L, elemen terakhir L dihapus dari L. */
-
-void InsertLastGame (TabMap *arrmapgame){
-    Map map;
-    CreateEmptyMap(&map);
-    arrmapgame->TIMap[NbElmtArrMap(*arrmapgame)] = map;
-    arrmapgame->NeffArrayMap += 1;
-}

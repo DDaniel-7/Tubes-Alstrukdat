@@ -34,6 +34,9 @@ typedef struct
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor : create tabel kosong */
+
+void InsertLastGame (TabMap *arrmapgame);
+
 void CreateEmptyArrMap(TabMap *T);
 /* I.S. sembarang */
 /* F.S. Terbentuk tabel T kosong dengan kapasitas IdxMax-IdxMin+1 */
@@ -115,5 +118,4 @@ void DeleteLastArrMap(TabMap *T);
 /* I.S. T terdefinisi, tidak kosong. */
 /* F.S. elemen terakhir T dihapus dari T. */
 
-void InsertLastGame (TabMap *arrmapgame);
 #endif

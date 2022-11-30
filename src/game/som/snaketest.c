@@ -242,16 +242,16 @@ void makeObstacle(List L, POINT* obstacle){
         else
         {
         if (i % 3 == 1){
-            a= (a-1) % 4;
-            b= (b+1) % 4;
+            a= (a - 1) % 4;
+            b= (b + 1 ) % 4;
         }
         else if(i % 3 == 0){
-            a=(a+1) % 4;
-            b=(b-1) % 4;
+            a=(a + 1) % 4;
+            b=(b - 1) % 4;
         }
         else{
-            a=(a+1) % 4;
-            b=(b+1) % 4;
+            a=(a + 1) % 4;
+            b=(b + 1) % 4;
         }
         if (a < 0 || b < 0){
             a = rand() % 4;
@@ -328,7 +328,6 @@ void kenaMeteor(List *L,POINT food,POINT meteor){
         else if(a == Next(First(*L))){
             DelLastLDP(L,&b);
             DelFirstLDP(L,&b);
-            printf("Meteor mengenai bagian Head snake. Permainan berakhir\n");
         }
         else{
             while (b != Prev(a)){
@@ -336,6 +335,7 @@ void kenaMeteor(List *L,POINT food,POINT meteor){
                 b = Prev(b);
             }
             DelBeforeLDP(L,&b,a);
+            printf("Anda terkena meteor!\n");
         }
     }
 }
@@ -360,6 +360,10 @@ boolean endGame(List L,POINT meteor, POINT obstacle){
         }
         else if(Absis(First(L)) == obstacle.x && Ordinat(First(L)) == obstacle.y){
             printf("HAHAHA Kepala snake menabrak obstacle\n");
+            return true;
+        }
+        else if(GetInfo(SearchAP(L,Absis(First(L))+1,Ordinat(First(L)))) < 25 && GetInfo(SearchAP(L,Absis(First(L))-1,Ordinat(First(L)))) < 25 && GetInfo(SearchAP(L,Absis(First(L)),Ordinat(First(L))-1)) < 25 && GetInfo(SearchAP(L,Absis(First(L)),Ordinat(First(L))+1)) < 25){
+            printf("Anda sudah tidak bisa kemana-mana lagi wkwkwk\n");
             return true;
         }
         else{
@@ -400,7 +404,7 @@ void printMap(List L,POINT food, POINT meteor,POINT obstacle){
                     printf(" %c ",Info(SearchAP(L,((j+1)/2)-1,((i+1)/2)-1)));
                 }
                 else{
-                    if (Info(SearchAP(L,((j+1)/2)-1,((i+1)/2)-1))<9){
+                    if (Info(SearchAP(L,((j+1)/2)-1,((i+1)/2)-1))<=9){
                         printf(" %d ",Info(SearchAP(L,((j+1)/2)-1,((i+1)/2)-1)));
                     }
                     else{
@@ -416,9 +420,7 @@ void printMap(List L,POINT food, POINT meteor,POINT obstacle){
     }
 }
 
-
-int main(){
-
+void som(){
     List L;
     ElmtList ekorbaru;
     char* input;
@@ -426,6 +428,7 @@ int main(){
     boolean kena = false;
     int turn = 1;
     int score;
+    char*jwbn;
 
     food.x = Undefined;
     food.y = Undefined;
@@ -436,78 +439,147 @@ int main(){
     char* ah = "a";
     char* es = "s";
     char* de = "d";
-    srand(time(NULL));
+    char* satu = "1";
+    char* dua = "2";
 
-    printf("Selamat datang di snake on meteor!\n");
+    printf(".........................................................................\n");
+    printf("...................                       ...............................\n");
+    printf(".................. JPPPPPPPPPPPPPPPPPPPPP^ ..............................\n");
+    printf("..............     G@@@@@@@@@@@@@@@@@@@@@~    ....................@@@@...\n");
+    printf("............. :55555555555555555555555555555P? ..................@@@@@@..\n");
+    printf("............. ^@@@@Y!!!!!!!!!!!!!!!!!!!!!#@@@5    ................@@@@...\n");
+    printf("............. ^@@@@Y!77777777777777777777Y5555555Y. .........@@@.........\n");
+    printf("..........    ^@@@@J!!!77777777777777!!!!!!!!5@@@&: ........@@@@@........\n");
+    printf("......... !5YYY5555PPPG5777777777777?PPPP?77!5@@@&: .........@@@.........\n");
+    printf("......... Y@@@&7!!!B@@@B!77777777777J@@@@J77!5@@@&.    ..................\n");
+    printf("......... J@@@#7777B@@@B!77777777777J@@@@J777JGGGPYJJY~ .....@...........\n");
+    printf("......... J@@@#7777#@@@B!77777777777J@@@@J7777???J@@@@? ....@@@..........\n");
+    printf("......... J@@@#7!7!5PPPY777777777777?PPPP?!7!7JJJJ&@@@? .....@...........\n");
+    printf("......... Y@@@&!!!!!!!!!7777777777777!!!!!!!!7???J@@@@? .................\n");
+    printf("......... !5YYY5555?7????????????????????7777JPPPP5YY5~ .................\n");
+    printf("..........    ^@@@@5?????????????????????????P@@@&.    ..................\n");
+    printf("............. :5555PPPPPPPPPPPPPPPPPPPPPPPPPPB@@@&: .....................\n");
+    printf("..........         G@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&.    ..................\n");
+    printf("......... ^77777777PBGGGGGGB@@@@#GGGGGGGGBBBB#@@@&?777^ .................\n");
+    printf("......    Y@@@@@@@@Y!!!!!!!7&@@@5!!!!!!!!????P@@@@@@@@?    ..............\n");
+    printf(".    .#@@@P!7777777!!!!77777&@@@5!7777777????P@@@@J???B@@@B     .........\n");
+    printf(" :!!!!GBB#Y!7777777JYYYJ777?B###577777777Y555PBBBBJJJ?P###G!!!!. ........\n");
+    printf(" !@@@@?!77777777777#@@@B?????????????????#@@@G!777?JJJ????Y@@@@^    .....\n");
+    printf(" !@@@@J777777777777P###G55555555555555555B###P7777?JJJY555P####7~~~^ ....\n");
+    printf(" !@@@@Y?JJ?77777777777!Y@@@@@@@@@@@@@@@@@J!7777777?JJ?B@@@#???J&@@@Y ....\n");
+    printf(" !@@@@Y?JJ?77777777777!Y#################J77777777?JJ?B@@@#JJJJ#@@@Y ....\n");
+    printf(" !@@@@Y??J?777777777777777777777777777777777777777????B@@@#JJJJ#@@@Y ....\n");
+    printf("......#@@@G??????????????????????????????????????J&@@@@@@@#???J&@@@Y ....\n");
+    printf("......... Y@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&:.......!@@@@~.........\n");
+    printf("......    J&#####################################B:       ~####^   ......\n");
+    printf(".........................................................................\n");
+    printf(".........................................................................\n");
     printf("\n");
-    printf("Mengenerate peta,snake dan makanan...\n");
     printf("\n");
-    printf("Berhasil digenerate!\n");
+    printf(" #####                                                  #     #                                    \n");
+    printf("#     # #    #   ##   #    # ######     ####  #    #    ##   ## ###### ##### ######  ####  #####   \n");
+    printf("#       ##   #  #  #  #   #  #         #    # ##   #    # # # # #        #   #      #    # #    #  \n");
+    printf(" #####  # #  # #    # ####   #####     #    # # #  #    #  #  # #####    #   #####  #    # #    #  \n");
+    printf("      # #  # # ###### #  #   #         #    # #  # #    #     # #        #   #      #    # #####   \n");
+    printf("#     # #   ## #    # #   #  #         #    # #   ##    #     # #        #   #      #    # #   #   \n");
+    printf(" #####  #    # #    # #    # ######     ####  #    #    #     # ######   #   ######  ####  #    #  \n");
     printf("\n");
-    printf("__________________________________________\n");
     printf("\n");
-    printf("Berikut merupakan peta permainan!\n");
-    
+    printf("===========MAIN MENU===========\n");
+    printf("1. PLAY GAME \n");
+    printf("2. EXIT \n");
+    printf("PRESS 1 OR 2\n");
+    printf("ENTER CHOICE : ");
+    jwbn = scaninput();
 
-    CreateSnake(&L);
-    makeObstacle(L,&obstacle);
-    makeFood(&food,L,obstacle);
-    printMap(L,food,meteor,obstacle);
+    while(!IsStrEq(jwbn,satu) && !IsStrEq(jwbn,dua)){
+        printf("Masukkan input yang benar!\n");
+        printf("PRESS 1 OR 2\n");
+        printf("ENTER CHOICE : ");
+        jwbn = scaninput();
+    }
 
-    while(!kena){
-        printf("Turn %d:\n",turn);
-        printf("Silahkan masukkan command anda: ");
-        input = scaninput();
-        if (IsStrEq(input,we) || IsStrEq(input,ah) || IsStrEq(input,es) || IsStrEq(input,de)){
-            address cek = First(L);
-            if(IsStrEq(input,de) && GetInfo(SearchAP(L,Absis(cek)+1,Ordinat(cek))) < 25){
-                printf("Ada badan snake\n");
-            }            
-            else if(IsStrEq(input,ah) && GetInfo(SearchAP(L,Absis(cek)-1,Ordinat(cek))) < 25){
-                printf("Ada badan snake\n");
-            }
-            else if(IsStrEq(input,we) && GetInfo(SearchAP(L,Absis(cek),Ordinat(cek)-1)) < 25){
-                printf("Ada badan snake\n");
-            }
-            else if(IsStrEq(input,es) && GetInfo(SearchAP(L,Absis(cek),Ordinat(cek)+1)) < 25){
-                printf("Ada badan snake\n");
-            }                        
-            else{
-                Move(&L,input);
-                if (foodEaten(&L,food)){
-                    address ekortemp = Last(L);
-                    if(GetInfo(SearchAP(L,Absis(ekortemp)+1,Ordinat(ekortemp))) < 25 && GetInfo(SearchAP(L,Absis(ekortemp)-1,Ordinat(ekortemp))) < 25 && GetInfo(SearchAP(L,Absis(ekortemp),Ordinat(ekortemp)-1)) < 25 && GetInfo(SearchAP(L,Absis(ekortemp),Ordinat(ekortemp)+1)) < 25){
-                        printf("Ekor sudah tidak bisa spawn wkwkwk \n");
+    while (IsStrEq(jwbn,dua)){
+        break;
+    }
+    if(IsStrEq(jwbn,satu)){
+        srand(time(NULL));
+        printf("Selamat datang di snake on meteor!\n");
+        printf("\n");
+        printf("Mengenerate peta,snake dan makanan...\n");
+        printf("\n");
+        printf("Berhasil digenerate!\n");
+        printf("\n");
+        printf("__________________________________________\n");
+        printf("\n");
+        printf("Berikut merupakan peta permainan!\n");
+        
+        CreateSnake(&L);
+        makeObstacle(L,&obstacle);
+        makeFood(&food,L,obstacle);
+        printMap(L,food,meteor,obstacle);
+
+        while(!kena){
+            printf("Turn %d:\n",turn);
+            printf("Silahkan masukkan command anda: ");
+            input = scaninput();
+            if (IsStrEq(input,we) || IsStrEq(input,ah) || IsStrEq(input,es) || IsStrEq(input,de)){
+                address cek = First(L);
+                if(IsStrEq(input,de) && GetInfo(SearchAP(L,Absis(cek)+1,Ordinat(cek))) < 25){
+                    printf("Ada badan snake\n");
+                }            
+                else if(IsStrEq(input,ah) && GetInfo(SearchAP(L,Absis(cek)-1,Ordinat(cek))) < 25){
+                    printf("Ada badan snake\n");
+                }
+                else if(IsStrEq(input,we) && GetInfo(SearchAP(L,Absis(cek),Ordinat(cek)-1)) < 25){
+                    printf("Ada badan snake\n");
+                }
+                else if(IsStrEq(input,es) && GetInfo(SearchAP(L,Absis(cek),Ordinat(cek)+1)) < 25){
+                    printf("Ada badan snake\n");
+                }                        
+                else{
+                    Move(&L,input);
+                    if (foodEaten(&L,food)){
+                        address ekortemp = Last(L);
+                        if(GetInfo(SearchAP(L,Absis(ekortemp)+1,Ordinat(ekortemp))) < 25 && GetInfo(SearchAP(L,Absis(ekortemp)-1,Ordinat(ekortemp))) < 25 && GetInfo(SearchAP(L,Absis(ekortemp),Ordinat(ekortemp)-1)) < 25 && GetInfo(SearchAP(L,Absis(ekortemp),Ordinat(ekortemp)+1)) < 25){
+                            printf("Ekor sudah tidak bisa spawn wkwkwk \n");
+                            score = Info(Last(L)) * 2;
+                            printf("Score : %d\n",score);
+                            kena = true;
+                        }
+                        else{
+                            ekorbaru=*(Last(L));
+                            address alamatekor= AlokasiLDP(((int)Info(Last(L))) + 1);
+                            Absis(alamatekor)= ekorbaru.coor.x;
+                            Ordinat(alamatekor)= ekorbaru.coor.y;
+                            InsertLastLDP(&L,alamatekor);
+                            makeFood(&food,L,obstacle);
+                        }     
+                    }
+                    makeMeteor(&meteor,food);
+                    printMap(L,food,meteor,obstacle);
+                    kenaMeteor(&L,food,meteor);
+
+                    if(!endGame(L,meteor,obstacle)){
+                        turn++;
+                    }
+                    else{
                         score = Info(Last(L)) * 2;
                         printf("Score : %d\n",score);
                         kena = true;
-                    }
-                    else{
-                        ekorbaru=*(Last(L));
-                        address alamatekor= AlokasiLDP(((int)Info(Last(L))) + 1);
-                        Absis(alamatekor)= ekorbaru.coor.x;
-                        Ordinat(alamatekor)= ekorbaru.coor.y;
-                        InsertLastLDP(&L,alamatekor);
-                        makeFood(&food,L,obstacle);
-                    }     
+                    }                
                 }
-                makeMeteor(&meteor,food);
-                printMap(L,food,meteor,obstacle);
-                kenaMeteor(&L,food,meteor);
-
-                if(!endGame(L,meteor,obstacle)){
-                    turn++;
-                }
-                else{
-                    score = Info(Last(L)) * 2;
-                    printf("Score : %d\n",score);
-                    kena = true;
-                }                
-            }
-        } 
-        else{
-            printf("Silahkan memasukkan command yang valid!\n");
-        }   
+            } 
+            else{
+                printf("Silahkan memasukkan command yang valid!\n");
+            }   
+        }
     }
+
+}
+
+
+int main(){
+    som();
     return 0;
 }

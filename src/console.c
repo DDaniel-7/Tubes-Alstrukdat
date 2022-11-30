@@ -391,8 +391,8 @@ void SAVESCOREBOARD (Map *mapGame, int skor){ // ini tapi belum masuk ke file ko
 
 void PrintScore (Map scoreboard, char *nama){
     printf("**** \t\tSCOREBOARD GAME %s\t\t ****\n",nama);
-    printf("| NAMA\t\t\t\t | SKOR \t\t |\n");
-    printf("|--------------------------------------------------------|\n");
+    printf("| NAMA\t\t\t\t | SKOR \t\t\t |\n");
+    printf("|----------------------------------------------------------------|\n");
     Map temp;
     temp = CopyMap(&scoreboard);
     int totalskor = scoreboard.Count;
@@ -402,7 +402,7 @@ void PrintScore (Map scoreboard, char *nama){
         for (int i = 0; i<totalskor;i++){
             int idxmax;
             idxmax = IMAX(&temp);
-            printf("| %s\t\t\t\t | %d \t\t\t |\n",temp.Elements[idxmax].Key,temp.Elements[idxmax].Value);
+            printf("| %s\t\t\t\t | %d \t\t\t\t |\n",temp.Elements[idxmax].Key,temp.Elements[idxmax].Value);
             DeleteMap(&temp,temp.Elements[idxmax].Key);
         }
     }
@@ -411,21 +411,39 @@ void PrintScore (Map scoreboard, char *nama){
                 int idxmax;
                 idxmax = IMAX(&temp);
                 if (LengthStr(temp.Elements[idxmax].Key) < 6){
-                    printf("| %s\t\t\t\t | %d \t\t\t |\n",temp.Elements[idxmax].Key,temp.Elements[idxmax].Value);
-                    DeleteMap(&temp,temp.Elements[idxmax].Key);
+                    if(LengthStr(numToString(temp.Elements[idxmax].Value))>3){
+                        printf("| %s\t\t\t\t | %d \t\t\t |\n",temp.Elements[idxmax].Key,temp.Elements[idxmax].Value);
+                        DeleteMap(&temp,temp.Elements[idxmax].Key);
+                    }
+                    else{
+                        printf("| %s\t\t\t\t | %d \t\t\t\t |\n",temp.Elements[idxmax].Key,temp.Elements[idxmax].Value);
+                        DeleteMap(&temp,temp.Elements[idxmax].Key);
+                    }
                 }
                 else if(LengthStr(temp.Elements[idxmax].Key) > 13 ){
-                    printf("| %s\t\t | %d \t\t\t |\n",temp.Elements[idxmax].Key,temp.Elements[idxmax].Value);
-                    DeleteMap(&temp,temp.Elements[idxmax].Key);
+                    if(LengthStr(numToString(temp.Elements[idxmax].Value))>3){
+                        printf("| %s\t\t | %d \t\t\t |\n",temp.Elements[idxmax].Key,temp.Elements[idxmax].Value);
+                        DeleteMap(&temp,temp.Elements[idxmax].Key);
+                    }
+                    else{
+                        printf("| %s\t\t | %d \t\t\t\t |\n",temp.Elements[idxmax].Key,temp.Elements[idxmax].Value);
+                        DeleteMap(&temp,temp.Elements[idxmax].Key);
+                    }
                 }
                 else{
-                    printf("| %s\t\t\t | %d \t\t\t |\n",temp.Elements[idxmax].Key,temp.Elements[idxmax].Value);
-                    DeleteMap(&temp,temp.Elements[idxmax].Key);
+                    if(LengthStr(numToString(temp.Elements[idxmax].Value))>3){
+                        printf("| %s\t\t\t | %d \t\t\t |\n",temp.Elements[idxmax].Key,temp.Elements[idxmax].Value);
+                        DeleteMap(&temp,temp.Elements[idxmax].Key);
+                    }
+                    else{
+                        printf("| %s\t\t\t | %d \t\t\t\t |\n",temp.Elements[idxmax].Key,temp.Elements[idxmax].Value);
+                        DeleteMap(&temp,temp.Elements[idxmax].Key);
+                    }
                 }
             }
     }
     else{
-        printf("---\t\t     SCOREBOARD KOSONG\t\t       ---\n");
+        printf("---\t\t    SCOREBOARD KOSONG\t\t       ---\n");
     }
     printf("\n");
 }
@@ -438,15 +456,7 @@ void SCOREBOARD (TabMap arrscore, ArrayDin listgame){
 }
 
 
-void SAVESCORE(Map mapGame,FILE * txt){
-    fprintf(txt,"%s\n",intToString(mapGame.Count));
-    Map tempGame = CopyMap(&mapGame);
-    int i=0;
-    for(i;i<mapGame.Count;i++){
-        fprintf(txt,"%s %s\n",tempGame.Elements[IMAX(&tempGame)].Key,intToString(Val(tempGame,tempGame.Elements[IMAX(&tempGame)].Key)));
-        DeleteMap(&tempGame,tempGame.Elements[IMAX(&tempGame)].Key);
-    }
-}
+
 
 void SAVEFILESB (Map scoreboard, FILE *txt){
     fprintf(txt,"%s",numToString(scoreboard.Count));
@@ -536,7 +546,7 @@ void RESETHISTORY(Stack* Hist){
 	else if(IsStrEq(tidak, jawab)){
 		printf("\n");
 		printf("Histori tidak jadi di-reset. Berikut adalah daftar Game yang telah dimainkan\n");
-		HISTORY();
+		// HISTORY();
 	}
 	else {
 		printf("MASUKKAN INPUT YANG VALID!");
