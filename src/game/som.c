@@ -73,62 +73,6 @@ boolean CheckPoint(List L, int a, int b, POINT obstacle)
     return cek;
 }
 
-void generateTail(List *L, POINT obstacle)
-{
-    address z;
-    if (Info(Last(*L)) == 72){
-        z = AlokasiLDP(1);
-    }
-    else{
-        z = AlokasiLDP(((int)Info(Last(*L))) + 1);
-    }
-    address P = (Last(*L));
-    int a = Absis(P);
-    int b = Ordinat(P);
-    if (CheckPoint(*L, (a - 1) % 5, b, obstacle))
-    {
-        if (a - 1 >= 0){
-            a -= 1;
-        }
-        else{
-            a = 4;
-        }
-    }
-    else if (CheckPoint(*L, a + 1, b, obstacle))
-    {
-        if (a + 1 <= 4){
-            a += 1 ;
-        }
-        else{
-            a = 0;
-        }
-    }
-    else if (CheckPoint(*L, a, b + 1, obstacle))
-    {
-        if (b + 1 <= 4){
-            b += 1;
-        }
-        else{
-            b = 0;
-        }
-    }
-    else if (CheckPoint(*L, a, b - 1, obstacle))
-    {
-        if (b - 1 >= 0){
-            b -= 1;
-        }
-        else
-        {
-            b = 4;
-        }
-    }
-    else
-    {
-        Absis(P) = a;
-        Ordinat(P) = b;
-        InsertLastLDP(L,P);
-    }
-}
 
 void CreateSnake(List *L){
     CreateEmptyLDP(L);
