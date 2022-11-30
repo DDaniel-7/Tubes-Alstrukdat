@@ -47,6 +47,88 @@ address SearchAP(List L,int i,int j){
     }
 }
 
+boolean CheckPoint(List L, int a, int b, POINT obstacle)
+{
+    address P = First(L);
+    boolean cek ;
+    cek = true;
+    if (a == -1){
+        a = 4;
+    }
+    else if (a == 5){
+        a = 0;
+    }
+    else if (b == -1){
+        b = 4;
+    }
+    else if (b == 5){
+        b = 0;
+    }
+    while ( P != Nil && cek ){
+        if ((obstacle.x == (a % 5) && obstacle.y == (b % 5)) || (Absis(P) == (a % 5) && Ordinat(P) == (b % 5))){
+            cek = false;
+        }
+        P = Next(P);
+    }
+    return cek;
+}
+
+void generateTail(List *L, POINT obstacle)
+{
+    address z;
+    if (Info(Last(*L)) == 72){
+        z = AlokasiLDP(1);
+    }
+    else{
+        z = AlokasiLDP(((int)Info(Last(*L))) + 1);
+    }
+    address P = (Last(*L));
+    int a = Absis(P);
+    int b = Ordinat(P);
+    if (CheckPoint(*L, (a - 1) % 5, b, obstacle))
+    {
+        if (a - 1 >= 0){
+            a -= 1;
+        }
+        else{
+            a = 4;
+        }
+    }
+    else if (CheckPoint(*L, a + 1, b, obstacle))
+    {
+        if (a + 1 <= 4){
+            a += 1 ;
+        }
+        else{
+            a = 0;
+        }
+    }
+    else if (CheckPoint(*L, a, b + 1, obstacle))
+    {
+        if (b + 1 <= 4){
+            b += 1;
+        }
+        else{
+            b = 0;
+        }
+    }
+    else if (CheckPoint(*L, a, b - 1, obstacle))
+    {
+        if (b - 1 >= 0){
+            b -= 1;
+        }
+        else
+        {
+            b = 4;
+        }
+    }
+    else
+    {
+        Absis(P) = a;
+        Ordinat(P) = b;
+        InsertLastLDP(L,P);
+    }
+}
 
 void CreateSnake(List *L){
     CreateEmptyLDP(L);
@@ -110,6 +192,8 @@ void CreateSnake(List *L){
     InsertLastLDP(L,P2);
     InsertLastLDP(L,P3);
 }
+
+
 
 void move (List *L, char* input){
     char* atas="w";
@@ -308,7 +392,31 @@ void makeFood(POINT *food,List L, POINT obstacle){
 boolean foodEaten(List *L, POINT food){
     return((*First(*L))).coor.x == food.x && ((*First(*L)).coor.y== food.y);
 }
-
+boolean stillHotAF(List L, char* input, POINT meteor){
+    address P = First(L);
+    char* wilujeng="w";
+    char* anting="a";
+    char* sayo="s";
+    char* dori="d";
+    int a = Absis(P);
+    int b = Ordinat(P);
+    boolean why = (a == meteor.x && meteor.y == (b - 1) % 5);
+    boolean are = (b == meteor.y && meteor.x == (a - 1) % 5);
+    boolean demn = (b == meteor.y && meteor.x == (a + 1) % 5);
+    boolean sus = (a == meteor.x && meteor.y == (b + 1) % 5);
+    if(IsStrEq(input,wilujeng)){
+        return why;
+    }
+    else if(IsStrEq(input,anting)){
+        return are;
+    }
+    else if(IsStrEq(input,dori)){
+        return demn;
+    }
+    else if(IsStrEq(input,sayo)){
+        return sus;
+    }
+}
 void kenaMeteor(List *L,POINT food,POINT meteor){
     address a;
     a = First(*L);
@@ -507,6 +615,7 @@ void som(){
     }
     if(IsStrEq(jwbn,satu)){
         srand(time(NULL));
+        CreateSnake(&L);
         printf("Selamat datang di snake on meteor!\n");
         printf("\n");
         printf("Mengenerate peta,snake dan makanan...\n");
@@ -517,7 +626,6 @@ void som(){
         printf("\n");
         printf("Berikut merupakan peta permainan!\n");
         
-        CreateSnake(&L);
         makeObstacle(L,&obstacle);
         makeFood(&food,L,obstacle);
         printMap(L,food,meteor,obstacle);
@@ -529,18 +637,18 @@ void som(){
             if (IsStrEq(input,we) || IsStrEq(input,ah) || IsStrEq(input,es) || IsStrEq(input,de)){
                 address cek = First(L);
                 if(IsStrEq(input,de) && GetInfo(SearchAP(L,Absis(cek)+1,Ordinat(cek))) < 25){
-                    printf("Ada badan snake\n");
+                    printf("Ada badan snake, Input ulang\n");
                 }            
                 else if(IsStrEq(input,ah) && GetInfo(SearchAP(L,Absis(cek)-1,Ordinat(cek))) < 25){
-                    printf("Ada badan snake\n");
+                    printf("Ada badan snake, Input ulang\n");
                 }
                 else if(IsStrEq(input,we) && GetInfo(SearchAP(L,Absis(cek),Ordinat(cek)-1)) < 25){
-                    printf("Ada badan snake\n");
+                    printf("Ada badan snake, Input ulang\n");
                 }
                 else if(IsStrEq(input,es) && GetInfo(SearchAP(L,Absis(cek),Ordinat(cek)+1)) < 25){
-                    printf("Ada badan snake\n");
+                    printf("Ada badan snake, Input ulang\n");
                 }                        
-                else{
+                else if(!stillHotAF(L,input,meteor)){
                     move(&L,input);
                     if (foodEaten(&L,food)){
                         address ekortemp = Last(L);
@@ -566,11 +674,19 @@ void som(){
                     if(!endGame(L,meteor,obstacle)){
                         turn++;
                     }
+                    else if(Info(Last(L)) == 23){
+                        int sekor = 46;
+                        printf("Score : %d\n",score);
+                        kena = true;
+                    }
                     else{
                         score = Info(Last(L)) * 2;
                         printf("Score : %d\n",score);
                         kena = true;
                     }                
+                }
+                else if(stillHotAF(L,input,meteor)){
+                    printf("AWWWW!!! Meteornya masih panas.... Input ulang command dong, jangan kesini...\n");
                 }
             } 
             else{
