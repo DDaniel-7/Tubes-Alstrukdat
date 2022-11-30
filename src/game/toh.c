@@ -18,7 +18,7 @@ void tampil(Stack a, Stack b, Stack c, int n){
     infotype x;
     int temp, spasi;
     temp = n;
-    while(!(IsEmpty(a)) || !(IsEmpty(b)) || !(IsEmpty(c))){
+    while(!(IsEmptyStack(a)) || !(IsEmptyStack(b)) || !(IsEmptyStack(c))){
         if (ctr(a) != temp) {
             spasi = ((2*n-1) - 1)/2;
             tampilkarakter(' ', spasi);
@@ -89,13 +89,13 @@ void tampil(Stack a, Stack b, Stack c, int n){
 
 
 void proses(Stack *s1, Stack *s2, int steps){
-    if(IsEmpty(*s1)){
+    if(IsEmptyStack(*s1)){
         printf("Invalid Command!\n");
         steps--;
     }
     else{
         infotype x;
-        if(IsEmpty(*s2)){
+        if(IsEmptyStack(*s2)){
             Pop(s1,&x);
             Push(s2,x);
         }

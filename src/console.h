@@ -61,7 +61,6 @@ void SCOREBOARD (TabMap arrscore, ArrayDin listgame);
 
 void RESETSCORE (TabMap *SB, ArrayDin *listgame);
 
-void SAVESCORE(Map mapGame,FILE * txt);
 
 void SAVEFILESB (Map scoreboard, FILE *txt);
 

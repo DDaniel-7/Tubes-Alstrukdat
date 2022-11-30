@@ -4,7 +4,7 @@
 #include "charmachine.h"
 
 void CreateEmptyMap(Map *M){
-    (*M).Count = Nil;
+    (*M).Count = 0;
 }
 /* I.S. Sembarang */
 /* F.S. Membuat sebuah Map M kosong berkapasitas MaxEl */
@@ -12,13 +12,13 @@ void CreateEmptyMap(Map *M){
 
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
 boolean IsEmptyMap(Map M){
-    return(M.Count == Nil);
+    return(M.Count == Nill);
 }
 /* Mengirim true jika Map M kosong*/
 /* Ciri Map kosong : count bernilai Nil */
 
 boolean IsFullMap(Map M){
-    return(M.Count == MaxEl);
+    return(M.Count == MaxElmt);
 }
 /* Mengirim true jika Map M penuh */
 /* Ciri Map penuh : count bernilai MaxEl */

@@ -33,6 +33,7 @@ void Push (Stack * S, infotype X)
 {
     Top(*S) += 1;
     InfoTop(*S) = X;
+    S->ctr++;
 }
 
 /* ************ Menghapus sebuah elemen Stack ************ */
@@ -43,4 +44,5 @@ void Pop (Stack * S, infotype* X)
 {
     *X = InfoTop(*S);
     Top(*S) -= 1;
+    S->ctr--;
 }
