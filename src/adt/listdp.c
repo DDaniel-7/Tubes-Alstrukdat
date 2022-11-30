@@ -34,7 +34,7 @@ address AlokasiLDP (char X)
 	}
 	else
 	{
-		return Nil;
+		return 0;
 	}
 }
 void DealokasiLDP (address P)

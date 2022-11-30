@@ -1,9 +1,12 @@
 #include <stdio.h>
-#include "listdp.h"
 #include <time.h>
 #include <stdlib.h>
 #include <math.h>
-#include "wordmachine.h"
+#include "../adt/charmachine.h"
+#include "../adt/wordmachine.h"
+#include "../adt/listdp.h"
+#include "boolean.h"
+#include "som.h"
 
 int GetInfo(address P){
     if(P == NULL){
@@ -108,7 +111,7 @@ void CreateSnake(List *L){
     InsertLastLDP(L,P3);
 }
 
-void Move (List *L, char* input){
+void move (List *L, char* input){
     char* atas="w";
     char* kiri="a";
     char* bawah="s";
@@ -538,7 +541,7 @@ void som(){
                     printf("Ada badan snake\n");
                 }                        
                 else{
-                    Move(&L,input);
+                    move(&L,input);
                     if (foodEaten(&L,food)){
                         address ekortemp = Last(L);
                         if(GetInfo(SearchAP(L,Absis(ekortemp)+1,Ordinat(ekortemp))) < 25 && GetInfo(SearchAP(L,Absis(ekortemp)-1,Ordinat(ekortemp))) < 25 && GetInfo(SearchAP(L,Absis(ekortemp),Ordinat(ekortemp)-1)) < 25 && GetInfo(SearchAP(L,Absis(ekortemp),Ordinat(ekortemp)+1)) < 25){

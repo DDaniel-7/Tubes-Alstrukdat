@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "wordmachine.h": "c",
+        "charmachine.h": "c"
+    }
+}
