@@ -459,7 +459,7 @@ void SAVEFILESB (Map scoreboard, FILE *txt){
     }
 }
 
-void RESETSCORE(TabMap *TabSB, ArrayDin *array)
+void RESETSCORE(TabMap *TabSB, ArrayDin *listgame)
 {   char* jawab;
     char* ya = "YA";
     char* tdk = "TIDAK";
@@ -475,8 +475,8 @@ void RESETSCORE(TabMap *TabSB, ArrayDin *array)
     int k;
     Map *sb;
     boolean found = false;
-    for(i = 0 ; i <= (Length(*array)-1) ; i++ ){
-        printf("%d. %s\n",(i+1),array->A[i]);
+    for(i = 0 ; i <= (Length(*listgame)-1) ; i++ ){
+        printf("%d. %s\n",(i+1),listgame->A[i]);
     }
     // Masukkan input scoreboard yang ingin dihapus
     printf("SCOREBOARD YANG INGIN DIHAPUS : ");
@@ -499,7 +499,7 @@ void RESETSCORE(TabMap *TabSB, ArrayDin *array)
         }    
     }
     else if (nomorint >=1){
-        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD GAME %s (YA/TIDAK)? ", array->A[nomorint-1]);
+        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD GAME %s (YA/TIDAK)? ", listgame->A[nomorint-1]);
         jawab = scaninput();
         if(IsStrEq(ya,jawab)){
             for(k = 0; k < (NbElmtArrMap(*TabSB)); k++){
