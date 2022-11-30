@@ -212,6 +212,7 @@ void PlayGame(Queue *q)
         else{
             srand(time(NULL));
             int score = rand() % 100 + 1;
+            printf("Loading %s ...\n", HEAD(*q));
             printf("Score : %d\n",score);
             dequeue(q,&val);
         }
@@ -469,7 +470,7 @@ void RESETSCORE(TabMap *TabSB, ArrayDin *listgame)
     //Print daftar list game
     printf("DAFTAR SCOREBOARD : \n");  
     printf("0. ALL\n");
-    int i,index = 1;
+    int index = 1;
     int i;
     int j;
     int k;
@@ -508,7 +509,7 @@ void RESETSCORE(TabMap *TabSB, ArrayDin *listgame)
                     CreateEmptyMap(sb);
                     found = true;
                 }
-                if (not(found)){
+                if (!found){
                     printf("INPUT TIDAK TERDAPAT DI SCOREBOARD\n");
                 }
             }
