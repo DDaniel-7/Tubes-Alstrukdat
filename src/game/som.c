@@ -47,32 +47,6 @@ address SearchAP(List L,int i,int j){
     }
 }
 
-boolean CheckPoint(List L, int a, int b, POINT obstacle)
-{
-    address P = First(L);
-    boolean cek ;
-    cek = true;
-    if (a == -1){
-        a = 4;
-    }
-    else if (a == 5){
-        a = 0;
-    }
-    else if (b == -1){
-        b = 4;
-    }
-    else if (b == 5){
-        b = 0;
-    }
-    while ( P != Nil && cek ){
-        if ((obstacle.x == (a % 5) && obstacle.y == (b % 5)) || (Absis(P) == (a % 5) && Ordinat(P) == (b % 5))){
-            cek = false;
-        }
-        P = Next(P);
-    }
-    return cek;
-}
-
 
 void CreateSnake(List *L){
     CreateEmptyLDP(L);
@@ -136,8 +110,6 @@ void CreateSnake(List *L){
     InsertLastLDP(L,P2);
     InsertLastLDP(L,P3);
 }
-
-
 
 void move (List *L, char* input){
     char* atas="w";
