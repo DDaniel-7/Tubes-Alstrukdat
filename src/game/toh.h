@@ -1,5 +1,6 @@
 # include "../adt/stack.h"
 # include "boolean.h"
+# include "../adt/arrayMap.h"
 
 # ifndef TOH_H
 # define TOH_H
@@ -12,6 +13,6 @@ void proses(Stack *s1, Stack *s2, int steps);
 
 int skor(int steps, int disk);
 
-void towerofhanoi();
+void towerofhanoi(TabMap *arrmapsb);
 
 #endif

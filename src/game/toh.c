@@ -6,6 +6,7 @@
 # include "boolean.h"
 # include "../adt/charmachine.h"
 # include "../adt/wordmachine.h"
+# include "../console.h"
 
 void tampilkarakter(char c , int n){
     int i = 0;
@@ -118,7 +119,7 @@ int skor(int steps, int disk){
     return score;
 }
 
-void towerofhanoi()
+void towerofhanoi(TabMap *arrmapsb)
 {
     Stack R,M,L;
     int steps = 0;
@@ -205,9 +206,8 @@ void towerofhanoi()
         printf("Selamat Anda Menyelesaikan Tower of Hanoi dengan %d Steps\n",steps);
         int score = skor(steps, disk);
         printf("SCORE : %d\n",score);
-        printf("masukan nama: ");
-        ADVWORD();
-        char *nama = scanword(currentWord);
+        SAVESCOREBOARD(&arrmapsb->TIMap[2],score);
         break;
     }
+
 }

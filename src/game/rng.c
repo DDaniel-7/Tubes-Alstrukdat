@@ -4,8 +4,10 @@
 # include "rng.h"
 # include "../adt/charmachine.h"
 # include "../adt/wordmachine.h"
+# include "../adt/arrayMap.h"
+# include "../console.h"
 
-void RNG(){
+void RNG(TabMap *arrmapsb){
     srand(time(NULL));
     int number = (rand() % 100)+1;
     int guess = 0;
@@ -68,6 +70,7 @@ void RNG(){
             }
         }
     } 
+    SAVESCOREBOARD(&arrmapsb->TIMap[0],score);
 
 }
 

@@ -4,6 +4,7 @@
 # include "dinerdash.h"
 # include "../adt/queuediner.h"
 # include "../adt/wordmachine.h"
+# include "../console.h"
 
 boolean isIn(QueueDiner q, int food){
 /* Mengembalikan true jika food dalam queue */
@@ -370,7 +371,7 @@ boolean IsAvail(QueueDiner q){
     return res;
 }
 
-void dinerdash(){
+void dinerdash(TabMap *arrmapsb){
     QueueDiner qorder, qcook;
     CreateQueueDiner(&qorder); 
     CreateQueueDiner(&qcook);
@@ -449,7 +450,7 @@ void dinerdash(){
     balance = (balance+1)/1000;
     balance = balance*1000;
     printf("SCORE: %d\n",balance);
-    
+    SAVESCOREBOARD(&arrmapsb->TIMap[1],balance);
 }
 
 /*

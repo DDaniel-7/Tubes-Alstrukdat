@@ -1,5 +1,6 @@
 # include "boolean.h"
 # include "../adt/queuediner.h"
+# include "../adt/arrayMap.h"
 
 # ifndef dinerdash_H
 # define dinerdash_H
@@ -38,7 +39,7 @@ boolean IsEndGame(QueueDiner q, int serving);
 
 boolean IsAvail(QueueDiner q);
 
-void dinerdash();
+void dinerdash(TabMap *arrmapsb);
 
 #endif
 
