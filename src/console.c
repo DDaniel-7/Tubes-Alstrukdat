@@ -1,9 +1,9 @@
 #include "console.h"
 
 
-void start(ArrayDin *arr){
+void start(ArrayDin *arr, TabMap *arrmapsb){
     // memasukkan 5 permainan utama ke dalam list game
-    Load(arr, "../data/config.txt");
+    Load(arr, "../data/config.txt",arrmapsb);
     printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n");
 }
 
@@ -51,16 +51,15 @@ void save(char *namaFile, ArrayDin arr, TabMap arrmapsb){
     fileOutput = fopen((path), "w");
     saveGame(arr, fileOutput);
     int j;
-    for (j = 0 ; j < NbElmtArrMap(arrmapsb)-1 ; j++){
-        SAVEFILESB(arrmapsb.TIMap[j],fileOutput);
+    for (j = 0 ; j < NbElmtArrMap(arrmapsb) ; j++){
         fprintf(fileOutput,"\n");
+        SAVEFILESB(arrmapsb.TIMap[j],fileOutput);
     }
-    SAVEFILESB(arrmapsb.TIMap[j],fileOutput);
     fclose(fileOutput);
     printf("Save file berhasil disimpan\n");
 }
 
-void CreateGame(ArrayDin *array){
+void CreateGame(ArrayDin *array, TabMap *arrmapsb){
     char* gamestring;
     int i = 0;
     boolean found = false;
@@ -90,7 +89,7 @@ void ListGame(ArrayDin *array){
 
 }
 
-void DeleteGame(ArrayDin *array, Queue *queue){
+void DeleteGame(ArrayDin *array, Queue *queue, TabMap *aarrmapsb){
     char* nomor;
     int intnomor,i;
     printf("Masukkan nomor game yang akan dihapus: ");
@@ -150,7 +149,7 @@ void QueueGame(ArrayDin *array, Queue *q){
 }
 
 
-void PlayGame(Queue *q)
+void PlayGame(Queue *q, TabMap *arrmapsb)
 {
     ElType val;
     if(!isEmptyQueue(*q))    //kalau queue game ada isinya maka,
@@ -177,20 +176,20 @@ void PlayGame(Queue *q)
             printf("Loading %s ...\n", HEAD(*q));
             dequeue(q,&val);
             Donat();
-            RNG();  
+            RNG(arrmapsb);  
 
         }
         else if (IsStrEq(HEAD(*q), DinDash)){
             printf("Loading %s ...\n", HEAD(*q));
             dequeue(q,&val);
             Donat();
-            dinerdash();  
+            dinerdash(arrmapsb);  
         }
         else if (IsStrEq(HEAD(*q), TOH)){
             printf("Loading %s ...\n", HEAD(*q));
             dequeue(q,&val);
             Donat();
-            towerofhanoi();  
+            towerofhanoi(arrmapsb);  
         }
 
         /**else if (IsStrEq(HEAD(*q), DIE) || IsStrEq(HEAD(*q), RISE) || IsStrEq(HEAD(*q), ET)){
@@ -224,7 +223,7 @@ void PlayGame(Queue *q)
 }
 
 
-void SkipGame(Queue *q, int n){
+void SkipGame(Queue *q, int n, TabMap *arrmapsb){
     // I.S. queue game terdefinisi dan mungkin kosong
     // F.S. melakukan dequeue n element q pertama dan menjalankan game ke n+1
     //      jika n lebih besar dari jumlah game dalam queue game, maka akan memberikan pesan kesalahan
@@ -243,7 +242,7 @@ void SkipGame(Queue *q, int n){
                 dequeue(q, &game);
             }
             // nama game disini adalah nama game yang akan dimainkan
-            PlayGame(q);
+            PlayGame(q,arrmapsb);
         }
         else if(n == panjang){
             // kasus game tidak dimainkan karena semua game dalam queue game tepat sudah didequeue
@@ -299,11 +298,11 @@ void CommandLain(){
     printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
 }
 
-void Load(ArrayDin *arraygame, char *namafile){
+void Load(ArrayDin *arraygame, char *namafile, TabMap *arrmapsb){
     STARTLOAD(namafile);
     int jumlahgame = currentChar - '0';
     printf("%d\n",jumlahgame);
-    int i,j;
+    int i,j,skor;
     ADVWORDLOAD();
     for (i=0;i<jumlahgame;i++){
         ADVWORDLOAD();
@@ -317,6 +316,47 @@ void Load(ArrayDin *arraygame, char *namafile){
         arraygame->A[i] = namagame;
     }
     (*arraygame).Neff = jumlahgame;
+    CreateEmptyArrMap(arrmapsb);
+    ADVWORDLOAD();
+    int idxarr = 0;
+    if (jumlahgame > 7)
+    {
+        for (i = 7; i < jumlahgame; i++)
+        {
+            InsertLastGame(arrmapsb);
+        }
+    }
+    for (int k = 0; k < jumlahgame; k++)
+    {
+        int jumlahscore = atoi(currentWord.contents);
+        for (j = 0; j < jumlahscore; j++)
+        {
+            ADVWORDLOAD();
+            i = 0;
+            char *nama;
+            nama = (char *)malloc(sizeof(char *) * (CAPACITY));
+            while (currentWord.contents[i] != ' ')
+            {
+                nama[i] = currentWord.contents[i];
+                i++;
+            }
+            nama[i] = '\0';
+            int idx = 0;
+            char *cskor;
+            cskor = (char *)malloc(sizeof(char *) * (CAPACITY));
+            while (currentWord.contents[i] != '\0')
+            {
+                cskor[idx] = currentWord.contents[i];
+                idx++;
+                i++;
+            }
+            cskor[idx] = '\0';
+            skor = atoi(cskor);
+            InsertMap(&arrmapsb->TIMap[idxarr], nama, skor);
+        }
+        ADVWORDLOAD();
+        idxarr++;
+    }
 }
 
 void  *my_memset(void *b, int c, int len)

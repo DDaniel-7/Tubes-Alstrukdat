@@ -23,23 +23,23 @@
 
 
 /////////////COMMAND/////////////
-void start(ArrayDin *arr);
+void start(ArrayDin *arr, TabMap *arrmapsb);
 
 void saveGame(ArrayDin l, FILE *file);
 
 void save(char *namaFile, ArrayDin arr, TabMap arrmapsb);
 
-void CreateGame(ArrayDin *array);
+void CreateGame(ArrayDin *array,TabMap *arrmapsb);
 
 void ListGame(ArrayDin *array);
 
-void DeleteGame(ArrayDin *array, Queue *queue);
+void DeleteGame(ArrayDin *array, Queue *queue,TabMap *arrmapsb);
 
 void QueueGame(ArrayDin *array, Queue *q);
 
-void PlayGame(Queue *q);
+void PlayGame(Queue *q,TabMap *arrmapsb);
 
-void SkipGame(Queue *q, int n);
+void SkipGame(Queue *q, int n, TabMap *arrmapsb);
 
 void quit(Queue *q);
 
@@ -47,7 +47,7 @@ void help();
 
 void CommandLain();
 
-void Load(ArrayDin *arraygame, char *namafile);
+void Load(ArrayDin *arraygame, char *namafile, TabMap *arrmapsb);
 
 void *my_memset(void *b, int c, int len);
 

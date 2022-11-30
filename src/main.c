@@ -71,6 +71,7 @@ int main(){
     char* skipgameinput = "SKIPGAME";
     char* quitinput = "QUIT";
     char* helpinput = "HELP";
+    char* scoreboardinput = "SCOREBOARD";
 
 
     printf("====MAIN MENU====\n");
@@ -83,7 +84,7 @@ int main(){
     while(repeat){
         if(IsStrEq(startinput,input)){
             repeat = false;
-            start(&arraygame);
+            start(&arraygame,&arrmapsb);
             while(!IsStrEq(quitinput,input)){
                 printf("ENTER COMMAND : ");
                 input = scaninput();
@@ -94,19 +95,22 @@ int main(){
                     save(namaFile,arraygame,arrmapsb);
                 }
                 else if(IsStrEq(creategameinput,input)){
-                    CreateGame(&arraygame);
+                    CreateGame(&arraygame,&arrmapsb);
+                }
+                else if(IsStrEq(scoreboardinput,input)){
+                    SCOREBOARD(arrmapsb,arraygame);
                 }
                 else if(IsStrEq(listgameinput,input)){
                     ListGame(&arraygame);
                 }
                 else if(IsStrEq(deletegameinput,input)){
-                    DeleteGame(&arraygame,&queue);
+                    DeleteGame(&arraygame,&queue,&arrmapsb);
                 }
                 else if(IsStrEq(queuegameinput,input)){
                     QueueGame(&arraygame,&queue);
                 }
                 else if(IsStrEq(playgameinput,input)){
-                    PlayGame(&queue);
+                    PlayGame(&queue,&arrmapsb);
                 }
                 else if(IsStrEq(helpinput,input)){
                     help();
@@ -114,7 +118,7 @@ int main(){
                 else if(IsStrEq(skipgameinput,firstword(input))){
                     int manyskip;
                     manyskip = atoi(secondword(input));
-                    SkipGame(&queue,manyskip);
+                    SkipGame(&queue,manyskip,&arrmapsb);
                 }
                 else if(IsStrEq(quitinput,input)){
                     printf("Apakah Anda akan melakukan save? (Y/N) \n");
@@ -136,7 +140,7 @@ int main(){
         else if(IsStrEq(loadinput,firstword(input))){
             repeat = false;
             char* namafilebaru = concatstringbaru(secondword(input));
-            Load(&arraygame, namafilebaru);
+            Load(&arraygame, namafilebaru,&arrmapsb);
             while(!IsStrEq(quitinput,input)){
                 printf("ENTER COMMAND : ");
                 input = scaninput();
@@ -146,19 +150,22 @@ int main(){
                     save(namaFile,arraygame,arrmapsb);
                 }
                 else if(IsStrEq(creategameinput,input)){
-                    CreateGame(&arraygame);
+                    CreateGame(&arraygame,&arrmapsb);
+                }
+                else if(IsStrEq(scoreboardinput,input)){
+                    SCOREBOARD(arrmapsb,arraygame);
                 }
                 else if(IsStrEq(listgameinput,input)){
                     ListGame(&arraygame);
                 }
                 else if(IsStrEq(deletegameinput,input)){
-                    DeleteGame(&arraygame,&queue);
+                    DeleteGame(&arraygame,&queue,&arrmapsb);
                 }
                 else if(IsStrEq(queuegameinput,input)){
                     QueueGame(&arraygame,&queue);
                 }
                 else if(IsStrEq(playgameinput,input)){
-                    PlayGame(&queue);
+                    PlayGame(&queue,&arrmapsb);
                 }
                 else if(IsStrEq(helpinput,input)){
                     help();
@@ -166,7 +173,7 @@ int main(){
                 else if(IsStrEq(skipgameinput,firstword(input))){
                     int manyskip;
                     manyskip = atoi(secondword(input));
-                    SkipGame(&queue,manyskip);
+                    SkipGame(&queue,manyskip,&arrmapsb);
                 }
                 else if(IsStrEq(quitinput,input)){
                     printf("Apakah Anda akan melakukan save? (Y/N) \n");

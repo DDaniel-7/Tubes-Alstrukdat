@@ -15,7 +15,7 @@ void InsertLastGame (TabMap *arrmapgame){
 
 void CreateEmptyArrMap(TabMap *T)
 {
-    T->NeffArrayMap = 5;
+    T->NeffArrayMap = 0;
     InsertLastGame(T);
     InsertLastGame(T);
     InsertLastGame(T);
