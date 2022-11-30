@@ -9,7 +9,7 @@
 #include "boolean.h"
 
 #define Nil NULL
-#define Undefined -99999
+#define Undefined 99999
 
 /* Definisi Type Data */
 typedef struct tElmtlist *address;
