@@ -211,6 +211,7 @@ void PlayGame(Queue *q, TabMap *arrmapsb)
         else{
             srand(time(NULL));
             int score = rand() % 100 + 1;
+            printf("Loading %s ...\n", HEAD(*q));
             printf("Score : %d\n",score);
             dequeue(q,&val);
         }
