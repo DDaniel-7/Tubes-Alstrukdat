@@ -423,12 +423,7 @@ void printMap(List L,POINT food, POINT meteor,POINT obstacle){
     }
 }
 
-<<<<<<< Updated upstream:src/game/som.c
 void som(){
-=======
-
-int main(){
->>>>>>> Stashed changes:src/game/som/snaketest.c
     List L;
     ElmtList ekorbaru;
     char* input;
@@ -546,11 +541,7 @@ int main(){
                     printf("Ada badan snake\n");
                 }                        
                 else{
-<<<<<<< Updated upstream:src/game/som.c
                     move(&L,input);
-=======
-                    Move(&L,input);
->>>>>>> Stashed changes:src/game/som/snaketest.c
                     if (foodEaten(&L,food)){
                         address ekortemp = Last(L);
                         if(GetInfo(SearchAP(L,Absis(ekortemp)+1,Ordinat(ekortemp))) < 25 && GetInfo(SearchAP(L,Absis(ekortemp)-1,Ordinat(ekortemp))) < 25 && GetInfo(SearchAP(L,Absis(ekortemp),Ordinat(ekortemp)-1)) < 25 && GetInfo(SearchAP(L,Absis(ekortemp),Ordinat(ekortemp)+1)) < 25){
