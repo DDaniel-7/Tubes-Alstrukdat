@@ -76,6 +76,7 @@ void CreateGame(ArrayDin *array, TabMap *arrmapsb){
     }
     else{
         InsertLast(array,gamestring);
+        InsertLastGame(arrmapsb);
         printf("Game berhasil ditambahkan.\n");
     }
 }
@@ -503,10 +504,10 @@ void SAVEFILESB (Map scoreboard, FILE *txt){
     Map temp;
     temp = CopyMap(&scoreboard);
     int idxmax;
-    idxmax = IMAX(&scoreboard);
+    idxmax = IMAX(&temp);
     for (int i = 0; i<scoreboard.Count;i++){
         fprintf(txt,"\n%s %s",temp.Elements[idxmax].Key,numToString(temp.Elements[idxmax].Value));
-        DeleteMap(&scoreboard,temp.Elements[idxmax].Key);
+        DeleteMap(&temp,temp.Elements[idxmax].Key);
     }
 }
 
