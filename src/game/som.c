@@ -365,6 +365,9 @@ void kenaMeteor(List *L,POINT food,POINT meteor){
             printf("Anda terkena meteor!\n");
         }
     }
+    else{
+        printf("Anda beruntung tidak terkena meteor! Silahkan lanjutkan permainan\n");
+    }
 }
 
 boolean endGame(List L,POINT meteor, POINT obstacle){
@@ -382,7 +385,8 @@ boolean endGame(List L,POINT meteor, POINT obstacle){
     if (!found){
         address check = First(L);
         if((check->info != 'H')){
-            printf("DUAARRRRRR Kepala snake terkena meteor\n");
+            printf("DUAARRRRRR Kepala snake terkena meteor !\n");
+            Info(First(L))+= 2;
             return true;
         }
         else if(Absis(First(L)) == obstacle.x && Ordinat(First(L)) == obstacle.y){
@@ -570,7 +574,7 @@ void som(){
                         address ekortemp = Last(L);
                         if(GetInfo(SearchAP(L,Absis(ekortemp)+1,Ordinat(ekortemp))) < 25 && GetInfo(SearchAP(L,Absis(ekortemp)-1,Ordinat(ekortemp))) < 25 && GetInfo(SearchAP(L,Absis(ekortemp),Ordinat(ekortemp)-1)) < 25 && GetInfo(SearchAP(L,Absis(ekortemp),Ordinat(ekortemp)+1)) < 25){
                             printf("Ekor sudah tidak bisa spawn wkwkwk \n");
-                            score = Info(Last(L)) * 2;
+                            score = (Info(Last(L))-2) * 2;
                             printf("Score : %d\n",score);
                             kena = true;
                         }
