@@ -1,4 +1,4 @@
-# include "stack.h"
+# include "../adt/stack.h"
 # include "boolean.h"
 
 # ifndef TOH_H
