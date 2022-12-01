@@ -559,7 +559,7 @@ void RESETSCORE(TabMap *TabSB, ArrayDin *listgame)
     nomorint = atoi(nomorgame);
     printf("\n");
     if (nomorint == 0){
-        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD ALL (YA/TIDAK)? ");
+        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SEMUA SCOREBOARD (YA/TIDAK)? ");
         jawab = scaninput();
         if(IsStrEq(ya,jawab)){
             for (j = 0; j < (NbElmtArrMap(*TabSB)); j++){
@@ -567,10 +567,10 @@ void RESETSCORE(TabMap *TabSB, ArrayDin *listgame)
                 CreateEmptyMap(sb);
             }
             printf("\n");
-            printf("Scoreboard berhasil di-reset.");
+            printf("Scoreboard berhasil di-reset.\n");
         }
         else{
-            printf("Scoreboard gagal di-reset.");
+            printf("Scoreboard gagal di-reset.\n");
         }    
     }
     else if (nomorint >=1){
@@ -582,6 +582,7 @@ void RESETSCORE(TabMap *TabSB, ArrayDin *listgame)
                     *sb = GetElmtArrMap(*TabSB, k);
                     CreateEmptyMap(sb);
                     found = true;
+                    printf("Scoreboard berhasil di-reset.\n");
                 }
                 if (!found){
                     printf("INPUT TIDAK TERDAPAT DI SCOREBOARD\n");
