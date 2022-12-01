@@ -2,11 +2,10 @@
 # include <stdlib.h>
 # include <time.h>
 # include <math.h>
-# include "../adt/stack.h"
+# include "stack.h"
 # include "boolean.h"
-# include "../adt/charmachine.h"
-# include "../adt/wordmachine.h"
-# include "../console.h"
+# include "charmachine.h"
+# include "wordmachine.h"
 
 void tampilkarakter(char c , int n){
     int i = 0;
@@ -15,11 +14,11 @@ void tampilkarakter(char c , int n){
     }
 }
 
-void tampil(Stack a, Stack b, Stack c, int n){
-    infotype x;
+void tampil(Stackt a, Stackt b, Stackt c, int n){
+    infotypes x;
     int temp, spasi;
     temp = n;
-    while(!(IsEmptyStack(a)) || !(IsEmptyStack(b)) || !(IsEmptyStack(c))){
+    while(!(IsEmptyStacktoh(a)) || !(IsEmptyStacktoh(b)) || !(IsEmptyStacktoh(c))){
         if (ctr(a) != temp) {
             spasi = ((2*n-1) - 1)/2;
             tampilkarakter(' ', spasi);
@@ -28,7 +27,7 @@ void tampil(Stack a, Stack b, Stack c, int n){
             printf(" ");
         }
         else{
-            Pop(&a, &x);
+            Poptoh(&a, &x);
             spasi = ((2*n-1) - x)/2;
             tampilkarakter(' ', spasi);
             tampilkarakter('*',x);
@@ -43,7 +42,7 @@ void tampil(Stack a, Stack b, Stack c, int n){
             printf(" ");
         }
         else{
-            Pop(&b, &x);
+            Poptoh(&b, &x);
             spasi = ((2*n-1) - x)/2;
             tampilkarakter(' ', spasi);
             tampilkarakter('*',x);
@@ -58,7 +57,7 @@ void tampil(Stack a, Stack b, Stack c, int n){
             printf("\n");
         }
         else{
-            Pop(&c, &x);
+            Poptoh(&c, &x);
             spasi = ((2*n-1) - x)/2;
             tampilkarakter(' ', spasi);
             tampilkarakter('*',x);
@@ -89,16 +88,16 @@ void tampil(Stack a, Stack b, Stack c, int n){
 }
 
 
-void proses(Stack *s1, Stack *s2, int steps){
-    if(IsEmptyStack(*s1)){
+void proses(Stackt *s1, Stackt *s2, int steps){
+    if(IsEmptyStacktoh(*s1)){
         printf("Invalid Command!\n");
         steps--;
     }
     else{
-        infotype x;
-        if(IsEmptyStack(*s2)){
-            Pop(s1,&x);
-            Push(s2,x);
+        infotypes x;
+        if(IsEmptyStacktoh(*s2)){
+            Poptoh(s1,&x);
+            Pushtoh(s2,x);
         }
         else{
             if(InfoTop(*s1) > InfoTop(*s2)){
@@ -106,8 +105,8 @@ void proses(Stack *s1, Stack *s2, int steps){
                 steps--;
             }    
             else{
-                Pop(s1,&x);
-                Push(s2,x);
+                Poptoh(s1,&x);
+                Pushtoh(s2,x);
             }
         }
     }
@@ -119,14 +118,15 @@ int skor(int steps, int disk){
     return score;
 }
 
-void towerofhanoi(TabMap *arrmapsb)
+void towerofhanoi()
 {
-    Stack R,M,L;
+    Stackt R,M,L;
     int steps = 0;
-    CreateEmpty(&R);
-    CreateEmpty(&M);
-    CreateEmpty(&L);
+    CreateEmptytoh(&R);
+    CreateEmptytoh(&M);
+    CreateEmptytoh(&L);
     int disk;
+    printf("SELAMAT DATANG DI TOWER OF HANOI\n");
     printf("Main Menu:\n");
     printf("1. Play Game\n");
     printf("2. Exit\n");
@@ -141,7 +141,7 @@ void towerofhanoi(TabMap *arrmapsb)
         disk = ScanNum(currentWord);
         int i;
         for(i=disk; i>0; i--){
-            Push(&L,(2*i-1));
+            Pushtoh(&L,(2*i-1));
         }
         tampil(L, M, R, disk);
         while(R.ctr != disk){
@@ -206,8 +206,6 @@ void towerofhanoi(TabMap *arrmapsb)
         printf("Selamat Anda Menyelesaikan Tower of Hanoi dengan %d Steps\n",steps);
         int score = skor(steps, disk);
         printf("SCORE : %d\n",score);
-        SAVESCOREBOARD(&arrmapsb->TIMap[2],score);
         break;
     }
-
 }
