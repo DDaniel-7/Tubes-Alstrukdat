@@ -569,7 +569,7 @@ void RESETSCORE(TabMap *TabSB, ArrayDin *listgame)
             printf("\n");
             printf("Scoreboard berhasil di-reset.");
         }
-        else{
+        else if(IsStrEq(jawab,tdk)){
             printf("Scoreboard gagal di-reset.");
         }    
     }
@@ -588,7 +588,7 @@ void RESETSCORE(TabMap *TabSB, ArrayDin *listgame)
                 }
             }
         }
-        else{
+        else if(IsStrEq(jawab,tdk)){
             printf("Scoreboard gagal di-reset.\n");
         }
     }
