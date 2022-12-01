@@ -120,7 +120,7 @@ int main(){
                     QueueGame(&arraygame,&queue);
                 }
                 else if(IsStrEq(playgameinput,input)){
-                    PlayGame(&queue,&arrmapsb);
+                    PlayGame(&queue,&arrmapsb,arraygame);
                 }
                 else if(IsStrEq(helpinput,input)){
                     help();
@@ -128,7 +128,7 @@ int main(){
                 else if(IsStrEq(skipgameinput,firstword(input))){
                     int manyskip;
                     manyskip = atoi(secondword(input));
-                    SkipGame(&queue,manyskip,&arrmapsb);
+                    SkipGame(&queue,manyskip,&arrmapsb,arraygame);
                 }
                 else if(IsStrEq(quitinput,input)){
                     printf("Apakah Anda akan melakukan save? (Y/N) \n");
@@ -181,7 +181,7 @@ int main(){
                     QueueGame(&arraygame,&queue);
                 }
                 else if(IsStrEq(playgameinput,input)){
-                    PlayGame(&queue,&arrmapsb);
+                    PlayGame(&queue,&arrmapsb,arraygame);
                 }
                 else if(IsStrEq(helpinput,input)){
                     help();
@@ -189,7 +189,7 @@ int main(){
                 else if(IsStrEq(skipgameinput,firstword(input))){
                     int manyskip;
                     manyskip = atoi(secondword(input));
-                    SkipGame(&queue,manyskip,&arrmapsb);
+                    SkipGame(&queue,manyskip,&arrmapsb,arraygame);
                 }
                 else if(IsStrEq(quitinput,input)){
                     printf("Apakah Anda akan melakukan save? (Y/N) \n");

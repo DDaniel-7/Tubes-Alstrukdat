@@ -170,7 +170,7 @@ void QueueGame(ArrayDin *array, Queue *q){
 }
 
 
-void PlayGame(Queue *q, TabMap *arrmapsb)
+void PlayGame(Queue *q, TabMap *arrmapsb, ArrayDin arraygame)
 {
     ElType val;
     if(!isEmptyQueue(*q))    //kalau queue game ada isinya maka,
@@ -234,6 +234,9 @@ void PlayGame(Queue *q, TabMap *arrmapsb)
             int score = rand() % 100 + 1;
             printf("Loading %s ...\n", HEAD(*q));
             printf("Score : %d\n",score);
+            int idxgame;
+            idxgame = SearchArrayDin(arraygame,HEAD(*q));
+            SAVESCOREBOARD(&arrmapsb->TIMap[idxgame],score);
             dequeue(q,&val);
         }
     }
@@ -245,7 +248,7 @@ void PlayGame(Queue *q, TabMap *arrmapsb)
 }
 
 
-void SkipGame(Queue *q, int n, TabMap *arrmapsb){
+void SkipGame(Queue *q, int n, TabMap *arrmapsb, ArrayDin arraygame){
     // I.S. queue game terdefinisi dan mungkin kosong
     // F.S. melakukan dequeue n element q pertama dan menjalankan game ke n+1
     //      jika n lebih besar dari jumlah game dalam queue game, maka akan memberikan pesan kesalahan
@@ -264,7 +267,7 @@ void SkipGame(Queue *q, int n, TabMap *arrmapsb){
                 dequeue(q, &game);
             }
             // nama game disini adalah nama game yang akan dimainkan
-            PlayGame(q,arrmapsb);
+            PlayGame(q,arrmapsb,arraygame);
         }
         else if(n == panjang){
             // kasus game tidak dimainkan karena semua game dalam queue game tepat sudah didequeue

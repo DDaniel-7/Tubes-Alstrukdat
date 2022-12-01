@@ -41,9 +41,9 @@ void DeleteGame(ArrayDin *array, Queue *queue,TabMap *arrmapsb);
 
 void QueueGame(ArrayDin *array, Queue *q);
 
-void PlayGame(Queue *q,TabMap *arrmapsb);
+void PlayGame(Queue *q,TabMap *arrmapsb, ArrayDin arraygame);
 
-void SkipGame(Queue *q, int n, TabMap *arrmapsb);
+void SkipGame(Queue *q, int n, TabMap *arrmapsb, ArrayDin arraygame);
 
 void quit(Queue *q);
 
