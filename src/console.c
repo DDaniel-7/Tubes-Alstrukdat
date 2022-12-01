@@ -344,9 +344,9 @@ void Load(ArrayDin *arraygame, char *namafile, TabMap *arrmapsb){
     CreateEmptyArrMap(arrmapsb);
     ADVWORDLOAD();
     int idxarr = 0;
-    if (jumlahgame > 5)
+    if (jumlahgame > 7)
     {
-        for (i = 5; i < jumlahgame; i++)
+        for (i = 7; i < jumlahgame; i++)
         {
             InsertLastGame(arrmapsb);
         }
@@ -544,7 +544,6 @@ void RESETSCORE(TabMap *TabSB, ArrayDin *listgame)
     int j;
     int k;
     Map *sb;
-    boolean found = false;
     //Print daftar list game
     printf("DAFTAR SCOREBOARD : \n");  
     printf("0. ALL\n");
@@ -566,7 +565,7 @@ void RESETSCORE(TabMap *TabSB, ArrayDin *listgame)
         printf("INPUT TIDAK VALID\n");
         return;
     }
-
+    // cek jawaban
     jawab = scaninput();
     if(IsStrEq(ya,jawab)){
         if(nomorint == 0){
@@ -575,7 +574,7 @@ void RESETSCORE(TabMap *TabSB, ArrayDin *listgame)
                 CreateEmptyMap(sb);
             }
             printf("\n");
-            printf("Scoreboard berhasil di-reset.\n");
+            printf("Scoreboard berhasil di-reset.");
         }
         else{
             for(k = 0; k < (NbElmtArrMap(*TabSB)); k++){
