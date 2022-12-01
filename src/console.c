@@ -660,3 +660,27 @@ void LoadHis(Stack *s, char *namafile){
     (*s).TOP = jumlahhistorygame-1;
     pembalik(s);
 }
+
+void pembalik(Stack *s){
+
+    // KAMUS LOKAL
+    Stack temp;
+    int i;
+    infotype sementara;
+
+    // ALGORITMA
+    CreateEmpty(&temp);
+    for(i = 0 ; i <= (*s).TOP ; i++){
+        Push(&temp, (*s).T[i]);
+    }
+
+    // kosongkan s terlebih dahulu
+    CreateEmpty(s);
+
+    // masukkan element dari temp ke s
+    while(!IsEmptyStack(temp)){
+        Pop(&temp, &sementara);
+        Push(s,sementara);
+    }
+}
+
