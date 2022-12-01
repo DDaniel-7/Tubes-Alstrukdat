@@ -16,6 +16,7 @@
 #include "adt/arrayMap.h"
 #include "adt/listdp.h"
 #include "adt/set.h"
+#include "adt/stackChar.h"
 #include "boolean.h"
 
 //GAME
