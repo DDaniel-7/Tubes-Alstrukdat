@@ -76,4 +76,6 @@ void LoadHis(Stack *s, char *namafile);
 
 void saveGameHis(Stack s, FILE *file);
 
+void pembalik(Stack *s);
+
 #endif
