@@ -30,6 +30,26 @@ void saveGame(ArrayDin l, FILE *file){
     fprintf(file, "%s", judulGame);
 }
 
+void saveGameHis(Stack s, FILE *file){
+    // Prosedur menulis list dari game, baik history ataupun keseluruhan permainan kedalam suatu file txt
+
+    // KAMUS LOKAL
+    int ctr, i;
+    char *judulGame;
+
+    // ALGOROTMA
+
+    fprintf(file, "%d\n", s.TOP+1); // jumalah gamenya
+    ctr = s.TOP+1;
+    i = ctr-1;
+    while(ctr >= 1){
+        judulGame = s.T[i];
+        fprintf(file, "%s\n", judulGame);
+        ctr--;
+        i--;
+    }
+}
+
 void save(char *namaFile, ArrayDin arr, TabMap arrmapsb){
     //fungsi melakukan save terhadap state dari permainan yang terkandung dalam array
     // dan menyimpannya dalam sebuah file konfigurasi txt
@@ -573,6 +593,33 @@ void RESETSCORE(TabMap *TabSB, ArrayDin *listgame)
         printf("INPUT TIDAK VALID\n");
     }
 }
+
+void history(Stack s, int banyak){
+
+
+    // KAMUS LOKAL
+    int i, ctr;
+    infotype permainan;
+
+    // ALGORITMA
+    if(IsEmptyStack(s)){
+        // kasus stack kosong
+        printf("Belum ada permainan pada daftar riwayat\n");
+    }
+    else{
+        // stack tidak kosong
+        printf("Berikut adalah daftar Game yang telah dimainkan: \n");
+        ctr = 1;
+        i = s.TOP;
+        while(ctr <= banyak && i >= 0){
+            permainan = s.T[i];
+            printf("%d. %s\n", ctr, permainan);
+            ctr++;
+            i--;
+        }
+    }
+}
+
 void RESETHISTORY(Stack* Hist){
 	char* ya = "YA";
 	char* tidak = "TIDAK";
@@ -592,4 +639,24 @@ void RESETHISTORY(Stack* Hist){
 	else {
 		printf("MASUKKAN INPUT YANG VALID!");
 	}
+}
+
+void LoadHis(Stack *s, char *namafile){
+    STARTLOAD(namafile);
+    int jumlahhistorygame = currentChar - '0';
+    printf("%d\n",jumlahhistorygame);
+    int a,b;
+    ADVWORDLOAD();
+    for (a=0;a<jumlahhistorygame;a++){
+        ADVWORDLOAD();
+        char *namagame;
+        namagame = (char *)malloc(currentWord.length * sizeof (char));
+        for (b = 0; b < currentWord.length ; b++){
+            *(namagame + b) = currentWord.contents[b];
+        }
+        *(namagame + currentWord.length) = '\0';
+        s->T[a] = namagame;
+    }
+    (*s).TOP = jumlahhistorygame-1;
+    pembalik(s);
 }
