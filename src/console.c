@@ -537,19 +537,17 @@ void SAVEFILESB (Map scoreboard, FILE *txt){
 void RESETSCORE(TabMap *TabSB, ArrayDin *listgame)
 {   char* jawab;
     char* ya = "YA";
-    char* tdk = "TIDAK";
+    char* tidak = "TIDAK";
     int nomorint;
     char* nomorgame;
-
-    //Print daftar list game
-    printf("DAFTAR SCOREBOARD : \n");  
-    printf("0. ALL\n");
-    int index = 1;
     int i;
     int j;
     int k;
     Map *sb;
     boolean found = false;
+    //Print daftar list game
+    printf("DAFTAR SCOREBOARD : \n");  
+    printf("0. ALL\n");
     for(i = 0 ; i <= (Length(*listgame)-1) ; i++ ){
         printf("%d. %s\n",(i+1),listgame->A[i]);
     }
@@ -560,8 +558,18 @@ void RESETSCORE(TabMap *TabSB, ArrayDin *listgame)
     printf("\n");
     if (nomorint == 0){
         printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SEMUA SCOREBOARD (YA/TIDAK)? ");
-        jawab = scaninput();
-        if(IsStrEq(ya,jawab)){
+    }
+    else if (nomorint >=1 && nomorint <= Length(*listgame)){
+        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD GAME %s (YA/TIDAK)? ", listgame->A[nomorint-1]);
+    }
+    else{
+        printf("INPUT TIDAK VALID\n");
+        return;
+    }
+
+    jawab = scaninput();
+    if(IsStrEq(ya,jawab)){
+        if(nomorint == 0){
             for (j = 0; j < (NbElmtArrMap(*TabSB)); j++){
                 *sb = GetElmtArrMap(*TabSB, j);
                 CreateEmptyMap(sb);
@@ -570,31 +578,20 @@ void RESETSCORE(TabMap *TabSB, ArrayDin *listgame)
             printf("Scoreboard berhasil di-reset.\n");
         }
         else{
-            printf("Scoreboard gagal di-reset.\n");
-        }    
-    }
-    else if (nomorint >=1){
-        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD GAME %s (YA/TIDAK)? ", listgame->A[nomorint-1]);
-        jawab = scaninput();
-        if(IsStrEq(ya,jawab)){
             for(k = 0; k < (NbElmtArrMap(*TabSB)); k++){
                 if (nomorint-1 == k){
                     *sb = GetElmtArrMap(*TabSB, k);
                     CreateEmptyMap(sb);
-                    found = true;
                     printf("Scoreboard berhasil di-reset.\n");
-                }
-                if (!found){
-                    printf("INPUT TIDAK TERDAPAT DI SCOREBOARD\n");
                 }
             }
         }
-        else{
-            printf("Scoreboard gagal di-reset.\n");
-        }
+    }
+    else if (IsStrEq(tidak, jawab)){
+        printf("Scoreboard batal di-reset.\n");
     }
     else{
-        printf("INPUT TIDAK VALID\n");
+        printf("INPUT TIDAK VALID. Scoreboard batal di-reset.\n");
     }
 }
 
