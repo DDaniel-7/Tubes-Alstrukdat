@@ -8,13 +8,12 @@ int main(){
     ArrayDin arraygame;
     Queue queue;
     TabMap arrmapsb;
-    Stack history;
-    CreateEmpty(&history);
+    Stack hist;
+    CreateEmpty(&hist);
     arraygame = MakeArrayDin(&arraygame);
     CreateQueue(&queue);
     CreateEmptyArrMap(&arrmapsb);
     
-
     //OUTPUT
     printf("                                 .:^^^^^^^^^^~~~~~~~~^^^:...                  \n");
     printf("                                ~Y7!~~~~~~~!7777777777???JJJJJ?7!.            \n");
@@ -89,7 +88,7 @@ int main(){
     while(repeat){
         if(IsStrEq(startinput,input)){
             repeat = false;
-            start(&arraygame,&arrmapsb);
+            start(&arraygame,&arrmapsb,&hist);
             while(!IsStrEq(quitinput,input)){
                 printf("ENTER COMMAND : ");
                 input = scaninput();
@@ -97,7 +96,7 @@ int main(){
                 if(IsStrEq(saveinput,firstword(input))){
                     char* namaFile;
                     namaFile = secondword(input);
-                    save(namaFile,arraygame,arrmapsb);
+                    save(namaFile,arraygame,arrmapsb,hist);
                 }
                 else if(IsStrEq(creategameinput,input)){
                     CreateGame(&arraygame,&arrmapsb);
@@ -105,8 +104,13 @@ int main(){
                 else if(IsStrEq(scoreboardinput,input)){
                     SCOREBOARD(arrmapsb,arraygame);
                 }
+                else if(IsStrEq(hstry,firstword(input))){
+                    int bnykhistory;
+                    bnykhistory = atoi(secondword(input));
+                    history(hist,bnykhistory);
+                }
                 else if(IsStrEq(resethistory,input)){
-                    RESETHISTORY(&history);
+                    RESETHISTORY(&hist);
                 }
                 else if(IsStrEq(resetscoreboard,input)){
                     RESETSCORE(&arrmapsb,&arraygame);
@@ -136,7 +140,7 @@ int main(){
                     savekah = scaninput();
                     if(IsStrEq(savekah,ye)){
                         char* namefile = "savedfile.txt";
-                        save(namefile,arraygame,arrmapsb);
+                        save(namefile,arraygame,arrmapsb,hist);
                     }
 
                     printf("====SEE YOU AGAIN====\n");
@@ -151,14 +155,14 @@ int main(){
         else if(IsStrEq(loadinput,firstword(input))){
             repeat = false;
             char* namafilebaru = concatstringbaru(secondword(input));
-            Load(&arraygame, namafilebaru,&arrmapsb);
+            Load(&arraygame, namafilebaru,&arrmapsb,&hist);
             while(!IsStrEq(quitinput,input)){
                 printf("ENTER COMMAND : ");
                 input = scaninput();
                 if(IsStrEq(saveinput,firstword(input))){
                     char* namaFile;
                     namaFile = secondword(input);
-                    save(namaFile,arraygame,arrmapsb);
+                    save(namaFile,arraygame,arrmapsb,hist);
                 }
                 else if(IsStrEq(creategameinput,input)){
                     CreateGame(&arraygame,&arrmapsb);
@@ -166,11 +170,16 @@ int main(){
                 else if(IsStrEq(scoreboardinput,input)){
                     SCOREBOARD(arrmapsb,arraygame);
                 }
+                else if(IsStrEq(hstry,firstword(input))){
+                    int bnykhistory;
+                    bnykhistory = atoi(secondword(input));
+                    history(hist,bnykhistory);
+                }
                 else if(IsStrEq(resetscoreboard,input)){
                     RESETSCORE(&arrmapsb,&arraygame);
                 }
                 else if(IsStrEq(resethistory,input)){
-                    RESETHISTORY(&history);
+                    RESETHISTORY(&hist);
                 }
                 else if(IsStrEq(listgameinput,input)){
                     ListGame(&arraygame);
@@ -198,7 +207,7 @@ int main(){
 
                     if(IsStrEq(savekah,ye)){
                         char* namefile = "savedfile.txt";
-                        save(namefile,arraygame,arrmapsb);
+                        save(namefile,arraygame,arrmapsb,hist);
                     }
                     printf("====SEE YOU AGAIN====\n");
                 }          

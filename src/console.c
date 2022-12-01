@@ -1,9 +1,9 @@
 #include "console.h"
 
 
-void start(ArrayDin *arr, TabMap *arrmapsb){
+void start(ArrayDin *arr, TabMap *arrmapsb, Stack *s){
     // memasukkan 5 permainan utama ke dalam list game
-    Load(arr, "../data/config.txt",arrmapsb);
+    Load(arr, "../data/config.txt",arrmapsb,s);
     printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n");
 }
 
@@ -50,7 +50,7 @@ void saveGameHis(Stack s, FILE *file){
     }
 }
 
-void save(char *namaFile, ArrayDin arr, TabMap arrmapsb){
+void save(char *namaFile, ArrayDin arr, TabMap arrmapsb,Stack s){
     //fungsi melakukan save terhadap state dari permainan yang terkandung dalam array
     // dan menyimpannya dalam sebuah file konfigurasi txt
     // jika file sudah ada, maka akan ditanya konfirmasi untuk menimpa file yang sudah ada
@@ -70,6 +70,7 @@ void save(char *namaFile, ArrayDin arr, TabMap arrmapsb){
     // ALGORITMA
     fileOutput = fopen((path), "w");
     saveGame(arr, fileOutput);
+    saveGameHis(s, fileOutput);
     int j;
     for (j = 0 ; j < NbElmtArrMap(arrmapsb) ; j++){
         fprintf(fileOutput,"\n");
@@ -323,7 +324,7 @@ void CommandLain(){
     printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
 }
 
-void Load(ArrayDin *arraygame, char *namafile, TabMap *arrmapsb){
+void Load(ArrayDin *arraygame, char *namafile, TabMap *arrmapsb, Stack *s){
     STARTLOAD(namafile);
     int jumlahgame = currentChar - '0';
     printf("%d\n",jumlahgame);
@@ -341,6 +342,25 @@ void Load(ArrayDin *arraygame, char *namafile, TabMap *arrmapsb){
         arraygame->A[i] = namagame;
     }
     (*arraygame).Neff = jumlahgame;
+/////////////////APUS KALO ERROR /////////
+    ADVWORDLOAD();
+    int jumlahhistorygame = currentChar - '0';
+    printf("%d\n",jumlahhistorygame);
+    int a,b;
+    ADVWORDLOAD();
+    for (a=0;a<jumlahhistorygame;a++){
+        ADVWORDLOAD();
+        char *namagame;
+        namagame = (char *)malloc(currentWord.length * sizeof (char));
+        for (b = 0; b < currentWord.length ; b++){
+            *(namagame + b) = currentWord.contents[b];
+        }
+        *(namagame + currentWord.length) = '\0';
+        s->T[a] = namagame;
+    }
+    (*s).TOP = jumlahhistorygame-1;
+    pembalik(s);
+///////////////// APUS KALO ERROR /////////
     CreateEmptyArrMap(arrmapsb);
     ADVWORDLOAD();
     int idxarr = 0;
@@ -629,7 +649,7 @@ void RESETHISTORY(Stack* Hist){
 	if(IsStrEq(ya, jawab)){
 		CreateEmpty(Hist);
 		printf("\n");
-		printf("Histori berhasil di-reset.");
+		printf("Histori berhasil di-reset.\n");
 	}
 	else if(IsStrEq(tidak, jawab)){
 		printf("\n");

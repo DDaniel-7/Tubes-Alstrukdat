@@ -27,11 +27,11 @@
 
 
 /////////////COMMAND/////////////
-void start(ArrayDin *arr, TabMap *arrmapsb);
+void start(ArrayDin *arr, TabMap *arrmapsb,Stack *s);
 
 void saveGame(ArrayDin l, FILE *file);
 
-void save(char *namaFile, ArrayDin arr, TabMap arrmapsb);
+void save(char *namaFile, ArrayDin arr, TabMap arrmapsb, Stack s);
 
 void CreateGame(ArrayDin *array,TabMap *arrmapsb);
 
@@ -51,7 +51,7 @@ void help();
 
 void CommandLain();
 
-void Load(ArrayDin *arraygame, char *namafile, TabMap *arrmapsb);
+void Load(ArrayDin *arraygame, char *namafile, TabMap *arrmapsb, Stack *s);
 
 void *my_memset(void *b, int c, int len);
 
