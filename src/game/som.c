@@ -574,7 +574,7 @@ void som(){
                         address ekortemp = Last(L);
                         if(GetInfo(SearchAP(L,Absis(ekortemp)+1,Ordinat(ekortemp))) < 25 && GetInfo(SearchAP(L,Absis(ekortemp)-1,Ordinat(ekortemp))) < 25 && GetInfo(SearchAP(L,Absis(ekortemp),Ordinat(ekortemp)-1)) < 25 && GetInfo(SearchAP(L,Absis(ekortemp),Ordinat(ekortemp)+1)) < 25){
                             printf("Ekor sudah tidak bisa spawn wkwkwk \n");
-                            score = (Info(Last(L))-2) * 2;
+                            score = Info(Last(L)) * 2;
                             printf("Score : %d\n",score);
                             kena = true;
                         }
