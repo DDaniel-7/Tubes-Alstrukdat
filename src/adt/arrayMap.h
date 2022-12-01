@@ -38,6 +38,11 @@ typedef struct
 
 void InsertLastGame (TabMap *arrmapgame);
 
+void JustDeleteAtArrMap(TabMap *T, IdxTypeArrayMap i);
+/* I.S. T terdefinisi, tidak kosong, i merupakan indeks lojik yang valid di T. */
+/* F.S. elemen T pada indeks ke-i dibuat menjadi map kosong. */
+
+
 void CreateEmptyArrMap(TabMap *T);
 /* I.S. sembarang */
 /* F.S. Terbentuk tabel T kosong dengan kapasitas IdxMax-IdxMin+1 */
@@ -113,6 +118,7 @@ void DeleteFirstArrMap(TabMap *T);
 
 void JustDeleteAtArrMap(TabMap *T, IdxTypeArrayMap i);
 /* I.S. T terdefinisi, tidak kosong, i merupakan indeks lojik yang valid di T. */
+/* F.S. elemen T pada indeks ke-i dibuat menjadi map kosong. */
 
 
 void DeleteAtArrMap(TabMap *T, IdxTypeArrayMap i);
