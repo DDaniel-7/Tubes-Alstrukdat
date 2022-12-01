@@ -6,7 +6,6 @@
 /* Konstruktor : create tabel kosong */
 
 
-
 void InsertLastGame (TabMap *arrmapgame){
     Map m;
     CreateEmptyMap(&m);
@@ -170,6 +169,19 @@ void DeleteFirstArrMap(TabMap *T)
 /* I.S. L terdefinisi, tidak kosong. */
 /* F.S. F diset dengan elemen pertama L, elemen pertama L dihapus dari L. */
 
+void JustDeleteAtArrMap(TabMap *T, IdxTypeArrayMap i)
+{
+    int j;
+    int k;
+    Map temp1;
+    Map temp2;
+    CreateEmptyMap(&temp1);
+    for (j = 0; j < NbElmtArrMap(*T); j++){
+        if (j == i){
+            (*T).TIMap[j] = temp1;
+        }
+    }
+}
 void DeleteAtArrMap(TabMap *T, IdxTypeArrayMap i)
 {
     int j;

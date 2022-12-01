@@ -10,6 +10,7 @@
 #define IdxMinArrayMap 0
 #define IdxUndefArrayMap -999 /* indeks tak terdefinisi*/
 
+
 /* Definisi elemen dan koleksi objek */
 typedef int IdxTypeArrayMap;
 typedef Map ElTypeArrayMap;
@@ -109,6 +110,10 @@ void InsertLastArrMap(TabMap *T, ElTypeArrayMap v);
 void DeleteFirstArrMap(TabMap *T);
 /* I.S. T terdefinisi, tidak kosong. */
 /* F.S. elemen pertama T dihapus dari T. */
+
+void JustDeleteAtArrMap(TabMap *T, IdxTypeArrayMap i);
+/* I.S. T terdefinisi, tidak kosong, i merupakan indeks lojik yang valid di T. */
+
 
 void DeleteAtArrMap(TabMap *T, IdxTypeArrayMap i);
 /* I.S. T terdefinisi, tidak kosong, i merupakan indeks lojik yang valid di L. */

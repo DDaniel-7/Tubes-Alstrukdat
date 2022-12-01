@@ -568,20 +568,19 @@ void RESETSCORE(TabMap *TabSB, ArrayDin *listgame)
     // cek jawaban
     jawab = scaninput();
     if(IsStrEq(ya,jawab)){
-        if(nomorint == 0){
+        if(nomorint == 0){      //RESET SEMUA SCOREBOARD
             for (j = 0; j < (NbElmtArrMap(*TabSB)); j++){
-                *sb = GetElmtArrMap(*TabSB, j);
-                CreateEmptyMap(sb);
+                JustDeleteAtArrMap(TabSB, j);
             }
             //CreateEmptyArrMap(TabSB);
             printf("\n");
             printf("Scoreboard berhasil di-reset.\n");
         }
-        else{
+        else{                   //RESET SCOREBOARD SALAH SATU GAME 
             for(k = 0; k < (NbElmtArrMap(*TabSB)); k++){
                 if (nomorint-1 == k){
-                    *sb = GetElmtArrMap(*TabSB, k);
-                    CreateEmptyMap(sb);
+                    JustDeleteAtArrMap(TabSB, k);
+                    printf("\n");
                     printf("Scoreboard berhasil di-reset.\n");
                 }
             }
