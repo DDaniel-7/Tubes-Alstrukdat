@@ -14,12 +14,15 @@
 #include "adt/queuediner.h"
 #include "adt/map.h"  
 #include "adt/arrayMap.h"
+#include "adt/listdp.h"
+#include "adt/set.h"
 #include "boolean.h"
 
 //GAME
 #include "game/rng.h"
 #include "game/toh.h"
 #include "game/dinerdash.h"
+#include "game/som.h"
 
 
 /////////////COMMAND/////////////

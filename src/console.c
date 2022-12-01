@@ -207,7 +207,7 @@ void PlayGame(Queue *q, TabMap *arrmapsb)
             printf("Loading %s ...\n", HEAD(*q));
             dequeue(q,&val);
             Donat();
-            ///snake();
+            som();
         } 
         else{
             srand(time(NULL));

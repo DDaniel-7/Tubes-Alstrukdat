@@ -8,18 +8,18 @@
 #include "boolean.h"
 #include "som.h"
 
-int GetInfo(address P){
+int GetInfo(addressLDP P){
     if(P == NULL){
-        return Undefined;
+        return UndefLDP;
     }
     else{
         return Info(P);
     }
 }
 boolean SearchPoint(List L,int X,int Y){
-    address S = First(L);
+    addressLDP S = First(L);
     boolean found = true;
-    while (S != Nil && found){
+    while (S != NilLDP && found){
         if (Absis(S) == X && Ordinat(S) == Y){
             found = false;
         }
@@ -28,10 +28,10 @@ boolean SearchPoint(List L,int X,int Y){
     return found;
 }
 
-address SearchAP(List L,int i,int j){
-    address P = First(L);
+addressLDP SearchAP(List L,int i,int j){
+    addressLDP P = First(L);
     boolean found = false;
-    while(P != Nil && !found){
+    while(P != NilLDP && !found){
         if (Absis(P)==i && Ordinat(P)==j){
             found = true;
         }
@@ -43,7 +43,7 @@ address SearchAP(List L,int i,int j){
         return P; 
     }
     else{
-        return Nil;
+        return NilLDP;
     }
 }
 
@@ -51,9 +51,9 @@ address SearchAP(List L,int i,int j){
 void CreateSnake(List *L){
     CreateEmptyLDP(L);
     srand(time(NULL));
-    address P1=AlokasiLDP(72); 
-    address P2=AlokasiLDP(1);
-    address P3=AlokasiLDP(2);
+    addressLDP P1=AlokasiLDP(72); 
+    addressLDP P2=AlokasiLDP(1);
+    addressLDP P3=AlokasiLDP(2);
 
     Absis(P1)=rand()%5;
     Ordinat(P1)=rand()%5;
@@ -116,46 +116,46 @@ void move (List *L, char* input){
     char* kiri="a";
     char* bawah="s";
     char* kanan="d";
-    address P=Last(*L);
+    addressLDP P=Last(*L);
     POINT temp;
     if (IsStrEq(input,atas)){
         temp=(*Prev(P)).coor;
-        while (Prev(P)!=Nil){
+        while (Prev(P)!=NilLDP){
             (*P).coor=temp;
             P=(P)->prev;
-            if (Prev(P)!=Nil){
+            if (Prev(P)!=NilLDP){
                 temp=(*Prev(P)).coor;
             }
         }
     }else if(IsStrEq(input,bawah)){
         temp=(*Prev(P)).coor;
-        while (Prev(P)!=Nil){
+        while (Prev(P)!=NilLDP){
             (*P).coor=temp;
             P = (P)->prev;
-            if (Prev(P)!=Nil){
+            if (Prev(P)!=NilLDP){
                 temp=(*Prev(P)).coor;
             }
         }
     }else if(IsStrEq(input,kanan)){
         temp=(*Prev(P)).coor;
-        while (Prev(P)!=Nil){
+        while (Prev(P)!=NilLDP){
             (*P).coor=temp;
             P = (P)->prev;
-            if (Prev(P)!=Nil){
+            if (Prev(P)!=NilLDP){
                 temp=(*Prev(P)).coor;
             }
         }
     }else if(IsStrEq(input,kiri)){
         temp=(*Prev(P)).coor;
-        while (Prev(P)!=Nil){
+        while (Prev(P)!=NilLDP){
             (*P).coor=temp;
             P = (P)->prev;
-            if (Prev(P)!=Nil){
+            if (Prev(P)!=NilLDP){
                 temp=(*Prev(P)).coor;
             }
         }
     }
-    address a =First(*L);
+    addressLDP a =First(*L);
     if (IsStrEq(input,kiri)){
         if (Absis(a) == 0){   
             Absis(a) = 4;
@@ -309,7 +309,7 @@ boolean foodEaten(List *L, POINT food){
     return((*First(*L))).coor.x == food.x && ((*First(*L)).coor.y== food.y);
 }
 boolean stillHotAF(List L, char* input, POINT meteor){
-    address P = First(L);
+    addressLDP P = First(L);
     char* wilujeng="w";
     char* anting="a";
     char* sayo="s";
@@ -334,14 +334,14 @@ boolean stillHotAF(List L, char* input, POINT meteor){
     }
 }
 void kenaMeteor(List *L,POINT food,POINT meteor){
-    address a;
+    addressLDP a;
     a = First(*L);
-    address b;
+    addressLDP b;
     b = Last(*L);
     boolean found;
     found = false;
 
-    while(a != Nil && !found){
+    while(a != NilLDP && !found){
         if (Absis(a) == meteor.x && Ordinat(b) == meteor.y){
             found = true;    
         }
@@ -349,7 +349,7 @@ void kenaMeteor(List *L,POINT food,POINT meteor){
     }
 
     if (found){
-        if (a == Nil){
+        if (a == NilLDP){
             DelLastLDP(L,&b);
          }
         else if(a == Next(First(*L))){
@@ -371,19 +371,19 @@ void kenaMeteor(List *L,POINT food,POINT meteor){
 }
 
 boolean endGame(List L,POINT meteor, POINT obstacle){
-    address a;
+    addressLDP a;
     a = First(L);
     boolean found=false;
     a = Next(a);
 
-    while (!found && a != Nil){
+    while (!found && a != NilLDP){
         if (Absis(a) == Absis(First(L)) && Ordinat(a) == Ordinat(First(L))){
             found=true;
         }
         a = Next(a);
     }
     if (!found){
-        address check = First(L);
+        addressLDP check = First(L);
         if((check->info != 'H')){
             printf("DUAARRRRRR Kepala snake terkena meteor !\n");
             Info(First(L))+= 2;
@@ -461,10 +461,10 @@ void som(){
     int score;
     char*jwbn;
 
-    food.x = Undefined;
-    food.y = Undefined;
-    meteor.x = Undefined;
-    meteor.y = Undefined;
+    food.x = UndefLDP;
+    food.y = UndefLDP;
+    meteor.x = UndefLDP;
+    meteor.y = UndefLDP;
 
     char* we = "w";
     char* ah = "a";
@@ -555,7 +555,7 @@ void som(){
             printf("Silahkan masukkan command anda: ");
             input = scaninput();
             if (IsStrEq(input,we) || IsStrEq(input,ah) || IsStrEq(input,es) || IsStrEq(input,de)){
-                address cek = First(L);
+                addressLDP cek = First(L);
                 if(IsStrEq(input,de) && GetInfo(SearchAP(L,Absis(cek)+1,Ordinat(cek))) < 25){
                     printf("Ada badan snake, Input ulang\n");
                 }            
@@ -571,7 +571,7 @@ void som(){
                 else if(!stillHotAF(L,input,meteor)){
                     move(&L,input);
                     if (foodEaten(&L,food)){
-                        address ekortemp = Last(L);
+                        addressLDP ekortemp = Last(L);
                         if(GetInfo(SearchAP(L,Absis(ekortemp)+1,Ordinat(ekortemp))) < 25 && GetInfo(SearchAP(L,Absis(ekortemp)-1,Ordinat(ekortemp))) < 25 && GetInfo(SearchAP(L,Absis(ekortemp),Ordinat(ekortemp)-1)) < 25 && GetInfo(SearchAP(L,Absis(ekortemp),Ordinat(ekortemp)+1)) < 25){
                             printf("Ekor sudah tidak bisa spawn wkwkwk \n");
                             score = Info(Last(L)) * 2;
@@ -580,7 +580,7 @@ void som(){
                         }
                         else{
                             ekorbaru=*(Last(L));
-                            address alamatekor= AlokasiLDP(((int)Info(Last(L))) + 1);
+                            addressLDP alamatekor= AlokasiLDP(((int)Info(Last(L))) + 1);
                             Absis(alamatekor)= ekorbaru.coor.x;
                             Ordinat(alamatekor)= ekorbaru.coor.y;
                             InsertLastLDP(&L,alamatekor);

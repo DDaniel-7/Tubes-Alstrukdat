@@ -4,24 +4,24 @@
 #include "charmachine.h"
 
 void CreateEmptySet(Set *S){
-    (*S).Count = Nil;
+    (*S).Count = Nol;
 }
 /* I.S. Sembarang */
 /* F.S. Membuat sebuah Set S kosong berkapasitas MaxEl */
-/* Ciri Set kosong : count bernilai Nil */
+/* Ciri Set kosong : count berNolai Nol */
 
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
 boolean IsEmptySet(Set S){
-    return((S).Count == Nil);
+    return((S).Count == Nol);
 }
 /* Mengirim true jika Set S kosong*/
-/* Ciri Set kosong : count bernilai Nil */
+/* Ciri Set kosong : count berNolai Nol */
 
 boolean IsFullSet(Set S){
     return((S).Count == MaxEl);
 }
 /* Mengirim true jika Set S penuh */
-/* Ciri Set penuh : count bernilai MaxEl */
+/* Ciri Set penuh : count berNolai MaxEl */
 
 /* ********** Operator Dasar Set ********* */
 void InsertSet(Set *S, char* Elmt){

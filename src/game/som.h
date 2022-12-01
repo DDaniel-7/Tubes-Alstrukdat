@@ -10,11 +10,11 @@
 # ifndef SOM_H
 # define SOM_H
 
-int GetInfo(address P);
+int GetInfo(addressLDP P);
 
 boolean SearchPoint(List L,int X,int Y);
 
-address SearchAP(List L,int i,int j);
+addressLDP SearchAP(List L,int i,int j);
 
 void CreateSnake(List *L);
 

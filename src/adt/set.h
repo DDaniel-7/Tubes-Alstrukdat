@@ -9,7 +9,7 @@
 Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 */
 
-#define Nil 0
+#define Nol 0
 #define MaxEl 100
 
 typedef int address;
@@ -20,7 +20,7 @@ typedef struct
     address Count;
 } Set;
 
-/* Definisi Set S kosong : S.Count = Nil */
+/* Definisi Set S kosong : S.Count = Nol */
 /* S.Count = jumlah element Set */
 /* S.Elements = tempat penyimpanan element Set */
 
@@ -30,16 +30,16 @@ typedef struct
 void CreateEmptySet(Set *S);
 /* I.S. Sembarang */
 /* F.S. Membuat sebuah Set S kosong berkapasitas MaxEl */
-/* Ciri Set kosong : count bernilai Nil */
+/* Ciri Set kosong : count berNolai Nol */
 
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
 boolean IsEmptySet(Set S);
 /* Mengirim true jika Set S kosong*/
-/* Ciri Set kosong : count bernilai Nil */
+/* Ciri Set kosong : count berNolai Nol */
 
 boolean IsFullSet(Set S);
 /* Mengirim true jika Set S penuh */
-/* Ciri Set penuh : count bernilai MaxEl */
+/* Ciri Set penuh : count berNolai MaxEl */
 
 /* ********** Operator Dasar Set ********* */
 void InsertSet(Set *S, char* Elmt);
