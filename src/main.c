@@ -8,6 +8,8 @@ int main(){
     ArrayDin arraygame;
     Queue queue;
     TabMap arrmapsb;
+    Stack history;
+    CreateEmpty(&history);
     arraygame = MakeArrayDin(&arraygame);
     CreateQueue(&queue);
     CreateEmptyArrMap(&arrmapsb);
@@ -72,6 +74,8 @@ int main(){
     char* quitinput = "QUIT";
     char* helpinput = "HELP";
     char* scoreboardinput = "SCOREBOARD";
+    char* resetscoreboard = "RESETSCOREBOARD";
+    char* resethistory = "RESETHISTORY";
 
 
     printf("====MAIN MENU====\n");
@@ -99,6 +103,12 @@ int main(){
                 }
                 else if(IsStrEq(scoreboardinput,input)){
                     SCOREBOARD(arrmapsb,arraygame);
+                }
+                else if(IsStrEq(resethistory,input)){
+                    RESETHISTORY(&history);
+                }
+                else if(IsStrEq(resetscoreboard,input)){
+                    RESETSCORE(&arrmapsb,&arraygame);
                 }
                 else if(IsStrEq(listgameinput,input)){
                     ListGame(&arraygame);
@@ -154,6 +164,12 @@ int main(){
                 }
                 else if(IsStrEq(scoreboardinput,input)){
                     SCOREBOARD(arrmapsb,arraygame);
+                }
+                else if(IsStrEq(resetscoreboard,input)){
+                    RESETSCORE(&arrmapsb,&arraygame);
+                }
+                else if(IsStrEq(resethistory,input)){
+                    RESETHISTORY(&history);
                 }
                 else if(IsStrEq(listgameinput,input)){
                     ListGame(&arraygame);

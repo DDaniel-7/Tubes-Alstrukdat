@@ -207,7 +207,7 @@ void PlayGame(Queue *q, TabMap *arrmapsb)
             printf("Loading %s ...\n", HEAD(*q));
             dequeue(q,&val);
             Donat();
-            som();
+            som(arrmapsb);
         } 
         else{
             srand(time(NULL));
@@ -288,7 +288,7 @@ void help()
     printf("8. PLAYGAME : Memainkan sebuah permainan yang berada pada urutan paling atas\n");
     printf("9. SKIPGAME : Melewatkan permainan sebanyak n\n");
     printf("10. SCOREBOARD : Melihat nama dan skor untuk semua game\n");
-    printf("11. RESET SCOREBOARD : melakukan reset terhadap scoreboard permainan\n");
+    printf("11. RESETSCORE: Melakukan reset terhadap scoreboard permainan\n");
     printf("12. HISTORY : Melihat permainan apa saja yang telah dimainkan dari data yang sudah ada\n");
     printf("13. RESET HISTORY : Menghapus semua history permainan yang dimainkan\n");
     printf("14. QUIT : Keluar dari Program\n");
