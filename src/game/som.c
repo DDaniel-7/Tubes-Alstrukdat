@@ -451,7 +451,7 @@ void printMap(List L,POINT food, POINT meteor,POINT obstacle){
     }
 }
 
-void som(){
+void som(TabMap *arrmapsb){
     List L;
     ElmtList ekorbaru;
     char* input;
@@ -614,6 +614,7 @@ void som(){
             }   
         }
     }
+    SAVESCOREBOARD(&arrmapsb->TIMap[4],score);
 
 }
 

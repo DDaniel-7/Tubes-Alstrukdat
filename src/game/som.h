@@ -5,6 +5,8 @@
 #include "../adt/charmachine.h"
 #include "../adt/wordmachine.h"
 #include "../adt/listdp.h"
+#include "../adt/arrayMap.h"
+#include "../console.h"
 #include "boolean.h"
 
 # ifndef SOM_H
@@ -34,5 +36,5 @@ boolean endGame(List L,POINT meteor, POINT obstacle);
 
 void printMap(List L,POINT food, POINT meteor,POINT obstacle);
 
-void som();
+void som(TabMap *arrmapsb);
 #endif
