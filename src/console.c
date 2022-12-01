@@ -559,7 +559,7 @@ void RESETSCORE(TabMap *TabSB, ArrayDin *listgame)
     nomorint = atoi(nomorgame);
     printf("\n");
     if (nomorint == 0){
-        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD ALL (YA/TIDAK)? ");
+        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SEMUA SCOREBOARD  (YA/TIDAK)? ");
         jawab = scaninput();
         if(IsStrEq(ya,jawab)){
             for (j = 0; j < (NbElmtArrMap(*TabSB)); j++){
