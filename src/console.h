@@ -67,6 +67,8 @@ void RESETSCORE (TabMap *SB, ArrayDin *listgame);
 
 void SAVEFILESB (Map scoreboard, FILE *txt);
 
+void history(Stack s, int banyak);
+
 void RESETHISTORY(Stack* Hist);
 
 #endif
