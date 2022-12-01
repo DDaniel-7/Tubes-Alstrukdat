@@ -71,4 +71,8 @@ void history(Stack s, int banyak);
 
 void RESETHISTORY(Stack* Hist);
 
+void LoadHis(Stack *s, char *namafile);
+
+void saveGameHis(Stack s, FILE *file);
+
 #endif
