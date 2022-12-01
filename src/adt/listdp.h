@@ -59,6 +59,7 @@ void CreateEmptyLDP (List *L);
 
 /****************** Manajemen Memori ******************/
 addressLDP AlokasiLDP (char X);
+addressLDP AlokasiLDPEkor (char X);
 /* Mengirimkan addressLDP hasil alokasi sebuah elemen */
 /* Jika alokasi berhasil, maka addressLDP tidak NilLDP. */
 /* Misalnya: menghasilkan P, maka Info(P)=X, Next(P)=NilLDP, Prev(P)=NilLDP */

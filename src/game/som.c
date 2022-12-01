@@ -48,12 +48,13 @@ addressLDP SearchAP(List L,int i,int j){
 }
 
 
-void CreateSnake(List *L){
+
+void createSnake(List *L){
     CreateEmptyLDP(L);
     srand(time(NULL));
-    addressLDP P1=AlokasiLDP(72); 
-    addressLDP P2=AlokasiLDP(1);
-    addressLDP P3=AlokasiLDP(2);
+    addressLDP P1 = AlokasiLDPEkor(72);
+    addressLDP P2 = AlokasiLDPEkor(1);
+    addressLDP P3 = AlokasiLDPEkor(2);
 
     Absis(P1)=rand()%5;
     Ordinat(P1)=rand()%5;
@@ -451,6 +452,7 @@ void printMap(List L,POINT food, POINT meteor,POINT obstacle){
     }
 }
 
+// void som(TabMap *arrmapsb){
 void som(TabMap *arrmapsb){
     List L;
     ElmtList ekorbaru;
@@ -516,26 +518,22 @@ void som(TabMap *arrmapsb){
     printf(" #####  #    # #    # #    # ######     ####  #    #    #     # ######   #   ######  ####  #    #  \n");
     printf("\n");
     printf("\n");
-    printf("===========MAIN MENU===========\n");
-    printf("1. PLAY GAME \n");
-    printf("2. EXIT \n");
-    printf("PRESS 1 OR 2\n");
-    printf("ENTER CHOICE : ");
-    jwbn = scaninput();
+    // printf("===========MAIN MENU===========\n");
+    // printf("1. PLAY GAME \n");
+    // printf("2. EXIT \n");
+    // printf("PRESS 1 OR 2\n");
+    // printf("ENTER CHOICE : ");
+    // jwbn = scaninput();
 
-    while(!IsStrEq(jwbn,satu) && !IsStrEq(jwbn,dua)){
-        printf("Masukkan input yang benar!\n");
-        printf("PRESS 1 OR 2\n");
-        printf("ENTER CHOICE : ");
-        jwbn = scaninput();
-    }
+    // while(!IsStrEq(jwbn,satu) && !IsStrEq(jwbn,dua)){
+    //     printf("Masukkan input yang benar!\n");
+    //     printf("PRESS 1 OR 2\n");
+    //     printf("ENTER CHOICE : ");
+    //     jwbn = scaninput();
+    // }
 
-    while (IsStrEq(jwbn,dua)){
-        break;
-    }
-    if(IsStrEq(jwbn,satu)){
+    // if(IsStrEq(jwbn,satu)){
         srand(time(NULL));
-        CreateSnake(&L);
         printf("Selamat datang di snake on meteor!\n");
         printf("\n");
         printf("Mengenerate peta,snake dan makanan...\n");
@@ -544,7 +542,9 @@ void som(TabMap *arrmapsb){
         printf("\n");
         printf("__________________________________________\n");
         printf("\n");
+        createSnake(&L);
         printf("Berikut merupakan peta permainan!\n");
+        
         
         makeObstacle(L,&obstacle);
         makeFood(&food,L,obstacle);
@@ -580,7 +580,8 @@ void som(TabMap *arrmapsb){
                         }
                         else{
                             ekorbaru=*(Last(L));
-                            addressLDP alamatekor= AlokasiLDP(((int)Info(Last(L))) + 1);
+                            addressLDP alamatekor= AlokasiLDPEkor(((int)Info(Last(L))) + 1);
+                            
                             Absis(alamatekor)= ekorbaru.coor.x;
                             Ordinat(alamatekor)= ekorbaru.coor.y;
                             InsertLastLDP(&L,alamatekor);
@@ -613,7 +614,7 @@ void som(TabMap *arrmapsb){
                 printf("Silahkan memasukkan command yang valid!\n");
             }   
         }
-    }
+    // }
     SAVESCOREBOARD(&arrmapsb->TIMap[4],score);
 
 }

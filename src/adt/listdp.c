@@ -25,6 +25,11 @@ addressLDP AlokasiLDP (char X)
 /* Jika alokasi gagal, mengirimkan NilLDP. */
 {
 	addressLDP P = (addressLDP) malloc(1*sizeof(addressLDP));
+	while(P == NilLDP){
+		
+		P = (addressLDP) malloc(1*sizeof(addressLDP));
+	}
+
 	if (P != NilLDP)
 	{
 		Info(P) = X;
@@ -32,10 +37,27 @@ addressLDP AlokasiLDP (char X)
 		Prev(P) = NilLDP;
 		return P;
 	}
-	else
+
+}
+
+addressLDP AlokasiLDPEkor (char X)
+/* Mengirimkan addressLDP hasil alokasi sebuah elemen */
+/* Jika alokasi berhasil, maka addressLDP tidak NilLDP. */
+/* Misalnya: menghasilkan P, maka Info(P)=X, Next(P)=NilLDP, Prev(P)=NilLDP */
+/* Jika alokasi gagal, mengirimkan NilLDP. */
+{
+	addressLDP P = (addressLDP) malloc(1*sizeof(addressLDP));
+	if (P != NilLDP)
 	{
+		Info(P) = X;
+		Next(P) = NilLDP;
+		Prev(P) = NilLDP;
+		return P;
+	}
+	else{
 		return NilLDP;
 	}
+
 }
 void DealokasiLDP (addressLDP P)
 /* I.S. P terdefinisi */

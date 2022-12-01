@@ -18,7 +18,7 @@ boolean SearchPoint(List L,int X,int Y);
 
 addressLDP SearchAP(List L,int i,int j);
 
-void CreateSnake(List *L);
+void createSnake(List *L);
 
 void move (List *L, char* input);
 
