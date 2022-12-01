@@ -76,6 +76,7 @@ int main(){
     char* scoreboardinput = "SCOREBOARD";
     char* resetscoreboard = "RESET SCOREBOARD";
     char* resethistory = "RESETHISTORY";
+    char* hstry = "HISTORY";
 
 
     printf("====MAIN MENU====\n");

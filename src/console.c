@@ -186,7 +186,7 @@ void PlayGame(Queue *q, TabMap *arrmapsb, ArrayDin arraygame)
 
         char *R = "RNG";
         char *DinDash = "DINER DASH";
-        char *TOH = "TOH";
+        char *TOH = "TOWER OF HANOI";
         char *Hangman = "HANGMAN";
         char *SOM = "SNAKE ON METEOR";
         /**char *DIE = "DINOSAUR IN EARTH";
