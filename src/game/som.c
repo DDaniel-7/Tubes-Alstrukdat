@@ -618,7 +618,7 @@ void som(){
 }
 
 
-int main(){
-    som();
-    return 0;
-}
+// int main(){
+//     som();
+//     return 0;
+// }
