@@ -1,7 +1,7 @@
 /* File : stack.h */
 
-#ifndef stackt_H
-#define stackt_H
+#ifndef stackchar_H
+#define stackchar_H
 
 #include "boolean.h"
 
