@@ -74,7 +74,7 @@ int main(){
     char* quitinput = "QUIT";
     char* helpinput = "HELP";
     char* scoreboardinput = "SCOREBOARD";
-    char* resetscoreboard = "RESETSCOREBOARD";
+    char* resetscoreboard = "RESET SCOREBOARD";
     char* resethistory = "RESETHISTORY";
 
 
