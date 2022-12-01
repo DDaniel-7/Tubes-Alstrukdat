@@ -573,7 +573,7 @@ void RESETSCORE(TabMap *TabSB, ArrayDin *listgame)
                 *sb = GetElmtArrMap(*TabSB, j);
                 CreateEmptyMap(sb);
             }
-            CreateEmptyArrMap(TabSB);
+            //CreateEmptyArrMap(TabSB);
             printf("\n");
             printf("Scoreboard berhasil di-reset.\n");
         }
@@ -585,7 +585,6 @@ void RESETSCORE(TabMap *TabSB, ArrayDin *listgame)
                     printf("Scoreboard berhasil di-reset.\n");
                 }
             }
-            DeleteAtArrMap(TabSB, nomorint-1);
         }
     }
     else if (IsStrEq(tidak, jawab)){
