@@ -73,10 +73,11 @@ void save(char *namaFile, ArrayDin arr, TabMap arrmapsb,Stack s){
     saveGame(arr, fileOutput);
     saveGameHis(s, fileOutput);
     int j;
-    for (j = 0 ; j < NbElmtArrMap(arrmapsb) ; j++){
-        fprintf(fileOutput,"\n");
+    for (j = 0 ; j < NbElmtArrMap(arrmapsb)-1 ; j++){
         SAVEFILESB(arrmapsb.TIMap[j],fileOutput);
+        fprintf(fileOutput,"\n");
     }
+    SAVEFILESB(arrmapsb.TIMap[j+1],fileOutput);
     fclose(fileOutput);
     printf("Save file berhasil disimpan\n");
 }
