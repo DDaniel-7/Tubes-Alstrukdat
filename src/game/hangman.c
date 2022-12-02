@@ -7,7 +7,7 @@
 # include "../console.h"
 # include "hangman.h"
 
-void gameFunction(char *wordinFunction, char *userWordinFunction, int letterNumber) {     
+void gameFunction(char *wordinFunction, char *userWordinFunction, int letterNumber,TabMap *arrmapsb) {     
 	int totalTrue= 0;			
 	int totalFail= 0;			
 	char scannedChar;
@@ -67,6 +67,7 @@ void gameFunction(char *wordinFunction, char *userWordinFunction, int letterNumb
 			printf("\n\n\n");
 			printUserWord(userWordinFunction, letterNumber);
 			printf("\n\nBerhasil menebak kata %s! Kamu mendapatkan %d poin!",wordinFunction, totalTrue);
+            SAVESCOREBOARD(&arrmapsb->TIMap[2],totalTrue);
 			return;
 		}
 	}
@@ -79,6 +80,7 @@ void gameFunction(char *wordinFunction, char *userWordinFunction, int letterNumb
 	}
 	printf("\n\nKATANYA ADALAH %s ", wordinFunction);	
     printf("\n SKOREMU : %d", totalTrue);	
+    SAVESCOREBOARD(&arrmapsb->TIMap[2],totalTrue);
 	return;
 	
 }
@@ -132,7 +134,7 @@ void printFigure(int failinFigure)
 }
 
 
-void hangman()
+void hangman(TabMap *arrmapsb)
 {
 	FILE *fpointer;     
 	fpointer = fopen("hangmanwords.txt", "r");
@@ -279,7 +281,7 @@ void hangman()
                 }
             }
             
-            gameFunction(askedWord, userWord, (gameType+ 5));    
+            gameFunction(askedWord, userWord, (gameType+ 5),arrmapsb);    
             printf("\n\nDO YOU WANT TO CONTINUE? (1.YES/2.NO) : ");    
             ADVWORD();
             restartGame = ScanNum(currentWord);
