@@ -108,7 +108,6 @@ char *mystrchr(char *s,char c)
 
 void hangman() {
 	printf("\tSELAMAT DATANG DI HANGMAN\n\n");
-	printf("\tPRESS ENTER\n");
 	char values[WORDS][WORDLEN] = {"N~mqOlJ^tZletXodeYgs","gCnDIfFQe^CdP^^B{hZpeLA^hv","7urtrtwQv{dt`>^}FaR]i]XUug^GI"
 								    ,"cruD=idduvUdr=gmcauCmg]","BQt`zncypFVjvIaTl]u=_?Aa}F",
 									"iLvkKdT`yu~mWj[^gcO|","jSiLyzJ=vPmnv^`N]^>ViAC^z_","xo|RqqhO|nNstjmzfiuoiFfhwtdh~",
