@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "wordmachine.h"
-#include "charmachine.h"
+# include "../adt/wordmachine.h"
+# include "../adt/charmachine.h"
+# include "../console.h"
 # include "hangman.h"
 
 void gameFunction(char *wordinFunction, char *userWordinFunction, int letterNumber) {     
