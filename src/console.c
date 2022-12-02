@@ -344,21 +344,19 @@ void Load(ArrayDin *arraygame, char *namafile, TabMap *arrmapsb, Stack *s){
     (*arraygame).Neff = jumlahgame;
 /////////////////APUS KALO ERROR /////////
     ADVWORDLOAD();
-    currentWord.length = 0;
-    int jumlahhistorygame = currentWord.contents[0] - '0';
+    int jumlahhistorygame = currentChar - '0';
+    printf("%d\n",jumlahhistorygame);
     int a,b;
+    ADVWORDLOAD();
     for (a=0;a<jumlahhistorygame;a++){
         ADVWORDLOAD();
-        char *namagamehis;
-        namagamehis = (char *)malloc(currentWord.length * sizeof (char));
+        char *namagame;
+        namagame = (char *)malloc(currentWord.length * sizeof (char));
         for (b = 0; b < currentWord.length ; b++){
-            *(namagamehis + b) = currentWord.contents[b];
+            *(namagame + b) = currentWord.contents[b];
         }
-        *(namagamehis + currentWord.length) = '\0';
-        printf("%s\n", namagamehis);
-        s->T[a] = namagamehis;
-        char *temp1;
-        temp1 = namagamehis;
+        *(namagame + currentWord.length) = '\0';
+        s->T[a] = namagame;
     }
     (*s).TOP = jumlahhistorygame-1;
     pembalik(s);
