@@ -366,9 +366,9 @@ void Load(ArrayDin *arraygame, char *namafile, TabMap *arrmapsb, Stack *s){
     CreateEmptyArrMap(arrmapsb);
     ADVWORDLOAD();
     int idxarr = 0;
-    if (jumlahgame > 7)
+    if (jumlahgame > 5)
     {
-        for (i = 7; i < jumlahgame; i++)
+        for (i = 5; i < jumlahgame; i++)
         {
             InsertLastGame(arrmapsb);
         }
