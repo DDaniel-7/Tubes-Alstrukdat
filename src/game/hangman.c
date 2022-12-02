@@ -107,7 +107,7 @@ char *mystrchr(char *s,char c)
 }
 
 void hangman() {
-	printf("\tSELAMAT DATANG DI HANGMAN\n");
+	printf("\tSELAMAT DATANG DI HANGMAN\n\n");
 	printf("\tPRESS ENTER\n");
 	char values[WORDS][WORDLEN] = {"N~mqOlJ^tZletXodeYgs","gCnDIfFQe^CdP^^B{hZpeLA^hv","7urtrtwQv{dt`>^}FaR]i]XUug^GI"
 								    ,"cruD=idduvUdr=gmcauCmg]","BQt`zncypFVjvIaTl]u=_?Aa}F",
@@ -128,8 +128,7 @@ void hangman() {
 
 	int mistakes = 0;
 	setvbuf(stdin, NULL, _IONBF, 0);
-    STARTWORDDin();
-	do {
+	while(mistakes < CHANCE && win != NULL) {
 		found = false;
 		printf("\n");
 		tampilhangman(mistakes, body);
@@ -141,7 +140,6 @@ void hangman() {
 		printf("\n");
 		tampilkata(guessed, len);
 		printf("\tMASUKAN TEBAKAN : ");
-        ADVWORDDin();
 		do {guess = *scaninput();} while ( getchar() != '\n' );
 		for (int i = 0; i < len; ++i)
 		{
@@ -155,7 +153,7 @@ void hangman() {
 			mistakes += 1;
 		}
 		win = mystrchr(guessed, '_');
-	}while(mistakes < CHANCE && win != NULL);
+	}
 
 	if(win == NULL){
         printf("\n");
@@ -170,3 +168,4 @@ void hangman() {
 	free(word);
 	free(guessed);
 }
+
