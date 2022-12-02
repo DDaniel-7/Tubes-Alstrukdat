@@ -1,19 +1,12 @@
-# include "boolean.h"
+#ifndef hangman_H
+#define hangman_H
+#include "boolean.h"
 
-# ifndef HANGMAN_H
-# define HANGMAN_H
+void gameFunction(char *wordinFunction, char *userWordinFunction, int letterNumber);   
 
-long long mystrlen(char *str);
+void printUserWord(char * userWordinPrint,int letterNumber);		
 
-int irand(int i);
-
-char* decrypt(char* code);
-
-void tampilhangman(int wrong, char* body);
-
-void tampilkata(char* guess, int len);
-
-void *mymemset(void *b, int c, int len);
+void printFigure(int failinFigure);		
 
 void hangman();
 
