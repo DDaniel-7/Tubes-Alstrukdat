@@ -171,7 +171,7 @@ void QueueGame(ArrayDin *array, Queue *q){
 }
 
 
-void PlayGame(Queue *q, TabMap *arrmapsb, ArrayDin arraygame)
+void PlayGame(Queue *q, TabMap *arrmapsb, ArrayDin arraygame, Stack *s)
 {
     ElType val;
     if(!isEmptyQueue(*q))    //kalau queue game ada isinya maka,
@@ -199,6 +199,7 @@ void PlayGame(Queue *q, TabMap *arrmapsb, ArrayDin arraygame)
             dequeue(q,&val);
             Donat();
             RNG(arrmapsb);  
+            Push(s, R);
 
         }
         else if (IsStrEq(HEAD(*q), DinDash)){
@@ -206,12 +207,14 @@ void PlayGame(Queue *q, TabMap *arrmapsb, ArrayDin arraygame)
             dequeue(q,&val);
             Donat();
             dinerdash(arrmapsb);  
+            Push(s, DinDash);
         }
         else if (IsStrEq(HEAD(*q), TOH)){
             printf("Loading %s ...\n", HEAD(*q));
             dequeue(q,&val);
             Donat();
-            towerofhanoi(arrmapsb);  
+            towerofhanoi(arrmapsb);
+            Push(s, TOH);  
         }
 
         /**else if (IsStrEq(HEAD(*q), DIE) || IsStrEq(HEAD(*q), RISE) || IsStrEq(HEAD(*q), ET)){
@@ -222,13 +225,15 @@ void PlayGame(Queue *q, TabMap *arrmapsb, ArrayDin arraygame)
             printf("Loading %s ...\n", HEAD(*q));
             dequeue(q,&val);
             Donat();
-            hangman(arrmapsb);
+            hangman();
+            Push(s, Hangman);
         }
         else if (IsStrEq(HEAD(*q), SOM)){
             printf("Loading %s ...\n", HEAD(*q));
             dequeue(q,&val);
             Donat();
             som(arrmapsb);
+            Push(s, SOM);
         } 
         else{
             srand(time(NULL));
@@ -249,7 +254,7 @@ void PlayGame(Queue *q, TabMap *arrmapsb, ArrayDin arraygame)
 }
 
 
-void SkipGame(Queue *q, int n, TabMap *arrmapsb, ArrayDin arraygame){
+void SkipGame(Queue *q, int n, TabMap *arrmapsb, ArrayDin arraygame, Stack *s){
     // I.S. queue game terdefinisi dan mungkin kosong
     // F.S. melakukan dequeue n element q pertama dan menjalankan game ke n+1
     //      jika n lebih besar dari jumlah game dalam queue game, maka akan memberikan pesan kesalahan
@@ -268,7 +273,7 @@ void SkipGame(Queue *q, int n, TabMap *arrmapsb, ArrayDin arraygame){
                 dequeue(q, &game);
             }
             // nama game disini adalah nama game yang akan dimainkan
-            PlayGame(q,arrmapsb,arraygame);
+            PlayGame(q,arrmapsb,arraygame, s);
         }
         else if(n == panjang){
             // kasus game tidak dimainkan karena semua game dalam queue game tepat sudah didequeue
@@ -339,24 +344,28 @@ void Load(ArrayDin *arraygame, char *namafile, TabMap *arrmapsb, Stack *s){
         }
         *(namagame + currentWord.length) = '\0';
         printf("%s\n" , namagame);
-        arraygame->A[i] = namagame;
+        char *temp;
+        temp = namagame;
+        arraygame->A[i] = temp;
     }
     (*arraygame).Neff = jumlahgame;
 /////////////////APUS KALO ERROR /////////
     ADVWORDLOAD();
-    int jumlahhistorygame = currentChar - '0';
-    printf("%d\n",jumlahhistorygame);
+    currentWord.length = 0;
+    int jumlahhistorygame = currentWord.contents[0] - '0';
     int a,b;
-    ADVWORDLOAD();
     for (a=0;a<jumlahhistorygame;a++){
         ADVWORDLOAD();
-        char *namagame;
-        namagame = (char *)malloc(currentWord.length * sizeof (char));
+        char *namagamehis;
+        namagamehis = (char *)malloc(currentWord.length * sizeof (char));
         for (b = 0; b < currentWord.length ; b++){
-            *(namagame + b) = currentWord.contents[b];
+            *(namagamehis + b) = currentWord.contents[b];
         }
-        *(namagame + currentWord.length) = '\0';
-        s->T[a] = namagame;
+        *(namagamehis + currentWord.length) = '\0';
+        printf("%s\n", namagamehis);
+        s->T[a] = namagamehis;
+        char *temp1;
+        temp1 = namagamehis;
     }
     (*s).TOP = jumlahhistorygame-1;
     pembalik(s);
@@ -364,9 +373,9 @@ void Load(ArrayDin *arraygame, char *namafile, TabMap *arrmapsb, Stack *s){
     CreateEmptyArrMap(arrmapsb);
     ADVWORDLOAD();
     int idxarr = 0;
-    if (jumlahgame > 5)
+    if (jumlahgame > 7)
     {
-        for (i = 5; i < jumlahgame; i++)
+        for (i = 7; i < jumlahgame; i++)
         {
             InsertLastGame(arrmapsb);
         }
