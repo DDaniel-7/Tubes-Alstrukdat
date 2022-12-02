@@ -222,7 +222,7 @@ void PlayGame(Queue *q, TabMap *arrmapsb, ArrayDin arraygame)
             printf("Loading %s ...\n", HEAD(*q));
             dequeue(q,&val);
             Donat();
-            ///hangman(); 
+            hangman();
         }
         else if (IsStrEq(HEAD(*q), SOM)){
             printf("Loading %s ...\n", HEAD(*q));

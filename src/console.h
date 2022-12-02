@@ -24,6 +24,7 @@
 #include "game/toh.h"
 #include "game/dinerdash.h"
 #include "game/som.h"
+#include "game/hangman.h"
 
 
 /////////////COMMAND/////////////

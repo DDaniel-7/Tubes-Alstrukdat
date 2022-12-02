@@ -138,7 +138,6 @@ void hangman()
 	if(fpointer== NULL)
 	{
 		printf("hangmanwords.txt not found");
-		return 0;
 	}
 	char readFromFile[300];
 	while(!feof(fpointer))
