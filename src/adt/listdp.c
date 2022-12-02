@@ -46,7 +46,7 @@ addressLDP AlokasiLDPEkor (char X)
 /* Misalnya: menghasilkan P, maka Info(P)=X, Next(P)=NilLDP, Prev(P)=NilLDP */
 /* Jika alokasi gagal, mengirimkan NilLDP. */
 {
-	ElmtList* P=NilLDP;
+	ElmtList* P = NilLDP;
 	P = (ElmtList*) malloc(sizeof(ElmtList));
 	if (P != NilLDP)
 	{
