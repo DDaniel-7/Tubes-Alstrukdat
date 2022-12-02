@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <ctype.h>
 # include "../adt/wordmachine.h"
 # include "../adt/charmachine.h"
 # include "../console.h"
