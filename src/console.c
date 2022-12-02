@@ -664,7 +664,7 @@ void RESETHISTORY(Stack* Hist){
 	else if(IsStrEq(tidak, jawab)){
 		printf("\n");
 		printf("Histori tidak jadi di-reset. Berikut adalah daftar Game yang telah dimainkan\n");
-		// HISTORY();
+		history(*Hist, 100);
 	}
 	else {
 		printf("MASUKKAN INPUT YANG VALID!");
