@@ -27,7 +27,8 @@ void saveGame(ArrayDin l, FILE *file){
         i++;
     }
     judulGame = l.A[i];
-    fprintf(file, "%s", judulGame);
+    fprintf(file, "%s\n", judulGame);
+    
 }
 
 void saveGameHis(Stack s, FILE *file){

@@ -14,5 +14,16 @@ int main(){
     addressLDP P = AlokasiLDPEkor(72);
 
 
+    if(SearchLDP(L,72)){
+        printf("ADa\n");
+    }
+
+    InsVFirstLDP(&L,73);
+    InsVLastLDP(&L,74);
+    DelLastLDP(&L,&P);
+
+    PrintForwardLDP(L);
+    PrintBackwardLDP(L);
+
     return 0;
 }
