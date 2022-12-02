@@ -119,7 +119,7 @@ int skor(int steps, int disk){
     return score;
 }
 
-void towerofhanoi()
+void towerofhanoi(TabMap *arrmapsb)
 {
     Stackt R,M,L;
     int steps = 0;
@@ -207,6 +207,7 @@ void towerofhanoi()
         printf("Selamat Anda Menyelesaikan Tower of Hanoi dengan %d Steps\n",steps);
         int score = skor(steps, disk);
         printf("SCORE : %d\n",score);
+        SAVESCOREBOARD(&arrmapsb->TIMap[3],score);
         break;
     }
 }
