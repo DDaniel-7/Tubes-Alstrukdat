@@ -66,7 +66,7 @@ void gameFunction(char *wordinFunction, char *userWordinFunction, int letterNumb
 			printFigure(totalFail);
 			printf("\n\n\n");
 			printUserWord(userWordinFunction, letterNumber);
-			printf("\n\nBerhasil menebak kata %s! Kamu mendapatkan %d poin!",wordinFunction, totalTrue);
+			printf("\n\nBerhasil menebak kata %s! Kamu mendapatkan %d poin!\n",wordinFunction, totalTrue);
             SAVESCOREBOARD(&arrmapsb->TIMap[2],totalTrue);
 			return;
 		}
@@ -79,7 +79,7 @@ void gameFunction(char *wordinFunction, char *userWordinFunction, int letterNumb
 		printf("%c ", wordinFunction[i]);
 	}
 	printf("\n\nKATANYA ADALAH %s ", wordinFunction);	
-    printf("\n SKOREMU : %d", totalTrue);	
+    printf("\n SKOREMU : %d\n", totalTrue);	
     SAVESCOREBOARD(&arrmapsb->TIMap[2],totalTrue);
 	return;
 	
